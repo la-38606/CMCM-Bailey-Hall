@@ -2,6 +2,8 @@
 
 Engine 1.3.0; 5 fixed policies × 100 replications, seeds 5001–5100. All policies use 1,329 occupants, the same audience distributions and six managers. The combination selected before validation is **Dynamic LEDs + partial belts**.
 
+**Practical review (9 November 2026):** The tested belts and full partitions are not recommended for installation. LED locations remain experimental, pending verification of local arrows, doorway clearances and coherent staff/device messages. See [the placement review](research/placement-review.md). The results below remain the historical engine 1.3.0 study; the 1.3.1 review patch changes validation and interface behavior, not valid-scenario dynamics.
+
 ## Confirmatory results
 
 | Policy | Completed / 100 | Mean (s) | SD (s) | 95% CI for mean (s) | ≤180 s |

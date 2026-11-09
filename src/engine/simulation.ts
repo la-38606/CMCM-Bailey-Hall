@@ -25,7 +25,7 @@ import {
   type Point,
   type RunResult,
 } from "./types";
-export const ENGINE_VERSION = "1.3.0";
+export const ENGINE_VERSION = "1.3.1";
 export class Simulation {
   readonly config: Config;
   readonly geometry: Geometry;

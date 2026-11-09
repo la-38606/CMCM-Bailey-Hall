@@ -48,7 +48,10 @@ test("rejects an invalid barrier and supports a narrow viewport", async ({
   await page.goto("/");
   await page.getByText("LED guidance & barriers", { exact: true }).click();
   await page
-    .getByRole("checkbox", { name: "Transparent corridor belts", exact: true })
+    .getByRole("checkbox", {
+      name: "Experimental open belts · not an installation recommendation",
+      exact: true,
+    })
     .check();
   await expect(page.getByRole("alert")).toHaveCount(0);
   const input = page.locator(".installation").getByRole("spinbutton").first();
@@ -119,4 +122,36 @@ test("loads the literature-study LEDs and open belts as an exportable scenario",
     path: "results/interface-study.png",
     fullPage: true,
   });
+});
+
+test("changing LED mode preserves the study layout and exposes physical review", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page
+    .getByRole("combobox", { name: "Configuration", exact: true })
+    .selectOption("study-partial");
+  await page.getByText("LED guidance & barriers", { exact: true }).click();
+  await expect(
+    page.getByRole("note", { name: "Practical layout review" }),
+  ).toContainText("not recommended for installation");
+  await page
+    .getByRole("combobox", { name: "Added LED strips (16 installed)" })
+    .selectOption("static");
+  const pending = page.waitForEvent("download");
+  await page
+    .getByRole("button", { name: "↓ Save scenario", exact: true })
+    .click();
+  const c = JSON.parse(await readFile((await (await pending).path())!, "utf8"));
+  expect(c.signs).toHaveLength(16);
+  expect(c.signs.every((s: { dynamic: boolean }) => !s.dynamic)).toBe(true);
+  expect(c.signs[0]).toMatchObject({
+    id: "ZLED1",
+    node: "m1",
+    link: "mezzanine-1",
+    detection: 0.77,
+  });
+  await expect(
+    page.getByLabel("Foyer-preference share", { exact: true }),
+  ).toHaveValue("0.35");
 });

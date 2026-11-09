@@ -28,8 +28,10 @@ Browser tests use installed Chrome on macOS. On another machine set `CHROME_PATH
 npm run simulate -- --config scenarios/emergency.json --seed 101 --out results/run.json
 npm run batch -- --config scenarios/emergency.json --seed 101 --runs 3 --out results/batch.json
 npm run batch -- --config scenarios/emergency.json --compare scenarios/concert.json --seed 101 --runs 3 --out results/paired.json
-npm run experiments -- --seed 101 --runs 3
+npm run experiments -- --seed 101 --runs 3 --out-dir results/experiment-repeat
 ```
+
+`experiments` requires a fresh output directory (`--out-dir`, default `results/experiment-sweep`) and refuses to overwrite existing evidence. Configurations are saved under that directory’s `scenarios/`; result files and refinement are written alongside them. The conventional `results/experiments.json` remains historical.
 
 The batch sequence is exactly `seed, seed+1, …`. `experiments` writes all named configurations, three-seed comparisons when invoked as above, and the 0.0125-second refinement of the first emergency seed. Optional `--jobs 4` runs independent policies concurrently without changing their random streams. Run files include the full configuration, seed, engine version, events, exit use, queues, density metrics, accessible progress, and sampled trajectories of aggregate clearance. The experiment sweep omits per-person logs from individual scenario aggregate files to keep them manageable; a single-seed CLI replay regenerates those logs. The refinement file retains both full event logs.
 
@@ -58,7 +60,7 @@ npm run simulate -- --config scenarios/study/dynamic-partial.json --seed 5001 --
 
 The runner archives the source, freezes each policy JSON, checks initial audience identity across policies and distinct audiences across seeds, and stores every full result as compressed JSON. Its source fingerprint must be unchanged when the batch ends. The audit verifies every archive and event hash, reconstructs crossing counts, and exactly replays the first seed for each policy. Repeating the original study must use engine 1.3.0; its source archive accompanies the results. [Development pilots](docs/research/development-history.md) and the frozen selection record preserve unsuccessful alternatives.
 
-The interface includes study presets for coordinated managers, dynamic LEDs, full open partitions, and combined partial/full layouts. The confirmatory combination is **Six managers + dynamic LEDs + partial belts**. Exported JSON fully specifies the selected setup. Newly accepted instructions use current reachable routes and local queue information; final exterior crossings are committed.
+The interface includes study presets for coordinated managers, dynamic LEDs, full open partitions, and combined partial/full layouts. The historically preselected experimental combination is **Six managers + dynamic LEDs + partial belts**; it is not an installation recommendation. Exported JSON fully specifies the selected setup. Newly accepted instructions use current reachable routes and local queue information; final exterior crossings are committed.
 
 Generate the figures and paper from preserved results:
 
@@ -73,6 +75,18 @@ tectonic --outdir docs/model docs/model/Bailey_Hall_Model_Final_Defensible.tex
 ```
 
 `report-interventions.py` accepts an optional study-output directory. The validation report generator uses the preserved refinement/compliance/response experiments. Run the same study runner with `refinement-coarse,refinement-fine` (3 seeds starting at 5001), `compliance-nominal,compliance-low` (20 starting at 6001), or `response-baseline,response-combined` (20 starting at 6001) to reproduce them in a fresh output directory. Those checks do not replace the main fixed-parameter experiment.
+
+## Practical placement and code review (engine 1.3.1)
+
+The [physical placement review](docs/research/placement-review.md) rejects the tested belts and full partitions as installation recommendations: they lack clear incremental benefit and leave door discharge, bases and accessibility unresolved. LED positions are experimental information-exposure locations, not verified local arrows. Independent dynamic devices and fixed staff messages need an agreed, coherent physical guidance plan before any field pilot. The PDF includes a one-page executive summary and the location-by-location assessment.
+
+The [code review](docs/code-review.md) fixes input-validation defects, preserves all LED positions when changing mode, and prevents exploratory sweeps from overwriting evidence. **66 automated tests and 5 browser tests passed**, as did the production build. Five complete first-seed replays matched the historical 1.3.0 results after normalizing only the version label. The 500-run study was not rerun or relabelled. Strict historical source audits still require its archived source.
+
+```sh
+node --import tsx scripts/review-replays.ts
+```
+
+[Audience encoding](docs/audience-encoding.md) distinguishes exit knowledge from a preference for the foyer. The legacy lecture preset bundles age, response and staffing assumptions; both it and the concert reference originally know all eligible exits. Three new controlled presets in `scenarios/review/` isolate knowledge and entrance preference, without changing age, walking speed or response. A 50% knowledge probability is a sensitivity assumption, not a measured visitor characteristic. They are also available in the interface; no new student-versus-visitor Monte Carlo effect is claimed.
 
 ## Model and source hierarchy
 

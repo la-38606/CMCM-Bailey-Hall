@@ -5,7 +5,9 @@ import { occupancy, gateCapacity } from "../engine/transport";
 import { EXITS, type Config, type RunResult } from "../engine/types";
 import { MapView, type Layers } from "./Map";
 import { paired, summarize } from "../engine/metrics";
-const presets = scenarios();
+import { audienceComparisons } from "../scenarios/audience";
+import { reviewLayout } from "../review/layout";
+const presets = { ...scenarios(), ...audienceComparisons(reference()) };
 const fmt = (n: number | null | undefined, d = 1) =>
   n == null ? "—" : n.toFixed(d);
 function download(name: string, data: unknown) {
@@ -97,6 +99,7 @@ export function App() {
     return () => cancelAnimationFrame(id);
   }, [running, speed, simulation]);
   useEffect(() => () => worker.current?.terminate(), []);
+  const layoutFindings = reviewLayout(simulation.geometry, config);
   const result = simulation.result(),
     person = selected === null ? null : simulation.people[selected],
     link = simulation.geometry.links[selectedLink];
@@ -260,11 +263,20 @@ export function App() {
                 </option>
                 {Object.entries(presets).map(([k, c]) => (
                   <option key={k} value={k}>
-                    {c.name}
+                    {k === "lecture"
+                      ? "Legacy lecture · bundled age/response assumptions"
+                      : c.name}
                   </option>
                 ))}
               </select>
             </label>
+            {config.barriers.length > 0 && (
+              <p className="small muted">
+                Experimental barrier layout. Passing the geometry screen is not
+                an installation recommendation; see Physical placement review
+                below.
+              </p>
+            )}
             <div className="seed-row">
               <label className="field">
                 <span>Audience seed</span>
@@ -299,8 +311,22 @@ export function App() {
                 {field("Older share", "olderShare", 0, 1, 0.05)}
                 {field("Recognition · s", "recognitionMedian", 1, 100, 1)}
                 {field("Response · s", "responseMedian", 1, 200, 1)}
-                {field("Exit knowledge", "knowledge", 0, 1, 0.1)}
+                {field("Exit knowledge probability", "knowledge", 0, 1, 0.1)}
+                {field(
+                  "Foyer-preference share",
+                  "familiarityShare",
+                  0,
+                  1,
+                  0.05,
+                )}
               </div>
+              <p className="small muted">
+                Knowledge samples which exits a person initially knows. Foyer
+                preference adds a persistent 12-second entrance bias; it is not
+                building knowledge. The legacy lecture preset also changes age
+                and response assumptions. Use the information-study presets to
+                isolate knowledge or preference.
+              </p>
             </details>
             <details open>
               <summary>
@@ -402,7 +428,7 @@ export function App() {
             <details>
               <summary>LED guidance & barriers</summary>
               <label className="field">
-                <span>Added LED strips</span>
+                <span>Added LED strips ({config.signs.length} installed)</span>
                 <select
                   value={
                     config.signs.length
@@ -417,7 +443,12 @@ export function App() {
                       signs:
                         e.target.value === "none"
                           ? []
-                          : leds(e.target.value === "dynamic"),
+                          : config.signs.length
+                            ? config.signs.map((s) => ({
+                                ...s,
+                                dynamic: e.target.value === "dynamic",
+                              }))
+                            : leds(e.target.value === "dynamic"),
                     })
                   }
                 >
@@ -441,8 +472,36 @@ export function App() {
                     })
                   }
                 />{" "}
-                Transparent corridor belts
+                Experimental open belts · not an installation recommendation
               </label>
+              {layoutFindings.length > 0 && (
+                <div
+                  className="small"
+                  role="note"
+                  aria-label="Practical layout review"
+                >
+                  <strong>Physical placement review</strong>
+                  {layoutFindings.map((f) => (
+                    <p key={f.device}>
+                      <b>
+                        {f.device}:{" "}
+                        {f.status === "not-recommended"
+                          ? "not recommended for installation"
+                          : "site review required"}
+                        .
+                      </b>{" "}
+                      {f.reason}
+                    </p>
+                  ))}
+                  <a
+                    href="https://ehs.cornell.edu/campus-health-safety/event-management/event-setup"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Cornell EHS event setup guidance
+                  </a>
+                </div>
+              )}
               {config.barriers.map((b, i) => (
                 <div key={b.link} className="installation">
                   <span>{b.link}</span>

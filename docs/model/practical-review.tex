@@ -1,0 +1,32 @@
+\subsection{Practical Placement Review}\label{sec:practical-review}
+
+\textbf{The tested belts and full corridor partitions are not recommended for installation.} The retained layout is an experimental graph configuration. Cornell EHS requires clear egress circulation and unobstructed door operation \cite{cornellsetup}. The two partial belts share junctions with auditorium discharge doors; reducing a nominal 2.4 m passage to a 1.9 m bypass is not evidence that door swings, turning crowds or device bases fit. An open view is not an unobstructed escape route. Full partitions additionally remove cross-corridor choices and redundancy. The model's 1.1 m screen establishes neither required egress width nor regulatory compliance.
+
+Cane detection and objects between posts are addressed separately in accessibility guidance \cite{adaprotrusions}. No belt height, base footprint or anchorage is supplied here. Keeping a wheelchair path connected is therefore insufficient to establish accessibility for an actual device. Since the experiments show no clear incremental belt benefit, there is no evidence-based reason to introduce these unresolved physical obstructions.
+
+\begin{table}[htbp]\centering\small
+\begin{tabularx}{\linewidth}{p{.24\linewidth}X}\toprule
+Location & Physical interpretation and disposition\\\midrule
+\texttt{corridor-3,8} belts & Adjacent to auditorium-door junctions. Reject as installation recommendations; retain only as experimental layouts.\\
+ZLED1--6, mezzanine & Candidate doorway/route-decision areas. Verify floor-strip visibility, raised-level transitions and row discharge; no equipment in usable width.\\
+ZLED7--10, balcony & Verify actual rear-stair and front-escape arrows, landings and column occlusion. No implied level wheelchair route.\\
+ZLED11--14, corridor & Provide intelligible local turn indications and continuity at foyer/portico doors; survey both approach directions and door swings.\\
+ZLED15--16, stage side & The brief shows stage escape routes, but the graph abbreviates the side passage. Verify public audience access, hardware and stage-use restrictions before proposing an arrow.\\
+Staff decision posts & Points have no body footprint. Actual standing positions must avoid the moving line and doorway sweep; speech and sign messages must agree.\\\bottomrule
+\end{tabularx}
+\caption{Desk review against the supplied drawings and photographs. These are not surveyed installation coordinates or an approved operating plan.}
+\end{table}
+
+The next defensible step is a venue walkthrough of staff instructions and supplementary directional signs, keeping circulation unobstructed. Existing required signs and emergency illumination are not replaced. A real LED system needs local arrow comprehension, continuity through every turn, suitable mounting, emergency power, maintenance, and an agreed failure response. The simulation does not evaluate those hardware functions.
+
+The distinction is substantive: the model broadcasts an \emph{exit-group name}, and an occupant who learns that name can route through the graph. One luminous strip may not supply a newcomer with that knowledge in reality. The 16 strips are therefore test locations for information exposure, not a validated arrow chain. The updated validator requires each strip's controller node to belong to its walkway; this prevents a software inconsistency but does not validate human comprehension.
+
+Dynamic signs update independently using delayed reports. They can disagree with one another or with a fixed manager. Manager priority in an occupant's decision logic does not remove contradictory information from the real environment. Galea et al.'s trials motivate coordinated signs and voice messages, not independent installation of this controller \cite{galea2017}. Before a field pilot, test a coherent public message plan, downstream arrows, accessible alternatives, stale observations and fallback to the venue's approved guidance. No such integrated physical controller is claimed here.
+
+There is also a transfer limitation in the literature. Wang et al.'s Table 2 gives safety-barrier increases of 2.67\% at 1 m and 0.88\% at 3 m, whereas its abstract reverses the order. Their measure averages three repetitions after dropping five initial and five final pedestrians \cite{wang}. It is not our full-house maximum. Similarly, the assumed 0.77 detection and independent person--installation draws are not calibrated to multiple floor strips, correlated inattention, or occlusion by a standing crowd. Statistical uncertainty in the Monte Carlo mean does not include these modelling uncertainties.
+
+
+\subsection{Software Review and Preserved Evidence}
+Engine 1.3.1 corrects input validation, including installation identity and strip/controller consistency, without changing movement, response, routing, guidance or service algorithms for previously valid scenarios. The interface now preserves LED locations when switching static/dynamic mode and separates exit knowledge from foyer preference. Exploratory sweeps require a fresh output directory to protect existing evidence.
+
+The reviewed version passed 66 automated engine and review tests and five browser tests, including equivalence between browser and Node results and preservation of all sixteen LED positions. TypeScript and the production build passed. Complete first-seed results for all five study policies matched their archived 1.3.0 results after normalizing only the reported version field. This is five replay checks, not a new 500-run Monte Carlo study. The historical results below retain their original engine version and archived source. Physical, behavioural and numerical limitations are not removed by these software checks.

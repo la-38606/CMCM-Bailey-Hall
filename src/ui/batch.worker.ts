@@ -13,6 +13,15 @@ self.onmessage = (
     const { config, compare, seed, runs } = event.data,
       a: RunResult[] = [],
       b: RunResult[] = [];
+    if (
+      !Number.isSafeInteger(runs) ||
+      runs < 1 ||
+      !Number.isSafeInteger(seed) ||
+      !Number.isSafeInteger(seed + runs - 1)
+    )
+      throw new Error(
+        "Batch requires a positive integer count and safe integer seeds.",
+      );
     for (let i = 0; i < runs; i++) {
       a.push(new Simulation(config, seed + i).run());
       b.push(new Simulation(compare, seed + i).run());

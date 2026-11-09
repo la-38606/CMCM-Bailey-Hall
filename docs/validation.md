@@ -1,8 +1,16 @@
 # Validation and experiment report
 
-Recorded 9 November 2026. All work uses `rebuild-from-scratch`. The current engine is **1.3.0**. The paper was revised for the user-authorized literature-based intervention study; original results below are explicitly historical.
+Recorded 9 November 2026. All work uses `rebuild-from-scratch`. The current engine is **1.3.1**. The paper was revised for the user-authorized literature-based intervention study; original results below are explicitly historical.
 
-## Current engine verification
+## Current review verification (1.3.1)
+
+- `npm test -- --maxWorkers 1`: **66 tests passed**, four files, 79.07 s.
+- `npm run build`: TypeScript and production build passed.
+- `npm run test:browser`: **5 tests passed**, 21.0 s, including preserving all sixteen LED installations when changing mode.
+- `node --import tsx scripts/review-replays.ts`: five complete first-seed policy results matched archived 1.3.0 results after normalizing only the engine-version field. No new 500-run study is claimed.
+- [Review checks](../results/review/checks.json), [full-result replay comparisons](../results/review/replays.json), [general code review](code-review.md), and [physical placement review](research/placement-review.md) record the evidence and limits. The revised PDF separates experimental layouts from installation recommendations.
+
+## Historical intervention study verification (1.3.0)
 
 - `npm test -- --maxWorkers 1`: **49 tests passed**, three files, 90.68 s while Monte Carlo workers were active. Fourteen new tests cover continuous divided stairs and stepped cross-aisles, draining lanes, formerly stalled seeds, preserved sightlines/accessibility/capacity, and current-state guidance/exit commitment.
 - `npm run build`: TypeScript and Vite production build passed (final Vite build 1.48 s). A separate `npm run typecheck` also passed.

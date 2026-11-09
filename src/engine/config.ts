@@ -1,5 +1,11 @@
 import { interventionCandidates } from "./interventions";
-import type { Config, Exit, ManagerConfig, SignConfig } from "./types";
+import {
+  EXITS,
+  type Config,
+  type Exit,
+  type ManagerConfig,
+  type SignConfig,
+} from "./types";
 export const GEOMETRY_VERSION = "bailey-traced-1";
 export function managers(count = 6, alternate = false): ManagerConfig[] {
   const posts = alternate
@@ -171,6 +177,90 @@ export function scenarios(): Record<string, Config> {
 }
 export function validateConfig(c: Config): string[] {
   const errors: string[] = [];
+  if (!c || typeof c !== "object" || Array.isArray(c))
+    return ["Scenario must be an object."];
+  for (const key of ["managers", "signs", "barriers", "closures"] as const)
+    if (!Array.isArray(c[key])) errors.push(`${key} must be an array.`);
+  if (
+    !c.dimensions ||
+    typeof c.dimensions !== "object" ||
+    Array.isArray(c.dimensions)
+  )
+    errors.push("dimensions must be an object.");
+  if (errors.length) return errors;
+  if (typeof c.name !== "string" || typeof c.announcement !== "boolean")
+    errors.push("Scenario name and announcement have invalid types.");
+  for (const key of ["managers", "signs"] as const) {
+    const ids = new Set<string>();
+    for (const item of c[key]) {
+      if (
+        !item ||
+        typeof item !== "object" ||
+        typeof item.id !== "string" ||
+        !item.id ||
+        typeof item.node !== "string" ||
+        !EXITS.includes(item.exit)
+      ) {
+        errors.push(`Invalid ${key} installation.`);
+        continue;
+      }
+      if (ids.has(item.id) || item.id.startsWith("EXIT-"))
+        errors.push(`Duplicate or reserved installation id: ${item.id}`);
+      ids.add(item.id);
+    }
+  }
+  for (const m of c.managers)
+    if (
+      m &&
+      m.patrol !== undefined &&
+      (!Array.isArray(m.patrol) || m.patrol.some((n) => typeof n !== "string"))
+    )
+      errors.push("Manager patrol must contain junction names.");
+  for (const s of c.signs)
+    if (
+      s &&
+      (!["wall", "strip"].includes(s.kind) ||
+        typeof s.dynamic !== "boolean" ||
+        typeof s.existing !== "boolean" ||
+        !Array.isArray(s.facing) ||
+        s.facing.length !== 2 ||
+        !s.facing.every(Number.isFinite) ||
+        !Number.isFinite(s.halfAngle) ||
+        s.halfAngle < 0 ||
+        s.halfAngle > 180 ||
+        (s.kind === "wall" && Math.hypot(...s.facing) === 0))
+    )
+      errors.push(`Invalid sign orientation or type: ${s.id}`);
+  const barrierLinks = new Set<string>();
+  for (const b of c.barriers) {
+    if (
+      !b ||
+      typeof b.link !== "string" ||
+      !["both", "forward"].includes(b.direction) ||
+      !Number.isFinite(b.length) ||
+      b.length < 0 ||
+      !Number.isFinite(b.angle)
+    ) {
+      errors.push("Invalid barrier parameters or direction.");
+      continue;
+    }
+    if (barrierLinks.has(b.link))
+      errors.push(`Duplicate barrier slot: ${b.link}`);
+    barrierLinks.add(b.link);
+  }
+  if (c.closures.some((id) => typeof id !== "string"))
+    errors.push("Closure ids must be strings.");
+  for (const [id, d] of Object.entries(c.dimensions))
+    if (
+      !d ||
+      typeof d !== "object" ||
+      Array.isArray(d) ||
+      Object.entries(d).some(
+        ([k, v]) =>
+          !["width", "drop"].includes(k) || !Number.isFinite(v) || v < 0,
+      )
+    )
+      errors.push(`Invalid dimension override: ${id}`);
   if (!["available-lane", "wait-for-lane"].includes(c.returnPolicy))
     errors.push("Unknown return-lane policy.");
   if (c.version !== 1 || c.geometryVersion !== GEOMETRY_VERSION)

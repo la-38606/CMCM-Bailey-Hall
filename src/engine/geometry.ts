@@ -577,6 +577,13 @@ export function validateGeometry(g: Geometry, c: Config): string[] {
     }
   }
   for (const s of c.signs) {
+    if (s.kind === "strip" && s.link && g.links[s.link]) {
+      const e = g.links[s.link];
+      if (e.kind === "row" || (s.node !== e.a && s.node !== e.b))
+        errors.push(
+          `Strip ${s.id}: controller junction must be an endpoint of its public walkway.`,
+        );
+    }
     if (
       !g.nodes[s.node] ||
       (s.kind === "strip" && (!s.link || !g.links[s.link]))

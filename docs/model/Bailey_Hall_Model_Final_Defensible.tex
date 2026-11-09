@@ -18,8 +18,10 @@
 \newcommand{\eps}{\varepsilon}
 \title{Bailey(ing) Out}
 \author{}
-\date{Revised 9 November 2026: literature-based intervention study}
+\date{Revised 9 November 2026: intervention study and practical/code review}
 \begin{document}
+\input{executive-summary}
+\clearpage
 \maketitle
 \vspace{-2em}
 
@@ -239,6 +241,8 @@ U_{ih}(t)-U_{ig}(t)\geq8\ \mathrm{s}.
 \end{equation}
 The eight-second margin represents inertia in the presence of uncertain queue estimates, not a measured switching threshold. In Liao and colleagues' experiments, people who changed exits formed only about $0$--$7.5\%$ of participants within individual runs, despite opportunities for reconsideration \cite{liao}. Reviews therefore occur at junctions or after meaningful new information, but they do not force frequent switching. A smaller $5$ s margin represents a more adaptive alternative, rather than an established typical response. Any chosen destination becomes effective only at a connected junction; it cannot reverse completed travel or take a shortcut through seating.
 
+\input{audience-encoding}
+
 \subsection{Current-State Guidance and Route Commitment}\label{sec:commitment}
 
 A fresh message is not a fresh random route-choice lottery. Fixed preferences, notice and compliance draws remain fixed. At the time an instruction is considered, the model uses the occupant's current link, direction, remaining distance, destination and known obstructions. Instructions received before movement may establish an initial destination. After movement begins, a different recommendation is accepted only if it is feasible and either the current route is known to be infeasible or the locally estimated improvement is at least eight seconds:
@@ -326,6 +330,7 @@ No generic obstacle benefit is assumed. Wang et al.'s safety barriers increased 
 Pilot audiences beginning at seed 3001 are used to compare fixed layouts. Every tried layout, including slower and unfinished cases, is retained. The final policies are frozen before an independent block of 100 audiences, seeds 5001--5100. Within this block each policy shares the same audience seed, while different replications resample audience traits, groups and all named stochastic streams. Separate arms isolate LEDs, barriers and their combination with identical staff posts/messages. Comparison with the original-post reference is reported separately. Low-compliance and numerical-refinement experiments are labelled sensitivities. A sanguine interpretation of a small pilot is avoided: a mean below 180 seconds is distinct from meeting the threshold in every replication, and from robustness to unmeasured geometry.
 
 \input{intervention-layout-details}
+\input{practical-review}
 
 \subsection{Assisted Evacuation}
 
@@ -408,5 +413,8 @@ The predicted clearance time is an estimate for the stated audience and scenario
 \bibitem{liu} W. Liu et al. (2026). \emph{Mode-dependent optimal positioning of evacuation guides: An experimental--modeling study on static and dynamic guidance effect}. Tunnelling and Underground Space Technology 171, 107458. \url{https://doi.org/10.1016/j.tust.2026.107458}.
 \bibitem{fu2023} M. Fu, R. Liu and Q. Liu (2023). \emph{How individuals sense environments during indoor emergency wayfinding: An eye-tracking investigation}. Journal of Building Engineering 79, 107854. \url{https://doi.org/10.1016/j.jobe.2023.107854}.
 \bibitem{fu2024} M. Fu, R. Liu and Q. Liu (2024). \emph{Why individuals do not use emergency exit doors during evacuations: A virtual reality and eye-tracking experimental study}. Advanced Engineering Informatics 60, 102396. \url{https://doi.org/10.1016/j.aei.2024.102396}.
+\bibitem{cornellsetup} Cornell Environment, Health and Safety. \emph{Event Setup}. Reviewed 9 November 2026. \url{https://ehs.cornell.edu/campus-health-safety/event-management/event-setup}.
+\bibitem{adaprotrusions} U.S. Access Board. \emph{ADA Accessibility Standards, Section 307: Protruding Objects}. Reviewed 9 November 2026. \url{https://www.access-board.gov/ada/}.
+\bibitem{tong2025} Y. Tong, N. W. F. Bode, M. Haghani and R. Lovreglio (2025). \emph{Exploring occupant exit choices during fire drills and false alarm evacuations in a library}. Safety Science 182, 106708. \url{https://doi.org/10.1016/j.ssci.2024.106708}.
 \end{thebibliography}
 \end{document}

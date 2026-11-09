@@ -1,0 +1,79 @@
+{
+  "engineVersion": "1.3.1",
+  "historicalEngineVersion": "1.3.0",
+  "scope": "Validation-only patch; five full first-seed replays, not a new 500-run Monte Carlo experiment.",
+  "checks": [
+    {
+      "policy": "baseline",
+      "seed": 5001,
+      "clearance": 195.7,
+      "eventCount": 54900,
+      "allResultsMatchExceptVersion": true,
+      "originalHash": "77f00a58a3f8df4b82a17822ae18985828a0d689da187d0d81c96ca49c568027",
+      "rerunHash": "2124a1ec0fe4cc798f9a3d0d39dd086c279b3419663b0848284badbbb8f1606c"
+    },
+    {
+      "policy": "coordinated",
+      "seed": 5001,
+      "clearance": 164.7,
+      "eventCount": 54273,
+      "allResultsMatchExceptVersion": true,
+      "originalHash": "8cfed9c138e55ca3f66735bea2db47582045d15d091623a8ba86b49c64cc8ef9",
+      "rerunHash": "c4a1b821183af91b805aa9bcc21ccb5b35b80643853ec1eb4721c6deb3a0ac13"
+    },
+    {
+      "policy": "partial-barriers",
+      "seed": 5001,
+      "clearance": 170.5,
+      "eventCount": 54229,
+      "allResultsMatchExceptVersion": true,
+      "originalHash": "ada626eb11101e106e123631f5287140c3f94d08737da6f16d529c3d3297069a",
+      "rerunHash": "2e93b25017ce0938d00a4799e11076bc37777d7dfd6ce9c9d41b2a8184ecdd43"
+    },
+    {
+      "policy": "dynamic-only",
+      "seed": 5001,
+      "clearance": 164.9,
+      "eventCount": 58272,
+      "allResultsMatchExceptVersion": true,
+      "originalHash": "3df28554a6f357b7d520314dffb629994884e55d1251234fd8af1466b80cbcc1",
+      "rerunHash": "a4635abf35c79adb2730f12a18071a1f6de5032c2e82614dead5b66da01d935c"
+    },
+    {
+      "policy": "dynamic-partial",
+      "seed": 5001,
+      "clearance": 168.9,
+      "eventCount": 58154,
+      "allResultsMatchExceptVersion": true,
+      "originalHash": "3acfabdd72f7f32643f344753fff014dca959429630e12eea0eb9c7820577167",
+      "rerunHash": "7a263a011aa7174711bbeb3dbf622f826c45aa36c1e4a352aa20dedd4e18eb39"
+    }
+  ],
+  "layoutFindings": [
+    {
+      "device": "corridor-3",
+      "status": "not-recommended",
+      "reason": "Narrows circulation to 1.90 m.\n      Shares a junction with auditorium-door-3, auditorium-door-4, portico-door-3.\n      Sightline preservation and graph connectivity do not establish safe egress. Cornell EHS requires clear exit routes; posts, door swings, cane detection and crowd contact are not modelled."
+    },
+    {
+      "device": "corridor-8",
+      "status": "not-recommended",
+      "reason": "Narrows circulation to 1.90 m.\n      Shares a junction with auditorium-door-8, auditorium-door-9, portico-door-9.\n      Sightline preservation and graph connectivity do not establish safe egress. Cornell EHS requires clear exit routes; posts, door swings, cane detection and crowd contact are not modelled."
+    },
+    {
+      "device": "LED system",
+      "status": "site-review",
+      "reason": "Concept only. Verify local arrows at every turn, continuity to exterior exits, mounting and emergency power. The model communicates exit names and does not test human arrow comprehension, crowd occlusion or hardware failure. Dynamic messages can conflict with staff; software priority is not real-world message coordination."
+    },
+    {
+      "device": "ZLED15",
+      "status": "site-review",
+      "reason": "Stage-side route: verify the complete public escape path, door operation and stage-use restrictions on site before adding an arrow. A schematic exit node is insufficient."
+    },
+    {
+      "device": "ZLED16",
+      "status": "site-review",
+      "reason": "Stage-side route: verify the complete public escape path, door operation and stage-use restrictions on site before adding an arrow. A schematic exit node is insufficient."
+    }
+  ]
+}

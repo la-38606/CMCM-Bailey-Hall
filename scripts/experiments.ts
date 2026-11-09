@@ -1,9 +1,14 @@
 import { spawn } from "node:child_process";
+import { mkdir } from "node:fs/promises";
+import { join } from "node:path";
 import { scenarios } from "../src/engine/config";
 import { Simulation } from "../src/engine/simulation";
 import { paired, summarize } from "../src/engine/metrics";
 import { args, integer, save } from "./io";
 import type { RunResult } from "../src/engine/types";
+const output = args["out-dir"] ?? "results/experiment-sweep";
+if (args.out)
+  throw new Error("Use --out-dir for a fresh experiment output directory.");
 const configurations = scenarios(),
   count = integer("runs", 3),
   seed = integer("seed", 101),
@@ -12,8 +17,9 @@ const configurations = scenarios(),
   all: Record<string, RunResult[]> = {};
 if (count < 1 || concurrency < 1)
   throw new Error("runs and jobs must be positive");
+await mkdir(output, { recursive: false });
 for (const [name, c] of Object.entries(configurations))
-  await save(`scenarios/${name}.json`, c);
+  await save(join(output, "scenarios", `${name}.json`), c);
 const names = Object.keys(configurations);
 let next = 0;
 async function work() {
@@ -47,7 +53,10 @@ async function work() {
     });
     all[name] = runs;
     summaries[name] = summarize(runs);
-    await save(`results/${name}.json`, { summary: summarize(runs), runs });
+    await save(join(output, `${name}.json`), {
+      summary: summarize(runs),
+      runs,
+    });
   }
 }
 await Promise.all(
@@ -58,8 +67,8 @@ const coarse = new Simulation(configurations.emergency, seed).run(),
     { ...configurations.emergency, dt: 0.0125 },
     seed,
   ).run();
-await save("results/refinement.json", { coarse, fine });
-await save(args.out ?? "results/experiments.json", {
+await save(join(output, "refinement.json"), { coarse, fine });
+await save(join(output, "experiments.json"), {
   summaries: Object.fromEntries(names.map((n) => [n, summaries[n]])),
   pairedToEmergency: Object.fromEntries(
     names.map((n) => [n, paired(all.emergency, all[n])]),
