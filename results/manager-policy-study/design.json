@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-09T08:39:29.193Z",
+  "engineVersion": "1.4.0",
+  "branch": "bailey-hall-simulator",
+  "firstSeed": 8001,
+  "replicationsPerPolicy": 100,
+  "policies": [
+    "current-nearest",
+    "nearest-all",
+    "coordinated",
+    "nearest-foyer-balcony"
+  ],
+  "policyHashes": {
+    "current-nearest": "819be6ea94c15528d15f0907a806cc5402e5571d75662a8a81ecb48f97b09704",
+    "nearest-all": "a269fa02f5b2025f975aa51e73ae196753ed1f64602dbb5ae1559e55b7bcc013",
+    "coordinated": "80361091097fe8b5db6aa4f24df97225720996906461fe2561b6dbac5b66948e",
+    "nearest-foyer-balcony": "ce6c6e0853af0bc2483c7754d65bea14ac7e08e2c2d63019878e6147ea03cf55"
+  },
+  "fixed": "Six staff posts, activation/hearing/compliance, 1329 audience, demographics, response, physical parameters, no added LEDs or barriers, and final-40/10-second rule. Only manager messages differ.",
+  "pairing": "New seed resamples all audience and stochastic streams; identical seed paired across policies.",
+  "selection": "Prefer complete policies, then lower mean full-house exterior clearance; assess <=180 reliability and paired uncertainty. If differences are unclear, prefer the simpler coherent fixed-message policy. No capacity or response retuning.",
+  "interpretation": "Comparison of four prespecified candidates, not global optimization. Intervals conditional on the model; selecting a winner from this sample is not independent confirmation.",
+  "comparisonIntervals": "Paired t, with Bonferroni simultaneous 95% intervals over the six candidate pairs; fixed-message preference applies if its adjusted interval against the mean winner includes zero."
+}
