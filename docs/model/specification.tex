@@ -1,0 +1,189 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,newtxtext,newtxmath}
+\usepackage[margin=23mm]{geometry}
+\usepackage{booktabs,tabularx,enumitem,microtype,xurl,hyperref}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=black,pdftitle={Specification — Bailey Hall Evacuation Model}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\setlist{nosep,leftmargin=*}
+\newcommand{\clip}{\operatorname{clip}}
+\title{Specification\\\large Bailey Hall Evacuation Model}
+\author{}
+\date{Engine 1.4.0 \quad\textbar\quad 9 November 2026}
+\begin{document}
+\maketitle
+\vspace{-2em}
+
+\section{Scope and default configuration}
+The model is a deterministic, seeded, individual-occupant simulation on a finite-storage, multi-lane circulation network reconstructed from the supplied Bailey Hall plans, seating diagrams and photographs. The simulated audience is exactly 1,329 people. Backstage and ground-level populations are excluded. The emergency elevator is unavailable.
+
+The current emergency configuration uses six stationary Crowd Managers, all issuing the same public instruction: \emph{use the nearest known feasible exit by estimated remaining travel time, including visible queue delay}. The final-occupant commitment rule is enabled. Added LEDs, temporary barriers, closures, advance announcements and dimension overrides are disabled by default; existing exit signs remain represented. Configuration values are stored in \texttt{scenarios/emergency.json}.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{Xr}\toprule
+Population / timing specification & Value\\\midrule
+Orchestra occupants & 527\\
+Mezzanine occupants, including three wheelchair users & 486\\
+Balcony occupants & 316\\
+Integration step & 0.1 s\\
+Numerical-refinement step & 0.0125 s\\
+Observation horizon & 900 s\\
+Building-clearance benchmark & 180 s\\\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{Building geometry and accessibility}
+The network is $G=(V,E)$, with junctions at walkway intersections, doorway approaches, stairs and changes of direction. Each link stores its endpoints, polyline, floor, horizontal length, walking length, usable width, lane count, storage, permitted directions, closure status and accessibility. Coordinates, widths and rises are reconstructed inputs; dimension overrides are configurable.
+
+The seven exterior exit groups are the foyer, west and east porticoes, west and east stage routes, and northwest and northeast balcony exits. Nine auditorium doors connect the lower auditorium to the outer corridor. The balcony connects to rear stairs and front escape routes. The orchestra and mezzanine include six access connections. Seat rows serve only their own occupants and cannot be used as public shortcuts.
+
+The middle orchestra cross-aisle is public circulation connecting the outer block, curved longitudinal aisle, stepped connector and inner circulation on each side. The stepped connector has an assumed 1.2 m horizontal run, 1.2 m clear width and 0.54 m rise. It uses stair travel/service rules and is unavailable to wheelchair users. Rear balcony stairs have two continuous divided lanes through their approaches and flights. Collinear segments of longitudinal aisles and stepped cross-aisles retain continuous logical lane identity.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{Xl}\toprule
+Geometry input & Default reconstruction\\\midrule
+Ordinary aisles / stepped connectors & 1.2 m clear width\\
+Outer corridor & 2.4 m clear width\\
+Auditorium and portico doors & 1.4 m clear width\\
+Rear balcony stairs & 1.8 m width; two 2.1 m drops\\
+Foyer inlet / exterior door & 1.8 m / 1.5 m clear width\\
+Stage / direct balcony escape doors & 1.2 m clear width\\\bottomrule
+\end{tabularx}
+\end{center}
+
+Routes must respect link directions, body fit, known closures and wheelchair restrictions. A person fits only if the actual width is at least their body diameter. On links narrower than 1.5 m, wheelchair occupancy excludes other simultaneous occupants. Every configured wheelchair origin must retain an accessible exterior route.
+
+\section{Occupants, response and social groups}
+Each occupant has a fixed seat, section, age category, body radius, walking speed, recognition and preparation delays, group membership, compliance draw, known-exit set and persistent exit tastes. Dynamic state includes current node/link, lane, direction, remaining distance, queue-arrival time, destination, planned route, learned closures, accepted guidance and exterior/street arrival times.
+
+For an ambulatory occupant $i$, with independent standard-normal draw $Z_i$,
+\[
+v_i=\clip_{[0.5,2.0]}\!\left[(1.40+0.18Z_i)f_i\right]\ \mathrm{m/s},
+\qquad f_i=\begin{cases}0.85,&\text{older occupant},\\1,&\text{otherwise}.\end{cases}
+\]
+The older share is 0.20. Stair-speed multipliers are 0.57 for ordinary walkers and 0.51 for older walkers. The environmental multiplier is 1. Ambulatory body radius is normal with mean 0.22 m and standard deviation 0.02 m, clipped to $[0.17,0.30]$ m. Wheelchair users have speed 0.8 m/s and radius 0.45 m.
+
+Recognition and preparation are separate lognormal delays:
+\[
+\tau=\exp(\log m+0.6Z),\qquad
+m_{\mathrm{recognition}}=6\ \mathrm{s},\quad m_{\mathrm{preparation}}=14\ \mathrm{s}.
+\]
+Recognition progress satisfies $dc_i/dt=1+\phi_i$, where $\phi_i$ is the fraction of adjacent original-seat neighbours who have begun reacting. This influence acts only during recognition. Hearing an active manager can start preparation. There is no separate belongings-collection state or additional seat-distance response delay.
+
+Approximately half the audience belongs to adjacent-seat groups. Group sizes are sampled as pairs, trios and quartets with probabilities 0.70, 0.20 and 0.10. Ready members wait at most 20 s for their group. Members normally follow the leader's feasible known destination unless accepted guidance takes precedence. Members sharing a link and direction within 4 m use the slowest member's free walking speed. Seat-row release uses the nearer row end.
+
+States are recognition, preparation, group waiting, row waiting, moving, queuing, outside, assistance and street arrival. Each person remains accounted for throughout the simulation.
+
+\section{Movement, queues and passage service}
+For horizontal plan length $L_{e,p}$ and vertical drop $d_e$, stair walking length is $L_e=\sqrt{L_{e,p}^2+d_e^2}$. A traversable passage without a specified lane count uses
+\[
+m_e=\max\!\left(1,\left\lfloor w_e/0.6\right\rfloor\right).
+\]
+Public-link storage and walking service are
+\[
+S_e=\max\!\left(m_e,\left\lfloor4.5L_{e,p}w_e\right\rfloor\right),
+\qquad C_e^{\mathrm{walk}}=\frac{m_e\bar v_e}{0.44+0.7\bar v_e}.
+\]
+Seat rows use body-spacing storage. The representative service speed uses the configured mean and applicable stair/environment factors. Individual travel uses individual speed, stair factors and local group matching:
+\[
+\ell_i^{k+1}=\max(0,\ell_i^k-v_i^k\Delta t).
+\]
+
+Door gate service is $1.3\max(0,w_e-0.30)f_{\mathrm{env}}$ people/s. Stair gate service is
+\[
+C_e^{\mathrm{stair}}=m_e\max(0,w_e/m_e-0.18)f_{\mathrm{env}}.
+\]
+Closed or effectively zero-width gates have zero service. Transfers require source-lane service, receiving-link storage, a compatible lane and destination gate credit simultaneously. Service credit accrues fractionally and is capped at $1+C\Delta t$. A blocked transfer consumes no credit.
+
+FIFO applies within lanes. Opposite gate faces have separate arrival queues sharing one gate-service budget. When both directions request a passage, its integer lanes are divided as evenly as possible; the older directional request receives an extra lane. A one-lane passage serves one direction at a time. Occupied lanes cannot reverse. A lane closed to new admissions can drain its existing occupants through the same continuous lane family.
+
+A full downstream link causes spillback. Returns at a junction require a physically available opposing lane; otherwise feasible onward routes are considered. Movement cannot cross walls, skip positive-length links, create junction storage, or exceed shared directional capacity. Population, storage, transitions and accessibility are checked during every integration step.
+
+\section{Knowledge, perception and route choice}
+The foyer is initially known. Each other exit eligible for an occupant's seating level is included independently with probability \texttt{knowledge}; the default is 1. Lower-level occupants initially consider five exit groups, and balcony occupants seven. Knowing an exit implies graph-route knowledge, but does not reveal its remote queue or closure state.
+
+The independent \texttt{familiarityShare} parameter is 0.35: that share receives a persistent 12 s preference for the foyer. It is distinct from knowledge of the building. Student/visitor differences can be configured through knowledge, entrance preference, age, response and staffing separately. The legacy lecture preset has full knowledge, zero foyer-preference share, no managers, 10\% older occupants and recognition/preparation medians of 3/8 s.
+
+A gate queue is visible only on the same floor, within 15 m and with a clear wall/column sightline. For known feasible exit $g$,
+\[
+\widehat T_{ig}(t)=\min_{P\in\mathcal P_{ig}}
+\left[\sum_{e\in P}\frac{L_e}{v_{ie}}
++\sum_{e\in P\cap\mathcal V_i(t)}\frac{Q_{ie}(t)}{C_e^{\mathrm{gate}}}\right].
+\]
+Physical congestion is separate from this perceived delay. Invisible queues receive no observed-delay term. Closures are learned by local observation or communicated reports.
+
+Ordinary exit utility is
+\[
+U_{ig}=-\widehat T_{ig}-H_i(1-\mathbf1_{g=\mathrm{foyer}})+\varepsilon_{ig},
+\qquad \varepsilon_{ig}=-4\log[-\log U_{ig}^{*}],
+\]
+where $U_{ig}^{*}$ is a fixed uniform draw and $H_i$ is 0 or 12 s. Tastes, knowledge draws and compliance are persistent. Accepted feasible guidance has priority over companion following and ordinary utility. Ordinary destination changes require an 8 s utility improvement, unless the current route is known infeasible.
+
+New moving-person guidance is evaluated from the next reachable junction using the person's current position and visible queues. The unfinished link must still be traversed. A different instructed exit requires at least 8 s estimated improvement, or a known infeasible current destination. A person already traversing an exterior-crossing link completes that crossing. Initial instructions before movement may establish a destination. Equal time-based exit scores are resolved by exit identifier.
+
+\section{Crowd Managers and announcements}
+The default posts and messages are:
+\begin{center}\small
+\begin{tabularx}{\linewidth}{llX}\toprule
+Manager & Network post & Public instruction\\\midrule
+CM1 & m1 & Nearest known feasible exit by estimated travel time\\
+CM2 & m4 & Nearest known feasible exit by estimated travel time\\
+CM3 & m8 & Nearest known feasible exit by estimated travel time\\
+CM4 & m11 & Nearest known feasible exit by estimated travel time\\
+CM5 & b4 & Nearest known feasible exit by estimated travel time\\
+CM6 & b8 & Nearest known feasible exit by estimated travel time\\\bottomrule
+\end{tabularx}
+\end{center}
+
+Each manager activates after a lognormal delay with median 10 s and log standard deviation 0.5. Hearing requires same-floor, unobstructed acoustic reach within 12 m. The hearing rate is $h=0.35\ \mathrm{s}^{-1}$, with exposure probability $1-e^{-h\Delta t}$. The implementation evaluates hearing once per simulated second. Acceptance uses a persistent person-level uniform draw with threshold 0.85.
+
+The nearest-time message is a common rule. Each listener evaluates their own known feasible exits and current visible queues. Managers do not periodically change that public rule. Configurable fixed-destination managers change their destination only when their reported information makes it infeasible. Manager observations are sampled once per second, available locally after 2 s and delivered to the sign controller after 5 s total.
+
+Optional patrols follow connected, level, non-gated paths at 1 m/s. A patrol passage must be at least 1.8 m wide and have density no greater than 2 people/m$^2$ for movement. Managers are information sources without physical body footprints.
+
+The optional advance announcement reaches 60\% of occupants and is accepted by 70\% of those reached. It assigns a west/east portico recommendation by seat side. It does not cancel response or group-waiting delays.
+
+\section{Final-occupant commitment}
+The default optional rule is \texttt{tailFallback = \{remaining: 40, stalledSeconds: 10\}}. Its count includes all people still inside Bailey Hall and excludes those already outside awaiting assistance.
+
+Once at most 40 remain, a person is eligible after strictly more than 10 continuous seconds without progress in a link's discharge queue. The timer starts at the later of final-phase entry and the current queue arrival. Progress onto a new link resets it. Recognition, preparation and initial seat/group waiting do not count as locomotion stalls.
+
+Each eligible person chooses the smallest remaining travel-time estimate from their known feasible exits, using a fresh common pre-decision queue snapshot and the existing visibility rule. Foyer bias, random taste, companion destinations, prior guidance and the ordinary 8 s switching margin are omitted from this choice. Accessibility, width, known closures and return-lane feasibility remain enforced.
+
+The selected exit and complete route are locked. No subsequent guidance, companion choice or queue estimate changes that plan. All walking, FIFO, gate-service and storage constraints continue. A locked route cannot cross a closed link; absence of a feasible route does not create an alternative. Exterior crossings already in progress are completed. The event log records the trigger, remaining count, stall duration, decision node, alternatives, estimated time and locked route.
+
+\section{Signs, LEDs and transparent barriers}
+Wall signs specify a point, facing vector, viewing half-angle, range, activation, detection, acceptance and public exit message. Strips follow public walkway segments and have no facing cone. A strip controller must be at an endpoint of its installed walkway; seat-row strips are excluded. Visibility samples strip segments at intervals no greater than 0.5 m and checks floor, range and wall/column obstruction.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{Xll}\toprule
+Sign parameter & Existing exit signs & Added LED defaults\\\midrule
+Activation & 0 s & 3 s\\
+Viewing range & 8 m & 8 m\\
+Detection probability & 0.38 & 0.77\\
+Acceptance probability & 0.80 & 0.80\\
+Wall-sign half-angle & $70^\circ$ & $70^\circ$\\\bottomrule
+\end{tabularx}
+\end{center}
+
+Noticing and acceptance are persistent person--installation draws. Noticing can add an exit to the known set. A changed message may be considered again without resampling those tendencies. Accepted feasible manager guidance has priority over sign guidance. Dynamic signs use delayed manager reports, retain a public message for at least 20 s and require an estimated improvement of at least 8 s before changing it. Reports remain until replaced. Signs communicate exit identifiers; local arrow comprehension is not separately simulated.
+
+Optional barriers are low belts, ropes or open rails without opaque sightline obstruction. For length $b$ and angle $\theta$ to the walkway, projected span is $|b\sin\theta|$ and bypass width is $w_e-|b\sin\theta|$. The centreline receives a midpoint lateral detour of half that projected span. Length, usable width, lane count, storage and service are recomputed. A full span closes the link. A partial bypass must be at least 1.1 m and preserve accessible connectivity. Barrier slots exclude seating rows and door thresholds. Direction restrictions are explicit. No capacity bonus is applied.
+
+\section{Exterior crossing and assisted street arrival}
+Exterior crossing is recorded separately from street arrival. Two assistance teams become available at 60 s. Each exterior wheelchair arrival takes the earliest available team; team index resolves a tie. Assisted descent duration is lognormal with median 60 s and log standard deviation 0.4. Teams serve sequentially. Travel between assistance locations and an additional team-return delay are not represented.
+
+Ordinary street arrival adds a free stair walk of 12 m after the foyer, 8 m after a portico and 3 m after another exit, using individual stair speed. External landing queues and external crowd spillback are not simulated.
+
+\section{Execution, reproducibility and recorded outputs}
+The React/TypeScript/Vite interface, browser worker and Node runners share the same simulation engine. Integer integration ticks determine time. Each interval updates final commitments and guidance, advances recognition, preparation, group waiting and link travel, then processes end-of-interval transfers. Transfers respect arrival order, available credits and receiving storage. Entrants do not walk a second link during the same tick.
+
+Randomness uses named FNV-1a-keyed streams with Mulberry32 draws. Changing the replication seed resamples traits, groups, preferences, compliance, noticing, hearing, manager activation and assistance. Within a replication, persistent tendencies remain fixed. Policy comparisons can use the same seeds to retain identical initial audiences and matched random streams. Scenario JSON stores geometry identity, timing, population parameters, interventions, closures, dimensions and the optional final-occupant rule.
+
+For replication $r$, full-house exterior clearance is $T_r=\max_i t_{ir}^{\mathrm{exit}}$. Outputs include exterior and street clearance, the fraction clearing by 180 s, exit usage, individual queue waits, gate/link peaks, density histories, wheelchair progress, timeline samples and complete event logs. Dense person-seconds use the reporting threshold of 2 people/m$^2$. A run unfinished at 900 s is recorded as unresolved with $T>900$ s, remains in the success denominator and prevents an unconditional mean. The run ends when everyone reaches street level or the horizon is reached.
+
+\section{Model boundaries}
+Geometry uses reconstructed dimensions rather than a surveyed CAD inventory. Visibility represents walls and columns but excludes smoke, crowd occlusion and gaze. The model excludes contact forces, pushing, falls, injuries, detailed seated-body interaction, staff footprints, external landing congestion, barrier bases/height/contact and assistance-team relocation. Known exit identifiers imply route knowledge. Behavioural probabilities and metric assumptions are configurable inputs. Barrier connectivity and width screens are geometric model constraints, not building-code verification.
+
+\end{document}
