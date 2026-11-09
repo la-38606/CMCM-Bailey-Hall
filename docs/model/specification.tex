@@ -3,7 +3,7 @@
 \usepackage{amsmath,amssymb,newtxtext,newtxmath}
 \usepackage[margin=23mm]{geometry}
 \usepackage{booktabs,tabularx,enumitem,microtype,xurl,hyperref}
-\hypersetup{colorlinks=true,linkcolor=black,urlcolor=black,pdftitle={Specification — Bailey Hall Evacuation Model}}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=black,citecolor=black,pdftitle={Specification — Bailey Hall Evacuation Model}}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{5pt}
 \setlist{nosep,leftmargin=*}
@@ -16,9 +16,11 @@
 \vspace{-2em}
 
 \section{Scope and default configuration}
-The model is a deterministic, seeded, individual-occupant simulation on a finite-storage, multi-lane circulation network reconstructed from the supplied Bailey Hall plans, seating diagrams and photographs. The simulated audience is exactly 1,329 people. Backstage and ground-level populations are excluded. The emergency elevator is unavailable.
+The model is a deterministic, seeded, individual-occupant simulation on a finite-storage, multi-lane circulation network reconstructed from the supplied Bailey Hall plans, seating diagrams and photographs. The simulated audience is exactly 1,329 people. Backstage and ground-level populations are excluded. The emergency elevator is unavailable. The population and scenario scope come from the original contest brief; the geometry reconstruction also uses the supplied photographs.~\cite{brief,plans}
 
 The current emergency configuration uses six stationary Crowd Managers, all issuing the same public instruction: \emph{use the nearest known feasible exit by estimated remaining travel time, including visible queue delay}. The final-occupant commitment rule is enabled. Added LEDs, temporary barriers, closures, advance announcements and dimension overrides are disabled by default; existing exit signs remain represented. Configuration values are stored in \texttt{scenarios/emergency.json}.
+
+\textbf{Source convention.} This document specifies engine 1.4.0. The mathematical model, implementation decisions and fixed scenario provide the exact equations and numerical settings.~\cite{model,implementation} Published studies cited below supply methodological or empirical background; unless a transfer is identified explicitly, the settings are modelling assumptions rather than measurements from those studies or calibration to Bailey Hall. Repository references are pinned to implementation revision \texttt{e7cf981}.
 
 \begin{center}\small
 \begin{tabularx}{\linewidth}{Xr}\toprule
@@ -34,7 +36,7 @@ Building-clearance benchmark & 180 s\\\bottomrule
 \end{center}
 
 \section{Building geometry and accessibility}
-The network is $G=(V,E)$, with junctions at walkway intersections, doorway approaches, stairs and changes of direction. Each link stores its endpoints, polyline, floor, horizontal length, walking length, usable width, lane count, storage, permitted directions, closure status and accessibility. Coordinates, widths and rises are reconstructed inputs; dimension overrides are configurable.
+The network is $G=(V,E)$, with junctions at walkway intersections, doorway approaches, stairs and changes of direction. Each link stores its endpoints, polyline, floor, horizontal length, walking length, usable width, lane count, storage, permitted directions, closure status and accessibility. Coordinates, widths and rises are reconstructed inputs; dimension overrides are configurable. The plans and photographs establish connectivity and visible features; the metric dimensions below remain reconstruction assumptions.~\cite{brief,plans,model}
 
 The seven exterior exit groups are the foyer, west and east porticoes, west and east stage routes, and northwest and northeast balcony exits. Nine auditorium doors connect the lower auditorium to the outer corridor. The balcony connects to rear stairs and front escape routes. The orchestra and mezzanine include six access connections. Seat rows serve only their own occupants and cannot be used as public shortcuts.
 
@@ -62,7 +64,7 @@ For an ambulatory occupant $i$, with independent standard-normal draw $Z_i$,
 v_i=\clip_{[0.5,2.0]}\!\left[(1.40+0.18Z_i)f_i\right]\ \mathrm{m/s},
 \qquad f_i=\begin{cases}0.85,&\text{older occupant},\\1,&\text{otherwise}.\end{cases}
 \]
-The older share is 0.20. Stair-speed multipliers are 0.57 for ordinary walkers and 0.51 for older walkers. The environmental multiplier is 1. Ambulatory body radius is normal with mean 0.22 m and standard deviation 0.02 m, clipped to $[0.17,0.30]$ m. Wheelchair users have speed 0.8 m/s and radius 0.45 m.
+The older share is 0.20. Stair-speed multipliers are 0.57 for ordinary walkers and 0.51 for older walkers. The environmental multiplier is 1. Ambulatory body radius is normal with mean 0.22 m and standard deviation 0.02 m, clipped to $[0.17,0.30]$ m. Wheelchair users have speed 0.8 m/s and radius 0.45 m. Walking-speed heterogeneity and age dependence have empirical background in Murtagh et al. and Bohannon; stair movement is informed by NIST observations.~\cite{murtagh,bohannon,nist} The distribution, clipping, demographic share, multipliers and body dimensions above are the model parameterization.~\cite{model}
 
 Recognition and preparation are separate lognormal delays:
 \[
@@ -73,9 +75,11 @@ Recognition progress satisfies $dc_i/dt=1+\phi_i$, where $\phi_i$ is the fractio
 
 Approximately half the audience belongs to adjacent-seat groups. Group sizes are sampled as pairs, trios and quartets with probabilities 0.70, 0.20 and 0.10. Ready members wait at most 20 s for their group. Members normally follow the leader's feasible known destination unless accepted guidance takes precedence. Members sharing a link and direction within 4 m use the slowest member's free walking speed. Seat-row release uses the nearer row end.
 
-States are recognition, preparation, group waiting, row waiting, moving, queuing, outside, assistance and street arrival. Each person remains accounted for throughout the simulation.
+States are recognition, preparation, group waiting, row waiting, moving, queuing, outside, assistance and street arrival. Each person remains accounted for throughout the simulation. Theatre response observations and social-group experiments motivate separate response and group mechanisms.~\cite{galea2017theatre,bode} The delay distributions, neighbour influence, group proportions, 20 s wait and 4 m matching radius are specified assumptions.~\cite{model,implementation}
 
 \section{Movement, queues and passage service}
+Network evacuation modelling, net-time headway and bidirectional pedestrian-flow research provide the methodological background.~\cite{spearpoint,johansson,feliciani2018} Doorway-flow research also identifies limitations of simple width-proportional service.~\cite{gwynne} The following finite-storage equations, coefficients, gate losses and transfer conventions are the chosen model, not a claim of a universally calibrated flow law.~\cite{model,implementation}
+
 For horizontal plan length $L_{e,p}$ and vertical drop $d_e$, stair walking length is $L_e=\sqrt{L_{e,p}^2+d_e^2}$. A traversable passage without a specified lane count uses
 \[
 m_e=\max\!\left(1,\left\lfloor w_e/0.6\right\rfloor\right).
@@ -101,6 +105,8 @@ FIFO applies within lanes. Opposite gate faces have separate arrival queues shar
 A full downstream link causes spillback. Returns at a junction require a physically available opposing lane; otherwise feasible onward routes are considered. Movement cannot cross walls, skip positive-length links, create junction storage, or exceed shared directional capacity. Population, storage, transitions and accessibility are checked during every integration step.
 
 \section{Knowledge, perception and route choice}
+The random-utility formulation draws on discrete-choice modelling, while pedestrian route-choice studies motivate separating initial choices from later revisions.~\cite{train,liao} Persistent tastes, partial queue visibility, entrance bias and the switching thresholds below are implementation choices.~\cite{model,implementation}
+
 The foyer is initially known. Each other exit eligible for an occupant's seating level is included independently with probability \texttt{knowledge}; the default is 1. Lower-level occupants initially consider five exit groups, and balcony occupants seven. Knowing an exit implies graph-route knowledge, but does not reveal its remote queue or closure state.
 
 The independent \texttt{familiarityShare} parameter is 0.35: that share receives a persistent 12 s preference for the foyer. It is distinct from knowledge of the building. Student/visitor differences can be configured through knowledge, entrance preference, age, response and staffing separately. The legacy lecture preset has full knowledge, zero foyer-preference share, no managers, 10\% older occupants and recognition/preparation medians of 3/8 s.
@@ -123,6 +129,8 @@ where $U_{ig}^{*}$ is a fixed uniform draw and $H_i$ is 0 or 12 s. Tastes, knowl
 New moving-person guidance is evaluated from the next reachable junction using the person's current position and visible queues. The unfinished link must still be traversed. A different instructed exit requires at least 8 s estimated improvement, or a known infeasible current destination. A person already traversing an exterior-crossing link completes that crossing. Initial instructions before movement may establish a destination. Equal time-based exit scores are resolved by exit identifier.
 
 \section{Crowd Managers and announcements}
+Limited guidance compliance and emergency communication are supported as modelling considerations by Mayr and K\"oster and van der Wal et al.~\cite{mayr,vanderwal} The six posts, common nearest-time message, activation and hearing parameters, 85\% acceptance, reporting delays and patrol rules below are scenario and implementation assumptions.~\cite{model,implementation}
+
 The default posts and messages are:
 \begin{center}\small
 \begin{tabularx}{\linewidth}{llX}\toprule
@@ -145,6 +153,8 @@ Optional patrols follow connected, level, non-gated paths at 1 m/s. A patrol pas
 The optional advance announcement reaches 60\% of occupants and is accepted by 70\% of those reached. It assigns a west/east portico recommendation by seat side. It does not cancel response or group-waiting delays.
 
 \section{Final-occupant commitment}
+This is a user-requested operational rule implemented in the simulator, not an empirically established pedestrian response law. Its 40-person threshold, 10 s trigger and permanent route lock are explicit model assumptions.~\cite{implementation}
+
 The default optional rule is \texttt{tailFallback = \{remaining: 40, stalledSeconds: 10\}}. Its count includes all people still inside Bailey Hall and excludes those already outside awaiting assistance.
 
 Once at most 40 remain, a person is eligible after strictly more than 10 continuous seconds without progress in a link's discharge queue. The timer starts at the later of final-phase entry and the current queue arrival. Progress onto a new link resets it. Recognition, preparation and initial seat/group waiting do not count as locomotion stalls.
@@ -154,6 +164,8 @@ Each eligible person chooses the smallest remaining travel-time estimate from th
 The selected exit and complete route are locked. No subsequent guidance, companion choice or queue estimate changes that plan. All walking, FIFO, gate-service and storage constraints continue. A locked route cannot cross a closed link; absence of a feasible route does not create an alternative. Exterior crossings already in progress are completed. The event log records the trigger, remaining count, stall duration, decision node, alternatives, estimated time and locked route.
 
 \section{Signs, LEDs and transparent barriers}
+Dynamic-signage experiments provide the empirical background for sign detection; adaptive-guidance research provides methodological background for changing public messages.~\cite{galea2014,galea2017,cellevac} The model transfers the 0.38 conventional-sign and 0.77 dynamic-sign detection values from Galea et al. (2014). Applying the latter to walkway strips is an extrapolation, not a strip-specific or Bailey Hall calibration. The 0.80 acceptance, range, angle, activation and controller thresholds are model assumptions.~\cite{model,implementation}
+
 Wall signs specify a point, facing vector, viewing half-angle, range, activation, detection, acceptance and public exit message. Strips follow public walkway segments and have no facing cone. A strip controller must be at an endpoint of its installed walkway; seat-row strips are excluded. Visibility samples strip segments at intervals no greater than 0.5 m and checks floor, range and wall/column obstruction.
 
 \begin{center}\small
@@ -169,9 +181,11 @@ Wall-sign half-angle & $70^\circ$ & $70^\circ$\\\bottomrule
 
 Noticing and acceptance are persistent person--installation draws. Noticing can add an exit to the known set. A changed message may be considered again without resampling those tendencies. Accepted feasible manager guidance has priority over sign guidance. Dynamic signs use delayed manager reports, retain a public message for at least 20 s and require an estimated improvement of at least 8 s before changing it. Reports remain until replaced. Signs communicate exit identifiers; local arrow comprehension is not separately simulated.
 
-Optional barriers are low belts, ropes or open rails without opaque sightline obstruction. For length $b$ and angle $\theta$ to the walkway, projected span is $|b\sin\theta|$ and bypass width is $w_e-|b\sin\theta|$. The centreline receives a midpoint lateral detour of half that projected span. Length, usable width, lane count, storage and service are recomputed. A full span closes the link. A partial bypass must be at least 1.1 m and preserve accessible connectivity. Barrier slots exclude seating rows and door thresholds. Direction restrictions are explicit. No capacity bonus is applied.
+Optional barriers are low belts, ropes or open rails without opaque sightline obstruction. For length $b$ and angle $\theta$ to the walkway, projected span is $|b\sin\theta|$ and bypass width is $w_e-|b\sin\theta|$. The centreline receives a midpoint lateral detour of half that projected span. Length, usable width, lane count, storage and service are recomputed. A full span closes the link. A partial bypass must be at least 1.1 m and preserve accessible connectivity. Barrier slots exclude seating rows and door thresholds. Direction restrictions are explicit. No capacity bonus is applied. Experiments on diversion devices and obstacles provide context for geometry-dependent barrier effects.~\cite{wang,feliciani} They do not establish a universal benefit or calibrate this low, open-barrier representation. Its projected-span detour, sightline treatment and 1.1 m bypass screen are explicit model assumptions.~\cite{model,implementation}
 
 \section{Exterior crossing and assisted street arrival}
+NIST observations motivate treating mobility-impaired stair evacuation separately.~\cite{mobility} The team count, availability, service distribution and exterior distances specified here are scenario assumptions, not timings measured at Bailey Hall or prescribed by that study.~\cite{model,implementation}
+
 Exterior crossing is recorded separately from street arrival. Two assistance teams become available at 60 s. Each exterior wheelchair arrival takes the earliest available team; team index resolves a tie. Assisted descent duration is lognormal with median 60 s and log standard deviation 0.4. Teams serve sequentially. Travel between assistance locations and an additional team-return delay are not represented.
 
 Ordinary street arrival adds a free stair walk of 12 m after the foyer, 8 m after a portico and 3 m after another exit, using individual stair speed. External landing queues and external crowd spillback are not simulated.
@@ -186,4 +200,30 @@ For replication $r$, full-house exterior clearance is $T_r=\max_i t_{ir}^{\mathr
 \section{Model boundaries}
 Geometry uses reconstructed dimensions rather than a surveyed CAD inventory. Visibility represents walls and columns but excludes smoke, crowd occlusion and gaze. The model excludes contact forces, pushing, falls, injuries, detailed seated-body interaction, staff footprints, external landing congestion, barrier bases/height/contact and assistance-team relocation. Known exit identifiers imply route knowledge. Behavioural probabilities and metric assumptions are configurable inputs. Barrier connectivity and width screens are geometric model constraints, not building-code verification.
 
+
+\begin{thebibliography}{99}\small\setlength{\itemsep}{5pt}
+\bibitem{brief} Cornell Mathematical Contest in Modeling (2026). \emph{Bail(ey)ing Out}. Bailey Hall problem statement, building description, and supplied floor and seating plans. Archived source: \url{https://github.com/la-38606/CMCM-Bailey-Hall/blob/e7cf981/docs/reference/Bailey_Hall_Problem_Statement.pdf}.
+\bibitem{plans} Bailey Hall supplied architectural and photographic references. Floor and seating plans in the contest brief; photographs \texttt{cross\_aisle\_01--04.png} and \texttt{interior\_01--02.png}. \url{https://github.com/la-38606/CMCM-Bailey-Hall/tree/e7cf981/docs/reference}.
+\bibitem{model} Bailey Hall project (2026). \emph{Bailey Hall Model: Final Defensible Specification}. Mathematical authority and parameter assumptions accompanying engine 1.4.0. \url{https://github.com/la-38606/CMCM-Bailey-Hall/blob/e7cf981/docs/model/Bailey_Hall_Model_Final_Defensible.tex}.
+\bibitem{implementation} Bailey Hall simulator (2026). Engine 1.4.0, revision \texttt{e7cf981}. \href{https://github.com/la-38606/CMCM-Bailey-Hall/tree/e7cf981/src/engine}{Simulation engine}; \href{https://github.com/la-38606/CMCM-Bailey-Hall/blob/e7cf981/scenarios/emergency.json}{default emergency scenario}; \href{https://github.com/la-38606/CMCM-Bailey-Hall/blob/e7cf981/docs/implementation-decisions.md}{implementation decisions}. These versioned project records define the computational conventions and user-requested final-occupant rule.
+\bibitem{murtagh} E. M. Murtagh, J. L. Mair, E. Aguiar, C. Tudor-Locke, and M. H. Murphy (2021). \emph{Outdoor walking speeds of apparently healthy adults: A systematic review and meta-analysis}. Sports Medicine 51, 125--141. \url{https://doi.org/10.1007/s40279-020-01351-3}.
+\bibitem{bohannon} R. W. Bohannon (1997). \emph{Comfortable and maximum walking speed of adults aged 20--79 years: Reference values and determinants}. Age and Ageing 26, 15--19. \url{https://doi.org/10.1093/ageing/26.1.15}.
+\bibitem{nist} E. D. Kuligowski et al. (2015). \emph{Movement on Stairs During Building Evacuations}. NIST Technical Note 1839. \url{https://doi.org/10.6028/NIST.TN.1839}.
+\bibitem{galea2017theatre} E. R. Galea, S. J. Deere, C. G. Hopkin, and H. Xie (2017). \emph{Evacuation response behaviour of occupants in a large theatre during a live performance}. Fire and Materials 41, 467--492. \url{https://doi.org/10.1002/fam.2424}.
+\bibitem{bode} N. W. F. Bode et al. (2015). \emph{Disentangling the impact of social groups on response times and movement dynamics in evacuations}. PLOS ONE 10, e0121227. \url{https://doi.org/10.1371/journal.pone.0121227}.
+\bibitem{spearpoint} M. Spearpoint and X. Xiang (2011). \emph{Calculating evacuation times from lecture theatre type rooms using a network model}. Fire Safety Science 10, 599--612. \url{https://doi.org/10.3801/IAFSS.FSS.10-599}.
+\bibitem{johansson} A. Johansson (2009). \emph{Constant-net-time headway as a key mechanism behind pedestrian flow dynamics}. Physical Review E 80, 026120. \url{https://doi.org/10.1103/PhysRevE.80.026120}.
+\bibitem{feliciani2018} C. Feliciani, H. Murakami, and K. Nishinari (2018). \emph{A universal function for capacity of bidirectional pedestrian streams: Filling the gaps in the literature}. PLOS ONE 13(12), e0208496. \url{https://doi.org/10.1371/journal.pone.0208496}.
+\bibitem{gwynne} S. M. V. Gwynne, E. D. Kuligowski, J. Kratchman, and J. A. Milke (2009). \emph{Questioning the linear relationship between doorway width and achievable flow rate}. Fire Safety Journal 44, 80--87. \url{https://doi.org/10.1016/j.firesaf.2008.03.010}.
+\bibitem{train} K. Train (2009). \emph{Discrete Choice Methods with Simulation}, 2nd ed., Chapter 3. \url{https://eml.berkeley.edu/books/choice2nd/Ch03_p34-75.pdf}.
+\bibitem{liao} W. Liao, A. U. Kemloh Wagoum and N. W. F. Bode (2017). \emph{Route choice in pedestrians: determinants for initial choices and revising decisions}. Journal of the Royal Society Interface. \url{https://doi.org/10.1098/rsif.2016.0684}.
+\bibitem{mayr} C. M. Mayr and G. K\"oster (2022). \emph{Guiding crowds when facing limited compliance: Simulating strategies}. PLOS ONE 17, e0276229. \url{https://doi.org/10.1371/journal.pone.0276229}.
+\bibitem{vanderwal} C. N. van der Wal, M. A. Robinson, W. Bruine de Bruin, and S. Gwynne (2021). \emph{Evacuation behaviors and emergency communications: An analysis of real-world incident videos}. Safety Science 136, 105121. \url{https://doi.org/10.1016/j.ssci.2020.105121}.
+\bibitem{galea2014} E. R. Galea, H. Xie and P. J. Lawrence (2014). \emph{Experimental and survey studies on the effectiveness of dynamic signage systems}. Fire Safety Science 11, 1129--1143. \url{https://doi.org/10.3801/IAFSS.FSS.11-1129}. Author repository: \url{https://gala.gre.ac.uk/id/eprint/14393/}.
+\bibitem{galea2017} E. R. Galea et al. (2017). \emph{Evaluating the effectiveness of an improved active dynamic signage system using full scale evacuation trials}. Fire Safety Journal 91, 908--917. \url{https://doi.org/10.1016/j.firesaf.2017.03.022}.
+\bibitem{cellevac} M. A. L\'opez-Carmona and \'A. Paricio Garc\'ia (2021). \emph{CellEVAC: an adaptive guidance system for crowd evacuation through behavioral optimization}. Safety Science 139, 105215. \url{https://doi.org/10.1016/j.ssci.2021.105215}.
+\bibitem{wang} L. Wang et al. (2023). \emph{Influence of pre-bottleneck diversion devices on pedestrian flow}. Journal of Statistical Mechanics. \url{https://arxiv.org/abs/2212.01296}.
+\bibitem{feliciani} C. Feliciani et al. (2020). \emph{Systematic experimental investigation of the obstacle effect during non-competitive and extremely competitive evacuations}. Scientific Reports 10, 15947. \url{https://doi.org/10.1038/s41598-020-72733-w}.
+\bibitem{mobility} E. D. Kuligowski et al. (2014). \emph{Stair Evacuation of People with Mobility Impairments}. National Institute of Standards and Technology. \url{https://www.nist.gov/publications/stair-evacuation-people-mobility-impairments}.
+\end{thebibliography}
 \end{document}
