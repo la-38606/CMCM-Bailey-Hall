@@ -1,5 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { leds, managers, reference, scenarios } from "../engine/config";
+import {
+  leds,
+  managers,
+  reference,
+  emergency,
+  scenarios,
+} from "../engine/config";
 import { Simulation, ENGINE_VERSION } from "../engine/simulation";
 import { occupancy, gateCapacity } from "../engine/transport";
 import { EXITS, type Config, type RunResult } from "../engine/types";
@@ -28,10 +34,10 @@ type Batch = {
   comparisonRuns: RunResult[];
 };
 export function App() {
-  const [config, setConfig] = useState(reference),
+  const [config, setConfig] = useState(emergency),
     [seed, setSeed] = useState(101),
     [simulation, setSimulation] = useState(
-      () => new Simulation(reference(), 101),
+      () => new Simulation(emergency(), 101),
     ),
     [running, setRunning] = useState(false),
     [version, render] = useState(0),
@@ -328,6 +334,30 @@ export function App() {
                 isolate knowledge or preference.
               </p>
             </details>
+            <details>
+              <summary>Final occupants</summary>
+              <label className="check">
+                <input
+                  type="checkbox"
+                  checked={!!config.tailFallback}
+                  onChange={(e) =>
+                    apply({
+                      ...config,
+                      tailFallback: e.target.checked
+                        ? { remaining: 40, stalledSeconds: 10 }
+                        : undefined,
+                    })
+                  }
+                />
+                Lock a time-based exit after 10 seconds stuck among the last 40
+              </label>
+              <p className="small muted">
+                Enabled for the current emergency preset. Each stalled person
+                uses current travel time and visible queue delays once, then
+                ignores further guidance and preference updates. It does not
+                bypass blocked paths or queues.
+              </p>
+            </details>
             <details open>
               <summary>
                 Crowd Managers <span>{config.managers.length} posts</span>
@@ -413,6 +443,9 @@ export function App() {
                         })
                       }
                     >
+                      <option value="nearest-time">
+                        Nearest exit by travel time
+                      </option>
                       {EXITS.map((x) => (
                         <option key={x}>{x}</option>
                       ))}
@@ -877,7 +910,12 @@ export function App() {
                       <dt>Total queue wait</dt>
                       <dd>{fmt(person.waiting)} s</dd>
                       <dt>Destination</dt>
-                      <dd>{person.destination ?? "Not chosen"}</dd>
+                      <dd>
+                        {person.destination ?? "Not chosen"}
+                        {person.finalCommitment
+                          ? ` · final choice locked at ${fmt(person.finalCommitment.at)} s`
+                          : ""}
+                      </dd>
                       <dt>Guidance</dt>
                       <dd>
                         {person.guidance

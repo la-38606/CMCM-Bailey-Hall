@@ -1,8 +1,17 @@
 # Validation and experiment report
 
-Recorded 9 November 2026. All work uses `rebuild-from-scratch`. The current engine is **1.3.1**. The paper was revised for the user-authorized literature-based intervention study; original results below are explicitly historical.
+Recorded 9 November 2026. The current branch is `bailey-hall-simulator`, renamed from `rebuild-from-scratch`. Current engine: **1.4.0**. Earlier study and review results below retain their original versions.
 
-## Current review verification (1.3.1)
+## Current nearest-time / final-occupant validation (1.4.0)
+
+- Full suite: 77 tests passed in 102.57 s; after adding two further regression cases, the targeted file passed all 13 tests (79 distinct tests in total). The added tests check current rather than stale queues and inability to bypass an obstruction after commitment.
+- Six browser tests passed in 33.4 s. TypeScript and production build passed.
+- Twenty full runs (ten paired audiences) cleared all 1,329 people per run. Both arms averaged 182.5 s and succeeded by 180 s in 3/10 runs. Ninety final commitments occurred, with identical paired full-house clearances.
+- Both sets passed archive/event audits and exact first-seed replay. The policy audit checks every locked route and subsequent absence of updates, plus five historical first-seed full-result comparisons after normalizing only the version field.
+- Boundary timing is tested at 0.1 and 0.0125 s. These are rule tests, not evidence that the entire network has converged numerically.
+- [Scenario definition and results](tail-policy.md), [policy audit](../results/tail-policy/policy-audit.json), and [checks](../results/tail-policy/checks.json) retain details. Historical results below are not reassigned to the new default emergency scenario.
+
+## Historical review verification (1.3.1)
 
 - `npm test -- --maxWorkers 1`: **66 tests passed**, four files, 79.07 s.
 - `npm run build`: TypeScript and production build passed.

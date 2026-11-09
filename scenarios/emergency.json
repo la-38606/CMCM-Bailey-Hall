@@ -1,7 +1,7 @@
 {
   "version": 1,
   "geometryVersion": "bailey-traced-1",
-  "name": "Six-manager concert emergency",
+  "name": "Concert emergency \u00b7 nearest-time guidance",
   "dt": 0.1,
   "cutoff": 900,
   "speedMean": 1.4,
@@ -23,22 +23,22 @@
     {
       "id": "CM1",
       "node": "m1",
-      "exit": "west-portico"
+      "exit": "nearest-time"
     },
     {
       "id": "CM2",
       "node": "m4",
-      "exit": "west-portico"
+      "exit": "nearest-time"
     },
     {
       "id": "CM3",
       "node": "m8",
-      "exit": "east-portico"
+      "exit": "nearest-time"
     },
     {
       "id": "CM4",
       "node": "m11",
-      "exit": "east-portico"
+      "exit": "nearest-time"
     },
     {
       "id": "CM5",
@@ -54,5 +54,9 @@
   "signs": [],
   "barriers": [],
   "closures": [],
-  "dimensions": {}
+  "dimensions": {},
+  "tailFallback": {
+    "remaining": 40,
+    "stalledSeconds": 10
+  }
 }

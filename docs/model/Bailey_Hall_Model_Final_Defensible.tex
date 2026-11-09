@@ -254,6 +254,8 @@ Both alternatives are evaluated from the next physically reachable junction, aft
 
 This extends the original route-switching inertia to instructions received while moving. It addresses the implausible late changes observed when accepted guidance previously overrode a nearly completed route without considering progress. It is a computational/behavioural convention, not a newly measured Bailey parameter. Liao et al. found comparatively infrequent route revisions, and Galea et al. stress consistent voice and sign information \cite{liao,galea2017}. Those findings motivate persistence and consistency, but do not establish an eight-second threshold. The same rule is applied to the revised reference and every intervention arm; improvements from this correction are not credited to LEDs or belts.
 
+\input{tail-policy}
+
 \subsection{Managers and Announcements}
 
 The baseline concert includes six Crowd Managers, the minimum specified for 1,329 attendees \cite{brief}. Additional managers can occupy distinct posts. Each becomes active after a lognormal delay with median $10$ s and logarithmic standard deviation $0.5$. A spoken instruction can reach an occupant on the same floor within $12$ m, provided no represented wall blocks the acoustic path. Let $h=0.35$ s$^{-1}$ be the hearing rate, $u_i^{CM}$ a fixed uniform draw for occupant $i$, and $A_i^{CM}$ its acceptance indicator. The probability of hearing during an exposure interval $\Delta t$ and the chance of accepting a heard instruction are

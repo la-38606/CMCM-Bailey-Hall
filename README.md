@@ -1,6 +1,6 @@
 # Bailey Hall evacuation laboratory
 
-A clean TypeScript implementation of the supplied Bailey Hall mathematical model, with a React/Vite interface and a shared deterministic headless engine. Developed only on `rebuild-from-scratch`; no former simulator source is used.
+A clean TypeScript implementation of the supplied Bailey Hall mathematical model, with a React/Vite interface and a shared deterministic headless engine. Developed on `bailey-hall-simulator` (renamed from `rebuild-from-scratch`); no former simulator source is used.
 
 ## Run locally
 
@@ -21,6 +21,12 @@ npm run test:browser
 ```
 
 Browser tests use installed Chrome on macOS. On another machine set `CHROME_PATH` to your Chrome/Chromium executable. Playwright launches its own local Vite server. Tests do not require an external service or any original simulator.
+
+## Current emergency scenario (engine 1.4.0)
+
+CM1–CM4 now say **use the nearest exit by estimated travel time**; the two balcony managers retain their existing messages. The default emergency JSON, interface and CLI agree. The final-occupant rule is enabled: with at most 40 people still inside, each person stalled for more than 10 continuous seconds makes one final choice using current travel time plus visible queue delay, without habit or companion bias. Their route is then locked against further updates. The rule preserves travel, queues and accessibility and does not guarantee that every physical blockage resolves.
+
+See [the exact rule and assumptions](docs/tail-policy.md). The **Final occupants** checkbox applies it to other scenarios. Historical study presets keep it disabled, preserving their archived results. `reference()` remains the historical reference; `emergency()` is the current default. The new validation results live separately in `results/tail-policy/`.
 
 ## Reproducible experiments
 

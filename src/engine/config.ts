@@ -100,11 +100,21 @@ export function reference(): Config {
     dimensions: {},
   };
 }
+// The historical reference stays unchanged for reproduction of published studies.
+export function emergency(): Config {
+  const c = reference();
+  c.name = "Concert emergency · nearest-time guidance";
+  c.managers = c.managers.map((m, i) =>
+    i < 4 ? { ...m, exit: "nearest-time" } : m,
+  );
+  c.tailFallback = { remaining: 40, stalledSeconds: 10 };
+  return c;
+}
 export function scenarios(): Record<string, Config> {
   const base = reference();
   return {
     concert: { ...base, name: "Ordinary concert departure", managers: [] },
-    emergency: base,
+    emergency: emergency(),
     "study-coordinated": interventionCandidates(base).coordinated,
     "study-led": interventionCandidates(base)["dynamic-only"],
     "study-barriers": interventionCandidates(base)["barriers-only"],
@@ -199,7 +209,9 @@ export function validateConfig(c: Config): string[] {
         typeof item.id !== "string" ||
         !item.id ||
         typeof item.node !== "string" ||
-        !EXITS.includes(item.exit)
+        ![...EXITS, ...(key === "managers" ? ["nearest-time"] : [])].includes(
+          item.exit,
+        )
       ) {
         errors.push(`Invalid ${key} installation.`);
         continue;
@@ -263,6 +275,19 @@ export function validateConfig(c: Config): string[] {
       errors.push(`Invalid dimension override: ${id}`);
   if (!["available-lane", "wait-for-lane"].includes(c.returnPolicy))
     errors.push("Unknown return-lane policy.");
+  if (
+    c.tailFallback !== undefined &&
+    (!c.tailFallback ||
+      typeof c.tailFallback !== "object" ||
+      !Number.isInteger(c.tailFallback.remaining) ||
+      c.tailFallback.remaining < 1 ||
+      c.tailFallback.remaining > 1329 ||
+      !Number.isFinite(c.tailFallback.stalledSeconds) ||
+      c.tailFallback.stalledSeconds <= 0)
+  )
+    errors.push(
+      "Tail fallback requires a remaining count in [1,1329] and a positive stall duration.",
+    );
   if (c.version !== 1 || c.geometryVersion !== GEOMETRY_VERSION)
     errors.push("Unsupported scenario or geometry version.");
   for (const k of [

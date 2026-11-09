@@ -1,0 +1,58 @@
+{
+  "date": "2026-11-09",
+  "engineVersion": "1.4.0",
+  "branch": "bailey-hall-simulator",
+  "automatedTests": {
+    "distinctPassed": 79,
+    "fullSuiteBeforeTwoAddedRegressions": {
+      "command": "npm test -- --maxWorkers 1",
+      "passed": 77,
+      "seconds": 102.57
+    },
+    "finalTargetedFile": {
+      "command": "npx vitest run tests/tail-policy.test.ts",
+      "passed": 13,
+      "seconds": 0.813
+    }
+  },
+  "browserTests": {
+    "command": "npm run test:browser",
+    "passed": 6,
+    "seconds": 33.4
+  },
+  "build": {
+    "typescript": "passed",
+    "vite": "passed"
+  },
+  "monteCarlo": {
+    "replicationsPerArm": 10,
+    "arms": 2,
+    "seeds": [
+      5001,
+      5010
+    ],
+    "meanWithFallback": 182.5,
+    "meanWithoutFallback": 182.5,
+    "successesPerArm": 3,
+    "allRunsCleared1329": true,
+    "commitments": 90,
+    "changedDestinations": 0,
+    "scope": "Regression-sized experiment, not a 100-replication confirmation"
+  },
+  "audit": {
+    "archives": 20,
+    "exactFirstSeedReplays": 2,
+    "historicalVersionNormalizedReplays": 5,
+    "allLockedRoutesVerified": true
+  },
+  "pdf": {
+    "compiled": true,
+    "pages": 23,
+    "overfullBoxes": 0,
+    "sha256": "7630b9861200f460ac21fee5ad87ddd5190e541c97a9af2b3313b24fd08e93cb"
+  },
+  "sourceArchive": {
+    "file": "engine-source-1.4.0.tar.gz",
+    "sha256": "2028e4471fc32b1a705971f7b22ddc3644a9475502e3e4183b3cdcac0ec72627"
+  }
+}

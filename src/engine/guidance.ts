@@ -1,7 +1,12 @@
 import { draw, RNG } from "./rng";
 import { distance, pointOnLink } from "./geometry";
 import { signVisible, visible } from "./perception";
-import { routes, guidanceSwitchAllowed } from "./routing";
+import {
+  routes,
+  guidanceSwitchAllowed,
+  nearestKnownExit,
+  visibleQueueWaits,
+} from "./routing";
 import { gateCapacity, occupancy } from "./transport";
 import type {
   Config,
@@ -23,7 +28,7 @@ type Manager = {
   leg: number;
   distance: number;
   reports: Map<string, Observation>;
-  message: Exit;
+  message: ManagerConfig["exit"];
 };
 export type Sign = { config: SignConfig; message: Exit; changed: number };
 export class Guidance {
@@ -189,9 +194,11 @@ export class Guidance {
           });
       }
       const options = this.publicRoutes(m.node, m.reports);
+      if (m.config.exit === "nearest-time") continue; // A public rule, not a destination broadcast.
       if (
-        !options.has(m.message) ||
-        !Number.isFinite(options.get(m.message)!.time)
+        m.message !== "nearest-time" &&
+        (!options.has(m.message) ||
+          !Number.isFinite(options.get(m.message)!.time))
       ) {
         const best = [...options].sort((a, b) => a[1].time - b[1].time)[0];
         if (best) m.message = best[0];
@@ -218,7 +225,7 @@ export class Guidance {
       }
     }
     for (const p of people) {
-      if (p.exitTime !== null) continue;
+      if (p.exitTime !== null || p.finalCommitment) continue;
       const pos = position(p);
       for (const m of this.managers) {
         if (time < m.activation || !visible(this.g, pos, m.position, 12))
@@ -252,22 +259,47 @@ export class Guidance {
               detail: `${id} reported by ${m.config.id}`,
             });
           }
-        if (!p.known.includes(m.message)) p.known.push(m.message);
+        const start = p.link
+          ? p.dir === 1
+            ? this.g.links[p.link].b
+            : this.g.links[p.link].a
+          : this.g.rows.find((r) => r.id === p.row)!.ends[
+              p.seatFraction <= 0.5 ? 0 : 1
+            ];
+        const recommendation =
+          m.message === "nearest-time"
+            ? nearestKnownExit(
+                p,
+                routes(
+                  this.g,
+                  this.c,
+                  start,
+                  p,
+                  visibleQueueWaits(this.g, this.c, pos, queues),
+                ),
+              )?.[0]
+            : m.message;
+        if (!recommendation) continue;
+        if (!p.known.includes(recommendation)) p.known.push(recommendation);
         if (
           p.compliance < this.c.managerCompliance &&
           (!p.guidance ||
-            p.guidance.exit !== m.message ||
+            p.guidance.exit !== recommendation ||
             p.guidance.priority < 3) &&
-          this.recommendationFeasible(p, m.message) &&
-          guidanceSwitchAllowed(this.g, this.c, p, m.message, pos, queues)
+          this.recommendationFeasible(p, recommendation) &&
+          guidanceSwitchAllowed(this.g, this.c, p, recommendation, pos, queues)
         ) {
-          p.guidance = { source: m.config.id, exit: m.message, priority: 3 };
+          p.guidance = {
+            source: m.config.id,
+            exit: recommendation,
+            priority: 3,
+          };
           p.review = true;
           this.event({
             time,
             person: p.id,
             type: "accepted-manager",
-            detail: `${m.config.id} → ${m.message}`,
+            detail: `${m.config.id} → ${recommendation}${m.message === "nearest-time" ? "; nearest-time instruction" : ""}`,
           });
         }
       }

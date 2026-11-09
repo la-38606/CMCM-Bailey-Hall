@@ -11,7 +11,7 @@ import {
   walkingCapacity,
 } from "./transport";
 import { visible } from "./perception";
-import { chooseDestination, routes } from "./routing";
+import { chooseDestination, routes, nearestKnownExit } from "./routing";
 import { Guidance } from "./guidance";
 import { Assistance } from "./assistance";
 import { Scheduler } from "./scheduler";
@@ -25,7 +25,7 @@ import {
   type Point,
   type RunResult,
 } from "./types";
-export const ENGINE_VERSION = "1.3.1";
+export const ENGINE_VERSION = "1.4.0";
 export class Simulation {
   readonly config: Config;
   readonly geometry: Geometry;
@@ -47,6 +47,7 @@ export class Simulation {
   >();
   private lastSample = -1;
   private observedCache = new Map<string, string[]>();
+  private tailStartedAt: number | undefined;
   constructor(
     config: Config,
     readonly seed: number,
@@ -114,7 +115,22 @@ export class Simulation {
         this.geometry.nodes[p.remaining === 0 ? this.target(p) : p.node].floor,
     };
   }
-  private observe(p: Person, node: string) {
+  private currentQueues() {
+    const counts = new Map<string, number>();
+    for (const state of Object.values(this.links)) {
+      for (const lane of state.lanes) {
+        const head = this.people[lane.people[0]];
+        const next = head?.remaining === 0 ? head.route[0] : undefined;
+        if (!next) continue;
+        const waiting = lane.people.filter(
+          (id) => this.people[id].remaining === 0,
+        ).length;
+        counts.set(next, (counts.get(next) ?? 0) + waiting);
+      }
+    }
+    return counts;
+  }
+  private observe(p: Person, node: string, queues = this.queueCounts) {
     let gates = this.observedCache.get(node);
     if (!gates) {
       const pos = this.geometry.nodes[node];
@@ -139,15 +155,13 @@ export class Simulation {
           detail: `${id} locally visible from ${node}`,
         });
       }
-      const q = this.queueCounts.get(id) ?? 0;
+      const q = queues.get(id) ?? 0;
       if (q && gateCapacity(e, this.config) > 0)
         waits.set(id, q / gateCapacity(e, this.config));
     }
     return waits;
   }
-  private review(p: Person, node: string) {
-    const old = p.destination,
-      waits = this.observe(p, node);
+  private routeOptions(p: Person, node: string, waits: Map<string, number>) {
     let options = routes(this.geometry, this.config, node, p, waits);
     // A return needs a physically available opposing lane at this junction. A new
     // instruction cannot turn an occupied lane around. Prefer connected onward
@@ -181,6 +195,15 @@ export class Simulation {
         if (onward.size) options = onward;
       }
     }
+    return options;
+  }
+  private review(p: Person, node: string) {
+    if (p.finalCommitment) {
+      p.review = false;
+      return; // Keep the complete route chosen from the one-time queue snapshot.
+    }
+    const old = p.destination,
+      options = this.routeOptions(p, node, this.observe(p, node));
     if (p.guidance && !options.has(p.guidance.exit)) {
       this.events.push({
         time: this.time,
@@ -210,6 +233,53 @@ export class Simulation {
         type: "route-choice",
         detail: `${old ?? "unassigned"} → ${p.destination ?? "no known feasible exit"} at ${node}`,
       });
+  }
+  private updateTailCommitments() {
+    const rule = this.config.tailFallback;
+    if (!rule) return;
+    const remaining = this.people.length - this.outside;
+    if (remaining > rule.remaining) return;
+    this.tailStartedAt ??= this.time;
+    const queues = this.currentQueues(); // Same pre-decision snapshot for every eligible person.
+    for (const p of this.people) {
+      if (
+        p.exitTime !== null ||
+        p.finalCommitment ||
+        !p.link ||
+        p.state !== "queuing" ||
+        p.remaining !== 0
+      )
+        continue;
+      const stalledFor = this.time - Math.max(this.tailStartedAt, p.queueAt);
+      if (stalledFor <= rule.stalledSeconds + 1e-9) continue;
+      const node = this.target(p);
+      if (this.geometry.nodes[node].exit) continue; // Finish an exterior crossing already in progress.
+      const options = this.routeOptions(p, node, this.observe(p, node, queues));
+      const best = nearestKnownExit(p, options);
+      if (!best) continue; // No invented route, accessibility exception or teleport.
+      const [exit, route] = best;
+      p.finalCommitment = { at: this.time, exit, estimatedSeconds: route.time };
+      p.destination = exit;
+      p.guidance = undefined;
+      p.route = [...route.links];
+      p.review = false;
+      this.events.push({
+        time: this.time,
+        person: p.id,
+        type: "tail-final-commitment",
+        detail: JSON.stringify({
+          node,
+          remaining,
+          stalledFor,
+          exit,
+          estimatedSeconds: route.time,
+          route: route.links,
+          alternatives: [...options]
+            .filter(([e]) => p.known.includes(e))
+            .map(([exit, r]) => ({ exit, seconds: r.time })),
+        }),
+      });
+    }
   }
   private target(p: Person) {
     return p.link
@@ -268,13 +338,16 @@ export class Simulation {
   private tick() {
     const dt = this.config.dt,
       t = this.time;
+    this.updateTailCommitments();
     this.guidance.moveManagers(t, dt, this.links);
     this.guidance.update(
       t,
       this.people,
       this.links,
       (p) => this.position(p),
-      this.queueCounts,
+      this.config.managers.some((m) => m.exit === "nearest-time")
+        ? this.currentQueues()
+        : this.queueCounts,
     );
     const reacting = this.people.map((p) => p.state !== "recognition");
     const remainingAtStart = this.people.map((p) => p.remaining);
@@ -400,7 +473,10 @@ export class Simulation {
           p.review = true;
         const previousReview = this.lastQueueReview.get(p.id),
           second = Math.floor(now + 1e-7);
-        if (!previousReview || previousReview.second !== second) {
+        if (
+          !p.finalCommitment &&
+          (!previousReview || previousReview.second !== second)
+        ) {
           const waits = this.observe(p, node),
             signature = [...waits]
               .map(([id, w]) => `${id}:${Math.floor(w / 8)}`)
@@ -417,6 +493,7 @@ export class Simulation {
         }
         const target = this.geometry.links[next];
         if (target.closed) {
+          if (p.finalCommitment) continue; // A locked choice cannot authorize crossing an obstruction.
           if (!p.blocked.has(next)) {
             p.blocked.add(next);
             this.events.push({

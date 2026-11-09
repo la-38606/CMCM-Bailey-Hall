@@ -33,6 +33,37 @@ class Heap {
   }
 }
 export type Route = { time: number; links: string[] };
+export function nearestKnownExit(
+  p: Pick<Person, "known">,
+  options: Map<Exit, Route>,
+) {
+  return [...options]
+    .filter(
+      ([exit, route]) => p.known.includes(exit) && Number.isFinite(route.time),
+    )
+    .sort((a, b) => a[1].time - b[1].time || a[0].localeCompare(b[0]))[0];
+}
+
+export function visibleQueueWaits(
+  g: Geometry,
+  c: Config,
+  position: Point,
+  queues: Map<string, number>,
+) {
+  const waits = new Map<string, number>();
+  for (const [id, q] of queues) {
+    const e = g.links[id],
+      capacity = gateCapacity(e, c);
+    if (
+      q > 0 &&
+      Number.isFinite(capacity) &&
+      capacity > 0 &&
+      visible(g, position, g.nodes[e.a])
+    )
+      waits.set(id, q / capacity);
+  }
+  return waits;
+}
 export function routes(
   g: Geometry,
   c: Config,
@@ -95,6 +126,7 @@ export function chooseDestination(
   options: Map<Exit, Route>,
   leader?: Exit,
 ): Exit | undefined {
+  if (p.finalCommitment) return p.finalCommitment.exit;
   const feasible = (e: Exit) =>
     options.has(e) && Number.isFinite(options.get(e)!.time);
   if (p.guidance && feasible(p.guidance.exit)) return p.guidance.exit;
@@ -128,25 +160,14 @@ export function guidanceSwitchAllowed(
   position: Point,
   queues: Map<string, number>,
 ): boolean {
-  if (p.exitTime !== null) return false;
+  if (p.exitTime !== null || p.finalCommitment) return false;
   if (!p.link) return true; // Initial instructions before movement.
   const currentLink = g.links[p.link];
   const node = p.dir === 1 ? currentLink.b : currentLink.a;
   if (g.nodes[node].exit) return false; // Already committed to exterior crossing.
   const current = p.destination ?? p.guidance?.exit;
   if (!current || current === proposed) return true;
-  const waits = new Map<string, number>();
-  for (const [id, q] of queues) {
-    const e = g.links[id],
-      capacity = gateCapacity(e, c);
-    if (
-      q > 0 &&
-      Number.isFinite(capacity) &&
-      capacity > 0 &&
-      visible(g, position, g.nodes[e.a])
-    )
-      waits.set(id, q / capacity);
-  }
+  const waits = visibleQueueWaits(g, c, position, queues);
   const options = routes(g, c, node, p, waits);
   const before = options.get(current)?.time ?? Infinity;
   const after = options.get(proposed)?.time ?? Infinity;

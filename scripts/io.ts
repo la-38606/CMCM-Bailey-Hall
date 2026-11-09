@@ -1,6 +1,6 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { dirname } from "node:path";
-import { reference } from "../src/engine/config";
+import { emergency } from "../src/engine/config";
 import type { Config } from "../src/engine/types";
 export const args = Object.fromEntries(
   process.argv.slice(2).reduce<string[][]>((a, v, i, all) => {
@@ -11,7 +11,7 @@ export const args = Object.fromEntries(
 export async function config(): Promise<Config> {
   return args.config
     ? JSON.parse(await readFile(args.config, "utf8"))
-    : reference();
+    : emergency();
 }
 export async function save(path: string, value: unknown) {
   await mkdir(dirname(path), { recursive: true });

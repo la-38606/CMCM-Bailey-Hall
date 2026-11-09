@@ -1,0 +1,72 @@
+{
+  "replicationsVerified": 10,
+  "archivesAndEventHashesVerified": true,
+  "uniqueAudiences": 10,
+  "identicalScenario": true,
+  "exteriorAndStreetCountsRecomputedFromEvents": true,
+  "eventsVerified": 489109,
+  "deterministicReplay": {
+    "seed": 5001,
+    "fullResultHash": "1825fcd3f0faa98610583e58a1f7f23b244c2354b6337afab7ed9ed7f0329170",
+    "matched": true
+  },
+  "at180": {
+    "meanOutside": 1324.7,
+    "meanFractionOutside": 0.9967644845748683,
+    "minOutside": 1312,
+    "medianOutside": 1326.5,
+    "maxOutside": 1329,
+    "replications": [
+      {
+        "seed": 5001,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 5002,
+        "outside": 1325,
+        "fraction": 0.9969902182091799
+      },
+      {
+        "seed": 5003,
+        "outside": 1328,
+        "fraction": 0.999247554552295
+      },
+      {
+        "seed": 5004,
+        "outside": 1325,
+        "fraction": 0.9969902182091799
+      },
+      {
+        "seed": 5005,
+        "outside": 1319,
+        "fraction": 0.9924755455229496
+      },
+      {
+        "seed": 5006,
+        "outside": 1312,
+        "fraction": 0.9872084273890143
+      },
+      {
+        "seed": 5007,
+        "outside": 1323,
+        "fraction": 0.9954853273137697
+      },
+      {
+        "seed": 5008,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 5009,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 5010,
+        "outside": 1328,
+        "fraction": 0.999247554552295
+      }
+    ]
+  }
+}

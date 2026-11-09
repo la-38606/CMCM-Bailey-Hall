@@ -61,7 +61,7 @@ export type Geometry = {
 export type ManagerConfig = {
   id: string;
   node: string;
-  exit: Exit;
+  exit: Exit | "nearest-time";
   patrol?: string[];
 };
 export type SignConfig = {
@@ -106,6 +106,7 @@ export type Config = {
   environment: number;
   returnPolicy: "available-lane" | "wait-for-lane";
   announcement: boolean;
+  tailFallback?: { remaining: number; stalledSeconds: number };
   managers: ManagerConfig[];
   signs: SignConfig[];
   barriers: Barrier[];
@@ -155,6 +156,7 @@ export type Person = {
   queueAt: number;
   destination?: Exit;
   guidance?: { source: string; exit: Exit; priority: number };
+  finalCommitment?: { at: number; exit: Exit; estimatedSeconds: number };
   route: string[];
   review: boolean;
   exitTime: number | null;

@@ -155,3 +155,36 @@ test("changing LED mode preserves the study layout and exposes physical review",
     page.getByLabel("Foyer-preference share", { exact: true }),
   ).toHaveValue("0.35");
 });
+
+test("exports nearest-time managers and the optional final-occupant rule", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page.getByText("Edit actual posts & messages", { exact: true }).click();
+  for (let i = 1; i <= 4; i++)
+    await expect(
+      page.getByLabel(`CM${i} message`, { exact: true }),
+    ).toHaveValue("nearest-time");
+  await expect(page.getByLabel("CM5 message", { exact: true })).toHaveValue(
+    "northwest-balcony",
+  );
+  await page.getByText("Final occupants", { exact: true }).click();
+  const fallback = page.getByRole("checkbox", {
+    name: /Lock a time-based exit/,
+  });
+  await expect(fallback).toBeChecked();
+  const downloading = page.waitForEvent("download");
+  await page
+    .getByRole("button", { name: "↓ Save scenario", exact: true })
+    .click();
+  const file = await downloading;
+  const config = JSON.parse(await readFile((await file.path())!, "utf8"));
+  expect(config.tailFallback).toEqual({ remaining: 40, stalledSeconds: 10 });
+  expect(
+    config.managers
+      .slice(0, 4)
+      .every((m: { exit: string }) => m.exit === "nearest-time"),
+  ).toBe(true);
+  await fallback.uncheck();
+  await expect(fallback).not.toBeChecked();
+});
