@@ -1,0 +1,781 @@
+{
+  "summaries": {
+    "concert": {
+      "runs": 3,
+      "seeds": [
+        101,
+        102,
+        103
+      ],
+      "resolved": 2,
+      "unresolved": 1,
+      "success180": 0.3333333333333333,
+      "successes": 1,
+      "successWilson95": [
+        0.0614903152761605,
+        0.7923450448735121
+      ],
+      "mean": null,
+      "completedOnlyMean": 182.89999999999998,
+      "completedOnlyQuantiles": {
+        "p10": 175.94,
+        "median": 182.89999999999998,
+        "p90": 189.85999999999999
+      },
+      "quantilesAreConditional": true,
+      "queueMax": 26
+    },
+    "emergency": {
+      "runs": 3,
+      "seeds": [
+        101,
+        102,
+        103
+      ],
+      "resolved": 3,
+      "unresolved": 0,
+      "success180": 0,
+      "successes": 0,
+      "successWilson95": [
+        0,
+        0.5615060804490177
+      ],
+      "mean": 218.13333333333335,
+      "completedOnlyMean": 218.13333333333335,
+      "completedOnlyQuantiles": {
+        "p10": 209.44,
+        "median": 218.8,
+        "p90": 226.56
+      },
+      "quantilesAreConditional": false,
+      "queueMax": 27
+    },
+    "alternate-managers": {
+      "runs": 3,
+      "seeds": [
+        101,
+        102,
+        103
+      ],
+      "resolved": 3,
+      "unresolved": 0,
+      "success180": 0,
+      "successes": 0,
+      "successWilson95": [
+        0,
+        0.5615060804490177
+      ],
+      "mean": 207.16666666666666,
+      "completedOnlyMean": 207.16666666666666,
+      "completedOnlyQuantiles": {
+        "p10": 205.76000000000002,
+        "median": 207.6,
+        "p90": 208.4
+      },
+      "quantilesAreConditional": false,
+      "queueMax": 27
+    },
+    "twelve-managers": {
+      "runs": 3,
+      "seeds": [
+        101,
+        102,
+        103
+      ],
+      "resolved": 3,
+      "unresolved": 0,
+      "success180": 0,
+      "successes": 0,
+      "successWilson95": [
+        0,
+        0.5615060804490177
+      ],
+      "mean": 232,
+      "completedOnlyMean": 232,
+      "completedOnlyQuantiles": {
+        "p10": 212.04,
+        "median": 218.6,
+        "p90": 257.32
+      },
+      "quantilesAreConditional": false,
+      "queueMax": 27
+    },
+    "lecture": {
+      "runs": 3,
+      "seeds": [
+        101,
+        102,
+        103
+      ],
+      "resolved": 3,
+      "unresolved": 0,
+      "success180": 0,
+      "successes": 0,
+      "successWilson95": [
+        0,
+        0.5615060804490177
+      ],
+      "mean": 188.29999999999998,
+      "completedOnlyMean": 188.29999999999998,
+      "completedOnlyQuantiles": {
+        "p10": 185.06,
+        "median": 187.7,
+        "p90": 191.78
+      },
+      "quantilesAreConditional": false,
+      "queueMax": 26
+    },
+    "blocked-exit": {
+      "runs": 3,
+      "seeds": [
+        101,
+        102,
+        103
+      ],
+      "resolved": 3,
+      "unresolved": 0,
+      "success180": 0,
+      "successes": 0,
+      "successWilson95": [
+        0,
+        0.5615060804490177
+      ],
+      "mean": 293.8333333333333,
+      "completedOnlyMean": 293.8333333333333,
+      "completedOnlyQuantiles": {
+        "p10": 282.82,
+        "median": 288.1,
+        "p90": 307.14
+      },
+      "quantilesAreConditional": false,
+      "queueMax": 31
+    },
+    "static-led": {
+      "runs": 3,
+      "seeds": [
+        101,
+        102,
+        103
+      ],
+      "resolved": 3,
+      "unresolved": 0,
+      "success180": 0,
+      "successes": 0,
+      "successWilson95": [
+        0,
+        0.5615060804490177
+      ],
+      "mean": 230.86666666666667,
+      "completedOnlyMean": 230.86666666666667,
+      "completedOnlyQuantiles": {
+        "p10": 228.28,
+        "median": 230.2,
+        "p90": 233.72
+      },
+      "quantilesAreConditional": false,
+      "queueMax": 31
+    },
+    "dynamic-led": {
+      "runs": 3,
+      "seeds": [
+        101,
+        102,
+        103
+      ],
+      "resolved": 3,
+      "unresolved": 0,
+      "success180": 0,
+      "successes": 0,
+      "successWilson95": [
+        0,
+        0.5615060804490177
+      ],
+      "mean": 216.19999999999996,
+      "completedOnlyMean": 216.19999999999996,
+      "completedOnlyQuantiles": {
+        "p10": 206.68,
+        "median": 212.2,
+        "p90": 227.32
+      },
+      "quantilesAreConditional": false,
+      "queueMax": 27
+    },
+    "barriers": {
+      "runs": 3,
+      "seeds": [
+        101,
+        102,
+        103
+      ],
+      "resolved": 3,
+      "unresolved": 0,
+      "success180": 0,
+      "successes": 0,
+      "successWilson95": [
+        0,
+        0.5615060804490177
+      ],
+      "mean": 221.4333333333333,
+      "completedOnlyMean": 221.4333333333333,
+      "completedOnlyQuantiles": {
+        "p10": 210.02,
+        "median": 224.1,
+        "p90": 231.78
+      },
+      "quantilesAreConditional": false,
+      "queueMax": 27
+    },
+    "accessible": {
+      "runs": 3,
+      "seeds": [
+        101,
+        102,
+        103
+      ],
+      "resolved": 3,
+      "unresolved": 0,
+      "success180": 0,
+      "successes": 0,
+      "successWilson95": [
+        0,
+        0.5615060804490177
+      ],
+      "mean": 227.86666666666667,
+      "completedOnlyMean": 227.86666666666667,
+      "completedOnlyQuantiles": {
+        "p10": 213.82000000000002,
+        "median": 213.9,
+        "p90": 247.5
+      },
+      "quantilesAreConditional": false,
+      "queueMax": 30
+    },
+    "slower-response": {
+      "runs": 3,
+      "seeds": [
+        101,
+        102,
+        103
+      ],
+      "resolved": 3,
+      "unresolved": 0,
+      "success180": 0,
+      "successes": 0,
+      "successWilson95": [
+        0,
+        0.5615060804490177
+      ],
+      "mean": 259.5,
+      "completedOnlyMean": 259.5,
+      "completedOnlyQuantiles": {
+        "p10": 220.04,
+        "median": 231.8,
+        "p90": 310.04
+      },
+      "quantilesAreConditional": false,
+      "queueMax": 25
+    },
+    "low-compliance": {
+      "runs": 3,
+      "seeds": [
+        101,
+        102,
+        103
+      ],
+      "resolved": 3,
+      "unresolved": 0,
+      "success180": 0,
+      "successes": 0,
+      "successWilson95": [
+        0,
+        0.5615060804490177
+      ],
+      "mean": 205.1,
+      "completedOnlyMean": 205.1,
+      "completedOnlyQuantiles": {
+        "p10": 198.1,
+        "median": 207.7,
+        "p90": 211.06
+      },
+      "quantilesAreConditional": false,
+      "queueMax": 25
+    },
+    "older-audience": {
+      "runs": 3,
+      "seeds": [
+        101,
+        102,
+        103
+      ],
+      "resolved": 3,
+      "unresolved": 0,
+      "success180": 0,
+      "successes": 0,
+      "successWilson95": [
+        0,
+        0.5615060804490177
+      ],
+      "mean": 227.03333333333333,
+      "completedOnlyMean": 227.03333333333333,
+      "completedOnlyQuantiles": {
+        "p10": 216.17999999999998,
+        "median": 224.1,
+        "p90": 239.06
+      },
+      "quantilesAreConditional": false,
+      "queueMax": 27
+    },
+    "slower-walking": {
+      "runs": 3,
+      "seeds": [
+        101,
+        102,
+        103
+      ],
+      "resolved": 3,
+      "unresolved": 0,
+      "success180": 0,
+      "successes": 0,
+      "successWilson95": [
+        0,
+        0.5615060804490177
+      ],
+      "mean": 272.56666666666666,
+      "completedOnlyMean": 272.56666666666666,
+      "completedOnlyQuantiles": {
+        "p10": 212.64000000000001,
+        "median": 241.6,
+        "p90": 344.88
+      },
+      "quantilesAreConditional": false,
+      "queueMax": 27
+    },
+    "strict-return-wait": {
+      "runs": 3,
+      "seeds": [
+        101,
+        102,
+        103
+      ],
+      "resolved": 0,
+      "unresolved": 3,
+      "success180": 0,
+      "successes": 0,
+      "successWilson95": [
+        0,
+        0.5615060804490177
+      ],
+      "mean": null,
+      "completedOnlyMean": null,
+      "completedOnlyQuantiles": {
+        "p10": null,
+        "median": null,
+        "p90": null
+      },
+      "quantilesAreConditional": true,
+      "queueMax": 28
+    },
+    "reduced-knowledge": {
+      "runs": 3,
+      "seeds": [
+        101,
+        102,
+        103
+      ],
+      "resolved": 3,
+      "unresolved": 0,
+      "success180": 0,
+      "successes": 0,
+      "successWilson95": [
+        0,
+        0.5615060804490177
+      ],
+      "mean": 225.9,
+      "completedOnlyMean": 225.9,
+      "completedOnlyQuantiles": {
+        "p10": 212.54,
+        "median": 226.3,
+        "p90": 239.10000000000002
+      },
+      "quantilesAreConditional": false,
+      "queueMax": 28
+    }
+  },
+  "pairedToEmergency": {
+    "concert": [
+      {
+        "seed": 101,
+        "a": 228.5,
+        "b": null,
+        "delta": null,
+        "resolvedPair": false
+      },
+      {
+        "seed": 102,
+        "a": 207.1,
+        "b": 174.2,
+        "delta": -32.900000000000006,
+        "resolvedPair": true
+      },
+      {
+        "seed": 103,
+        "a": 218.8,
+        "b": 191.6,
+        "delta": -27.200000000000017,
+        "resolvedPair": true
+      }
+    ],
+    "emergency": [
+      {
+        "seed": 101,
+        "a": 228.5,
+        "b": 228.5,
+        "delta": 0,
+        "resolvedPair": true
+      },
+      {
+        "seed": 102,
+        "a": 207.1,
+        "b": 207.1,
+        "delta": 0,
+        "resolvedPair": true
+      },
+      {
+        "seed": 103,
+        "a": 218.8,
+        "b": 218.8,
+        "delta": 0,
+        "resolvedPair": true
+      }
+    ],
+    "alternate-managers": [
+      {
+        "seed": 101,
+        "a": 228.5,
+        "b": 205.3,
+        "delta": -23.19999999999999,
+        "resolvedPair": true
+      },
+      {
+        "seed": 102,
+        "a": 207.1,
+        "b": 208.6,
+        "delta": 1.5,
+        "resolvedPair": true
+      },
+      {
+        "seed": 103,
+        "a": 218.8,
+        "b": 207.6,
+        "delta": -11.200000000000017,
+        "resolvedPair": true
+      }
+    ],
+    "twelve-managers": [
+      {
+        "seed": 101,
+        "a": 228.5,
+        "b": 218.6,
+        "delta": -9.900000000000006,
+        "resolvedPair": true
+      },
+      {
+        "seed": 102,
+        "a": 207.1,
+        "b": 210.4,
+        "delta": 3.3000000000000114,
+        "resolvedPair": true
+      },
+      {
+        "seed": 103,
+        "a": 218.8,
+        "b": 267,
+        "delta": 48.19999999999999,
+        "resolvedPair": true
+      }
+    ],
+    "lecture": [
+      {
+        "seed": 101,
+        "a": 228.5,
+        "b": 187.7,
+        "delta": -40.80000000000001,
+        "resolvedPair": true
+      },
+      {
+        "seed": 102,
+        "a": 207.1,
+        "b": 192.8,
+        "delta": -14.299999999999983,
+        "resolvedPair": true
+      },
+      {
+        "seed": 103,
+        "a": 218.8,
+        "b": 184.4,
+        "delta": -34.400000000000006,
+        "resolvedPair": true
+      }
+    ],
+    "blocked-exit": [
+      {
+        "seed": 101,
+        "a": 228.5,
+        "b": 311.9,
+        "delta": 83.39999999999998,
+        "resolvedPair": true
+      },
+      {
+        "seed": 102,
+        "a": 207.1,
+        "b": 288.1,
+        "delta": 81.00000000000003,
+        "resolvedPair": true
+      },
+      {
+        "seed": 103,
+        "a": 218.8,
+        "b": 281.5,
+        "delta": 62.69999999999999,
+        "resolvedPair": true
+      }
+    ],
+    "static-led": [
+      {
+        "seed": 101,
+        "a": 228.5,
+        "b": 230.2,
+        "delta": 1.6999999999999886,
+        "resolvedPair": true
+      },
+      {
+        "seed": 102,
+        "a": 207.1,
+        "b": 227.8,
+        "delta": 20.700000000000017,
+        "resolvedPair": true
+      },
+      {
+        "seed": 103,
+        "a": 218.8,
+        "b": 234.6,
+        "delta": 15.799999999999983,
+        "resolvedPair": true
+      }
+    ],
+    "dynamic-led": [
+      {
+        "seed": 101,
+        "a": 228.5,
+        "b": 231.1,
+        "delta": 2.5999999999999943,
+        "resolvedPair": true
+      },
+      {
+        "seed": 102,
+        "a": 207.1,
+        "b": 205.3,
+        "delta": -1.799999999999983,
+        "resolvedPair": true
+      },
+      {
+        "seed": 103,
+        "a": 218.8,
+        "b": 212.2,
+        "delta": -6.600000000000023,
+        "resolvedPair": true
+      }
+    ],
+    "barriers": [
+      {
+        "seed": 101,
+        "a": 228.5,
+        "b": 233.7,
+        "delta": 5.199999999999989,
+        "resolvedPair": true
+      },
+      {
+        "seed": 102,
+        "a": 207.1,
+        "b": 206.5,
+        "delta": -0.5999999999999943,
+        "resolvedPair": true
+      },
+      {
+        "seed": 103,
+        "a": 218.8,
+        "b": 224.1,
+        "delta": 5.299999999999983,
+        "resolvedPair": true
+      }
+    ],
+    "accessible": [
+      {
+        "seed": 101,
+        "a": 228.5,
+        "b": 213.8,
+        "delta": -14.699999999999989,
+        "resolvedPair": true
+      },
+      {
+        "seed": 102,
+        "a": 207.1,
+        "b": 213.9,
+        "delta": 6.800000000000011,
+        "resolvedPair": true
+      },
+      {
+        "seed": 103,
+        "a": 218.8,
+        "b": 255.9,
+        "delta": 37.099999999999994,
+        "resolvedPair": true
+      }
+    ],
+    "slower-response": [
+      {
+        "seed": 101,
+        "a": 228.5,
+        "b": 217.1,
+        "delta": -11.400000000000006,
+        "resolvedPair": true
+      },
+      {
+        "seed": 102,
+        "a": 207.1,
+        "b": 329.6,
+        "delta": 122.50000000000003,
+        "resolvedPair": true
+      },
+      {
+        "seed": 103,
+        "a": 218.8,
+        "b": 231.8,
+        "delta": 13,
+        "resolvedPair": true
+      }
+    ],
+    "low-compliance": [
+      {
+        "seed": 101,
+        "a": 228.5,
+        "b": 207.7,
+        "delta": -20.80000000000001,
+        "resolvedPair": true
+      },
+      {
+        "seed": 102,
+        "a": 207.1,
+        "b": 195.7,
+        "delta": -11.400000000000006,
+        "resolvedPair": true
+      },
+      {
+        "seed": 103,
+        "a": 218.8,
+        "b": 211.9,
+        "delta": -6.900000000000006,
+        "resolvedPair": true
+      }
+    ],
+    "older-audience": [
+      {
+        "seed": 101,
+        "a": 228.5,
+        "b": 242.8,
+        "delta": 14.300000000000011,
+        "resolvedPair": true
+      },
+      {
+        "seed": 102,
+        "a": 207.1,
+        "b": 214.2,
+        "delta": 7.099999999999994,
+        "resolvedPair": true
+      },
+      {
+        "seed": 103,
+        "a": 218.8,
+        "b": 224.1,
+        "delta": 5.299999999999983,
+        "resolvedPair": true
+      }
+    ],
+    "slower-walking": [
+      {
+        "seed": 101,
+        "a": 228.5,
+        "b": 241.6,
+        "delta": 13.099999999999994,
+        "resolvedPair": true
+      },
+      {
+        "seed": 102,
+        "a": 207.1,
+        "b": 205.4,
+        "delta": -1.6999999999999886,
+        "resolvedPair": true
+      },
+      {
+        "seed": 103,
+        "a": 218.8,
+        "b": 370.7,
+        "delta": 151.89999999999998,
+        "resolvedPair": true
+      }
+    ],
+    "strict-return-wait": [
+      {
+        "seed": 101,
+        "a": 228.5,
+        "b": null,
+        "delta": null,
+        "resolvedPair": false
+      },
+      {
+        "seed": 102,
+        "a": 207.1,
+        "b": null,
+        "delta": null,
+        "resolvedPair": false
+      },
+      {
+        "seed": 103,
+        "a": 218.8,
+        "b": null,
+        "delta": null,
+        "resolvedPair": false
+      }
+    ],
+    "reduced-knowledge": [
+      {
+        "seed": 101,
+        "a": 228.5,
+        "b": 226.3,
+        "delta": -2.1999999999999886,
+        "resolvedPair": true
+      },
+      {
+        "seed": 102,
+        "a": 207.1,
+        "b": 209.1,
+        "delta": 2,
+        "resolvedPair": true
+      },
+      {
+        "seed": 103,
+        "a": 218.8,
+        "b": 242.3,
+        "delta": 23.5,
+        "resolvedPair": true
+      }
+    ]
+  },
+  "refinement": {
+    "seed": 101,
+    "coarse": 228.5,
+    "fine": 215.1625,
+    "coarseOutside": 1329,
+    "fineOutside": 1329
+  }
+}

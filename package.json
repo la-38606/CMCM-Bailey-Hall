@@ -1,0 +1,35 @@
+{
+  "name": "bailey-hall-evacuation",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "simulate": "node --import tsx scripts/simulate.ts",
+    "batch": "node --import tsx scripts/batch.ts",
+    "experiments": "node --import tsx scripts/experiments.ts",
+    "test:browser": "playwright test",
+    "report": "node --import tsx scripts/report.ts",
+    "format": "prettier --write src scripts tests *.ts",
+    "archive-results": "node --import tsx scripts/archive-results.ts"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "prettier": "^3.9.10",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0",
+    "vitest": "^3.0.5"
+  }
+}

@@ -9,3 +9,9 @@ coverage/
 .DS_Store
 .tmp/
 tmp/
+test-results/
+playwright-report/
+# Full evidence is retained losslessly as .json.gz; readable comparison and hashes remain tracked.
+results/*.json
+!results/experiments.json
+!results/manifest.json
