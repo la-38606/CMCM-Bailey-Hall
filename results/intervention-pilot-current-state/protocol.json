@@ -1,0 +1,157 @@
+{
+  "engineVersion": "1.1.0",
+  "sourceHash": "25e6d5ccb4ad528f76db16311f10bd4bd76063f16da350aafa4f3142be8dcbdb",
+  "started": "2026-11-09T07:22:51.467Z",
+  "count": 3,
+  "first": 3001,
+  "jobs": 4,
+  "names": [
+    "baseline",
+    "coordinated",
+    "barriers-only",
+    "partial-barriers",
+    "led-only",
+    "combined",
+    "combined-partial",
+    "dynamic-combined",
+    "eight-managers",
+    "eight-combined",
+    "ten-combined"
+  ],
+  "tasks": [
+    {
+      "name": "baseline",
+      "seed": 3001
+    },
+    {
+      "name": "baseline",
+      "seed": 3002
+    },
+    {
+      "name": "baseline",
+      "seed": 3003
+    },
+    {
+      "name": "coordinated",
+      "seed": 3001
+    },
+    {
+      "name": "coordinated",
+      "seed": 3002
+    },
+    {
+      "name": "coordinated",
+      "seed": 3003
+    },
+    {
+      "name": "barriers-only",
+      "seed": 3001
+    },
+    {
+      "name": "barriers-only",
+      "seed": 3002
+    },
+    {
+      "name": "barriers-only",
+      "seed": 3003
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 3001
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 3002
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 3003
+    },
+    {
+      "name": "led-only",
+      "seed": 3001
+    },
+    {
+      "name": "led-only",
+      "seed": 3002
+    },
+    {
+      "name": "led-only",
+      "seed": 3003
+    },
+    {
+      "name": "combined",
+      "seed": 3001
+    },
+    {
+      "name": "combined",
+      "seed": 3002
+    },
+    {
+      "name": "combined",
+      "seed": 3003
+    },
+    {
+      "name": "combined-partial",
+      "seed": 3001
+    },
+    {
+      "name": "combined-partial",
+      "seed": 3002
+    },
+    {
+      "name": "combined-partial",
+      "seed": 3003
+    },
+    {
+      "name": "dynamic-combined",
+      "seed": 3001
+    },
+    {
+      "name": "dynamic-combined",
+      "seed": 3002
+    },
+    {
+      "name": "dynamic-combined",
+      "seed": 3003
+    },
+    {
+      "name": "eight-managers",
+      "seed": 3001
+    },
+    {
+      "name": "eight-managers",
+      "seed": 3002
+    },
+    {
+      "name": "eight-managers",
+      "seed": 3003
+    },
+    {
+      "name": "eight-combined",
+      "seed": 3001
+    },
+    {
+      "name": "eight-combined",
+      "seed": 3002
+    },
+    {
+      "name": "eight-combined",
+      "seed": 3003
+    },
+    {
+      "name": "ten-combined",
+      "seed": 3001
+    },
+    {
+      "name": "ten-combined",
+      "seed": 3002
+    },
+    {
+      "name": "ten-combined",
+      "seed": 3003
+    }
+  ],
+  "design": "Fixed configuration per policy; matched audience seeds across policies; fresh named random streams per replication. Unresolved runs retained at 900 s.",
+  "selection": "Exploratory development; not confirmatory evidence"
+}

@@ -89,3 +89,34 @@ test("runs a paired browser-worker experiment and offers deterministic replay", 
     page.getByRole("img", { name: /orchestra and mezzanine/ }),
   ).toBeVisible();
 });
+
+test("loads the literature-study LEDs and open belts as an exportable scenario", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page
+    .getByRole("combobox", { name: "Configuration", exact: true })
+    .selectOption("study-partial");
+  await expect(page.getByRole("alert")).toHaveCount(0);
+  await page.getByRole("button", { name: "Step 0.1 s", exact: true }).click();
+  const pending = page.waitForEvent("download");
+  await page
+    .getByRole("button", { name: "↓ Save scenario", exact: true })
+    .click();
+  const download = await pending;
+  const c = JSON.parse(await readFile((await download.path())!, "utf8"));
+  expect(c.managers).toHaveLength(6);
+  expect(c.signs).toHaveLength(16);
+  expect(c.signs.every((s: { dynamic: boolean }) => s.dynamic)).toBe(true);
+  expect(c.barriers).toHaveLength(2);
+  expect(
+    c.barriers.every(
+      (b: { length: number; angle: number }) =>
+        b.length === 1 && b.angle === 30,
+    ),
+  ).toBe(true);
+  await page.screenshot({
+    path: "results/interface-study.png",
+    fullPage: true,
+  });
+});

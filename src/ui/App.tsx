@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { leds, managers, reference, scenarios } from "../engine/config";
-import { Simulation } from "../engine/simulation";
+import { Simulation, ENGINE_VERSION } from "../engine/simulation";
 import { occupancy, gateCapacity } from "../engine/transport";
 import { EXITS, type Config, type RunResult } from "../engine/types";
 import { MapView, type Layers } from "./Map";
@@ -163,7 +163,7 @@ export function App() {
         </a>
         <div className="header-meta">
           <span className="status-dot" /> Deterministic network model{" "}
-          <span className="version">v1.0</span>
+          <span className="version">v{ENGINE_VERSION}</span>
         </div>
         <button
           className="button ghost"
@@ -245,6 +245,7 @@ export function App() {
             <label className="field full">
               <span>Configuration</span>
               <select
+                aria-label="Configuration"
                 value={
                   Object.keys(presets).find(
                     (k) => presets[k].name === config.name,

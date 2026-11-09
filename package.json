@@ -1,6 +1,6 @@
 {
   "name": "bailey-hall-evacuation",
-  "version": "1.0.0",
+  "version": "1.3.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -14,7 +14,10 @@
     "test:browser": "playwright test",
     "report": "node --import tsx scripts/report.ts",
     "format": "prettier --write src scripts tests *.ts",
-    "archive-results": "node --import tsx scripts/archive-results.ts"
+    "archive-results": "node --import tsx scripts/archive-results.ts",
+    "monte-carlo": "node --import tsx scripts/monte-carlo.ts",
+    "study": "node --import tsx scripts/intervention-study.ts",
+    "audit-study": "node --import tsx scripts/audit-interventions.ts"
   },
   "dependencies": {
     "react": "^19.0.0",

@@ -1,0 +1,42 @@
+{
+  "checked": 500,
+  "sourceHashVerified": true,
+  "sourceHash": "610e6dbeb123b0bc8879e64a04b10e2f73860a11177cb64b95080e2d326d823e",
+  "eventCount": 27791425,
+  "uniqueAudiences": 100,
+  "pairedAudiencesIdentical": true,
+  "configurationHashesAndArchiveHashesVerified": true,
+  "countsReconstructedFromEvents": true,
+  "fullResultReplays": [
+    {
+      "policy": "baseline",
+      "seed": 5001,
+      "matched": true,
+      "fullResultHash": "77f00a58a3f8df4b82a17822ae18985828a0d689da187d0d81c96ca49c568027"
+    },
+    {
+      "policy": "coordinated",
+      "seed": 5001,
+      "matched": true,
+      "fullResultHash": "8cfed9c138e55ca3f66735bea2db47582045d15d091623a8ba86b49c64cc8ef9"
+    },
+    {
+      "policy": "partial-barriers",
+      "seed": 5001,
+      "matched": true,
+      "fullResultHash": "ada626eb11101e106e123631f5287140c3f94d08737da6f16d529c3d3297069a"
+    },
+    {
+      "policy": "dynamic-only",
+      "seed": 5001,
+      "matched": true,
+      "fullResultHash": "3df28554a6f357b7d520314dffb629994884e55d1251234fd8af1466b80cbcc1"
+    },
+    {
+      "policy": "dynamic-partial",
+      "seed": 5001,
+      "matched": true,
+      "fullResultHash": "3acfabdd72f7f32643f344753fff014dca959429630e12eea0eb9c7820577167"
+    }
+  ]
+}

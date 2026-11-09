@@ -1,0 +1,40 @@
+{
+  "engineVersion": "1.3.0",
+  "sourceHash": "610e6dbeb123b0bc8879e64a04b10e2f73860a11177cb64b95080e2d326d823e",
+  "started": "2026-11-09T07:40:09.584Z",
+  "count": 3,
+  "first": 5001,
+  "jobs": 2,
+  "names": [
+    "refinement-coarse",
+    "refinement-fine"
+  ],
+  "tasks": [
+    {
+      "name": "refinement-coarse",
+      "seed": 5001
+    },
+    {
+      "name": "refinement-coarse",
+      "seed": 5002
+    },
+    {
+      "name": "refinement-coarse",
+      "seed": 5003
+    },
+    {
+      "name": "refinement-fine",
+      "seed": 5001
+    },
+    {
+      "name": "refinement-fine",
+      "seed": 5002
+    },
+    {
+      "name": "refinement-fine",
+      "seed": 5003
+    }
+  ],
+  "design": "Fixed configuration per policy; matched audience seeds across policies; fresh named random streams per replication. Unresolved runs retained at 900 s.",
+  "selection": "Predeclared numerical refinement; no policy reselection"
+}

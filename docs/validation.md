@@ -1,6 +1,20 @@
 # Validation and experiment report
 
-Recorded 9 November 2026. This report describes executed checks and generated results, not predicted outcomes from the paper. The supplied mathematical paper is unchanged. All work uses the rebuild branch.
+Recorded 9 November 2026. All work uses `rebuild-from-scratch`. The current engine is **1.3.0**. The paper was revised for the user-authorized literature-based intervention study; original results below are explicitly historical.
+
+## Current engine verification
+
+- `npm test -- --maxWorkers 1`: **49 tests passed**, three files, 90.68 s while Monte Carlo workers were active. Fourteen new tests cover continuous divided stairs and stepped cross-aisles, draining lanes, formerly stalled seeds, preserved sightlines/accessibility/capacity, and current-state guidance/exit commitment.
+- `npm run build`: TypeScript and Vite production build passed (final Vite build 1.48 s). A separate `npm run typecheck` also passed.
+- `npm run test:browser`: **4 tests passed**, 36.3 s, including complete Node/browser-worker replay equivalence and saving the LED/partial-belt study configuration.
+- All **500 confirmatory runs** cleared 1,329 occupants and executed physical invariant checks. All **586** confirmatory/refinement/sensitivity archives passed hash and event-count audits, with **11** exact full-result replays (one per study policy).
+- The preselected LED/partial-belt combination averaged **172.5 s** (95% CI 169.9–175.2), with **77/100** successes by 180 s. The slower-response sensitivity averaged **258.8 s**; full-network time-step sensitivity remains material. Detailed contrasts, methods and limits are in [the intervention study](intervention-study.md).
+
+These checks validate the implementation against its declared rules; they do not supply surveyed dimensions or empirical validation of a real Bailey evacuation.
+
+## Historical engine 1.0.0 results
+
+The following original test and scenario results are retained without rewriting their outcomes. They are not the control arm for the revised intervention experiment. The archived 1.0.0 source is `results/monte-carlo-100/engine-source-1.0.0.tar.gz`.
 
 ## Executed checks
 

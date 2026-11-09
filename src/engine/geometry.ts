@@ -368,14 +368,24 @@ export function buildGeometry(config: Config): Geometry {
     node(`${s}-stair-top`, sign * 9, 25, 1, "foyer-stair");
     node(`${s}-stair-half`, sign * 10, 27, 1, "foyer-stair");
     node(`${s}-stair-bottom`, sign * 8, 28, 0, "corridor");
-    link(`${s}-balcony-rear`, `b${rear}`, `${s}-stair-top`, 1.8, "door");
+    // The two physically separated stair lanes continue through their approaches.
+    // Independent segment allocations can otherwise lock opposite streams head-on.
+    const stairLanes = { designedLanes: 2, laneFamily: `${s}-rear-stair` };
+    link(
+      `${s}-balcony-rear`,
+      `b${rear}`,
+      `${s}-stair-top`,
+      1.8,
+      "door",
+      stairLanes,
+    );
     link(
       `${s}-stair-upper`,
       `${s}-stair-top`,
       `${s}-stair-half`,
       1.8,
       "stair",
-      { drop: 2.1, designedLanes: 2 },
+      { ...stairLanes, drop: 2.1 },
     );
     link(
       `${s}-stair-lower`,
@@ -383,7 +393,7 @@ export function buildGeometry(config: Config): Geometry {
       `${s}-stair-bottom`,
       1.8,
       "stair",
-      { drop: 2.1, designedLanes: 2 },
+      { ...stairLanes, drop: 2.1 },
     );
     link(
       `${s}-stair-corridor`,
@@ -391,6 +401,7 @@ export function buildGeometry(config: Config): Geometry {
       `c${s === "west" ? 5 : 7}`,
       1.8,
       "corridor",
+      stairLanes,
     );
   }
   for (let i = 0; i < 3; i++) {
@@ -490,6 +501,8 @@ export function buildGeometry(config: Config): Geometry {
       /^(inner-[LR]|curved-[LR]|mezzanine|corridor|balcony)-/,
     );
     const radial = e.id.match(/^([mb]-radial-\d+)-/);
+    const transverse = e.id.match(/^cross-(?:outer|curve|step|inner)-([LR])$/);
+    if (transverse) e.laneFamily = `cross-${transverse[1]}:${e.lanes}`;
     if (e.kind !== "row" && (family || radial))
       e.laneFamily = (family?.[1] ?? radial![1]) + `:${e.lanes}`;
   }

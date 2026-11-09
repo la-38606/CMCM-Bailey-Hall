@@ -1,0 +1,203 @@
+{
+  "checks": {
+    "engineVersion": "1.3.0",
+    "engineTests": {
+      "command": "npm test -- --maxWorkers 1",
+      "passed": 49,
+      "files": 3,
+      "seconds": 90.68
+    },
+    "browserTests": {
+      "command": "npm run test:browser",
+      "passed": 4,
+      "seconds": 36.3
+    },
+    "productionBuild": {
+      "command": "npm run build",
+      "passed": true,
+      "viteSeconds": 1.48
+    },
+    "typecheck": {
+      "command": "npm run typecheck",
+      "passed": true
+    },
+    "limitations": "Fixed-model implementation checks, not empirical validation of surveyed Bailey Hall evacuation.",
+    "statisticalChecks": {
+      "method": "Student-t quantile inversion by Simpson quadrature and bisection",
+      "degreesOfFreedom": [
+        1,
+        2,
+        19,
+        99
+      ],
+      "maximumErrorVsReference": 1e-07,
+      "passed": true
+    },
+    "experiments": {
+      "confirmatoryRuns": 500,
+      "audiences": 100,
+      "policies": 5,
+      "sensitivityAndRefinementRuns": 86,
+      "allArchivesAudited": true,
+      "fullResultReplayPolicies": 11
+    }
+  },
+  "audits": {
+    "confirmation": {
+      "checked": 500,
+      "sourceHashVerified": true,
+      "sourceHash": "610e6dbeb123b0bc8879e64a04b10e2f73860a11177cb64b95080e2d326d823e",
+      "eventCount": 27791425,
+      "uniqueAudiences": 100,
+      "pairedAudiencesIdentical": true,
+      "configurationHashesAndArchiveHashesVerified": true,
+      "countsReconstructedFromEvents": true,
+      "fullResultReplays": [
+        {
+          "policy": "baseline",
+          "seed": 5001,
+          "matched": true,
+          "fullResultHash": "77f00a58a3f8df4b82a17822ae18985828a0d689da187d0d81c96ca49c568027"
+        },
+        {
+          "policy": "coordinated",
+          "seed": 5001,
+          "matched": true,
+          "fullResultHash": "8cfed9c138e55ca3f66735bea2db47582045d15d091623a8ba86b49c64cc8ef9"
+        },
+        {
+          "policy": "partial-barriers",
+          "seed": 5001,
+          "matched": true,
+          "fullResultHash": "ada626eb11101e106e123631f5287140c3f94d08737da6f16d529c3d3297069a"
+        },
+        {
+          "policy": "dynamic-only",
+          "seed": 5001,
+          "matched": true,
+          "fullResultHash": "3df28554a6f357b7d520314dffb629994884e55d1251234fd8af1466b80cbcc1"
+        },
+        {
+          "policy": "dynamic-partial",
+          "seed": 5001,
+          "matched": true,
+          "fullResultHash": "3acfabdd72f7f32643f344753fff014dca959429630e12eea0eb9c7820577167"
+        }
+      ]
+    },
+    "refinement": {
+      "checked": 6,
+      "sourceHashVerified": true,
+      "sourceHash": "610e6dbeb123b0bc8879e64a04b10e2f73860a11177cb64b95080e2d326d823e",
+      "eventCount": 351192,
+      "uniqueAudiences": 3,
+      "pairedAudiencesIdentical": true,
+      "configurationHashesAndArchiveHashesVerified": true,
+      "countsReconstructedFromEvents": true,
+      "fullResultReplays": [
+        {
+          "policy": "refinement-coarse",
+          "seed": 5001,
+          "matched": true,
+          "fullResultHash": "d82074e7fba303eac49852d8fd980d1c5e87b098feed5752fd7ca0b0434b034b"
+        },
+        {
+          "policy": "refinement-fine",
+          "seed": 5001,
+          "matched": true,
+          "fullResultHash": "b11da006d8b4428851f1660d9e2a08b29405acc0865c43cd507707fd1b5eab39"
+        }
+      ]
+    },
+    "compliance": {
+      "checked": 40,
+      "sourceHashVerified": true,
+      "sourceHash": "610e6dbeb123b0bc8879e64a04b10e2f73860a11177cb64b95080e2d326d823e",
+      "eventCount": 2284475,
+      "uniqueAudiences": 20,
+      "pairedAudiencesIdentical": true,
+      "configurationHashesAndArchiveHashesVerified": true,
+      "countsReconstructedFromEvents": true,
+      "fullResultReplays": [
+        {
+          "policy": "compliance-nominal",
+          "seed": 6001,
+          "matched": true,
+          "fullResultHash": "184742ba8facd16cf014ef101b228bafa4623a8d3d79163e5caa7cdd12c4691c"
+        },
+        {
+          "policy": "compliance-low",
+          "seed": 6001,
+          "matched": true,
+          "fullResultHash": "dff7562d0161ebbbb4c9852b86a9d901b0eaa980847c8039d0a3c6b948e5f234"
+        }
+      ]
+    },
+    "response": {
+      "checked": 40,
+      "sourceHashVerified": true,
+      "sourceHash": "610e6dbeb123b0bc8879e64a04b10e2f73860a11177cb64b95080e2d326d823e",
+      "eventCount": 2137432,
+      "uniqueAudiences": 20,
+      "pairedAudiencesIdentical": true,
+      "configurationHashesAndArchiveHashesVerified": true,
+      "countsReconstructedFromEvents": true,
+      "fullResultReplays": [
+        {
+          "policy": "response-baseline",
+          "seed": 6001,
+          "matched": true,
+          "fullResultHash": "f8775cf0ed6439c9a2cd2ffcef708d6f32f841322b4e462f8e36f8ea3a93c1eb"
+        },
+        {
+          "policy": "response-combined",
+          "seed": 6001,
+          "matched": true,
+          "fullResultHash": "a375612739e220a6e30cddb72924643bcf3ee58edd4e6ad4aaae0ed45d731d43"
+        }
+      ]
+    }
+  },
+  "sensitivityEffects": {
+    "lowComplianceMinusNominal": {
+      "n": 20,
+      "mean": 0.5099999999999966,
+      "sd": 15.627199634645125,
+      "ci95": [
+        -6.803754561014059,
+        7.823754561014051
+      ],
+      "conditional": false
+    },
+    "slowerResponseCombinedMinusBaseline": {
+      "n": 20,
+      "mean": -0.32499999999999574,
+      "sd": 6.584021727277574,
+      "ci95": [
+        -3.4064170205476767,
+        2.7564170205476852
+      ],
+      "conditional": false
+    }
+  },
+  "refinement": [
+    {
+      "seed": 5001,
+      "coarse": 168.9,
+      "fine": 164.825,
+      "difference": -4.075000000000017
+    },
+    {
+      "seed": 5002,
+      "coarse": 168.5,
+      "fine": 187.6125,
+      "difference": 19.11250000000001
+    },
+    {
+      "seed": 5003,
+      "coarse": 187.8,
+      "fine": 184.9625,
+      "difference": -2.8375000000000057
+    }
+  ]
+}

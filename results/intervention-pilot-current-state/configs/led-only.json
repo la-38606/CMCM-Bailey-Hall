@@ -1,0 +1,347 @@
+{
+  "version": 1,
+  "geometryVersion": "bailey-traced-1",
+  "name": "Six managers + zoned LED guidance",
+  "dt": 0.1,
+  "cutoff": 900,
+  "speedMean": 1.4,
+  "speedSD": 0.18,
+  "olderShare": 0.2,
+  "olderMultiplier": 0.85,
+  "stairRatio": 0.57,
+  "olderStairRatio": 0.51,
+  "recognitionMedian": 6,
+  "responseMedian": 14,
+  "logSD": 0.6,
+  "familiarityShare": 0.35,
+  "knowledge": 1,
+  "managerCompliance": 0.85,
+  "environment": 1,
+  "returnPolicy": "available-lane",
+  "announcement": false,
+  "managers": [
+    {
+      "id": "CM1",
+      "node": "m1",
+      "exit": "west-portico"
+    },
+    {
+      "id": "CM2",
+      "node": "m4",
+      "exit": "foyer"
+    },
+    {
+      "id": "CM3",
+      "node": "m8",
+      "exit": "foyer"
+    },
+    {
+      "id": "CM4",
+      "node": "m11",
+      "exit": "east-portico"
+    },
+    {
+      "id": "CM5",
+      "node": "b4",
+      "exit": "foyer"
+    },
+    {
+      "id": "CM6",
+      "node": "b8",
+      "exit": "foyer"
+    }
+  ],
+  "signs": [
+    {
+      "id": "ZLED1",
+      "node": "m1",
+      "link": "mezzanine-1",
+      "exit": "west-portico",
+      "kind": "strip",
+      "dynamic": false,
+      "existing": false,
+      "facing": [
+        0,
+        -1
+      ],
+      "activation": 3,
+      "range": 8,
+      "detection": 0.77,
+      "acceptance": 0.8,
+      "halfAngle": 70
+    },
+    {
+      "id": "ZLED2",
+      "node": "m3",
+      "link": "mezzanine-3",
+      "exit": "foyer",
+      "kind": "strip",
+      "dynamic": false,
+      "existing": false,
+      "facing": [
+        0,
+        -1
+      ],
+      "activation": 3,
+      "range": 8,
+      "detection": 0.77,
+      "acceptance": 0.8,
+      "halfAngle": 70
+    },
+    {
+      "id": "ZLED3",
+      "node": "m5",
+      "link": "mezzanine-5",
+      "exit": "foyer",
+      "kind": "strip",
+      "dynamic": false,
+      "existing": false,
+      "facing": [
+        0,
+        -1
+      ],
+      "activation": 3,
+      "range": 8,
+      "detection": 0.77,
+      "acceptance": 0.8,
+      "halfAngle": 70
+    },
+    {
+      "id": "ZLED4",
+      "node": "m7",
+      "link": "mezzanine-7",
+      "exit": "foyer",
+      "kind": "strip",
+      "dynamic": false,
+      "existing": false,
+      "facing": [
+        0,
+        -1
+      ],
+      "activation": 3,
+      "range": 8,
+      "detection": 0.77,
+      "acceptance": 0.8,
+      "halfAngle": 70
+    },
+    {
+      "id": "ZLED5",
+      "node": "m9",
+      "link": "mezzanine-9",
+      "exit": "foyer",
+      "kind": "strip",
+      "dynamic": false,
+      "existing": false,
+      "facing": [
+        0,
+        -1
+      ],
+      "activation": 3,
+      "range": 8,
+      "detection": 0.77,
+      "acceptance": 0.8,
+      "halfAngle": 70
+    },
+    {
+      "id": "ZLED6",
+      "node": "m11",
+      "link": "mezzanine-11",
+      "exit": "east-portico",
+      "kind": "strip",
+      "dynamic": false,
+      "existing": false,
+      "facing": [
+        0,
+        -1
+      ],
+      "activation": 3,
+      "range": 8,
+      "detection": 0.77,
+      "acceptance": 0.8,
+      "halfAngle": 70
+    },
+    {
+      "id": "ZLED7",
+      "node": "b1",
+      "link": "balcony-1",
+      "exit": "northwest-balcony",
+      "kind": "strip",
+      "dynamic": false,
+      "existing": false,
+      "facing": [
+        0,
+        -1
+      ],
+      "activation": 3,
+      "range": 8,
+      "detection": 0.77,
+      "acceptance": 0.8,
+      "halfAngle": 70
+    },
+    {
+      "id": "ZLED8",
+      "node": "b4",
+      "link": "balcony-4",
+      "exit": "foyer",
+      "kind": "strip",
+      "dynamic": false,
+      "existing": false,
+      "facing": [
+        0,
+        -1
+      ],
+      "activation": 3,
+      "range": 8,
+      "detection": 0.77,
+      "acceptance": 0.8,
+      "halfAngle": 70
+    },
+    {
+      "id": "ZLED9",
+      "node": "b7",
+      "link": "balcony-7",
+      "exit": "foyer",
+      "kind": "strip",
+      "dynamic": false,
+      "existing": false,
+      "facing": [
+        0,
+        -1
+      ],
+      "activation": 3,
+      "range": 8,
+      "detection": 0.77,
+      "acceptance": 0.8,
+      "halfAngle": 70
+    },
+    {
+      "id": "ZLED10",
+      "node": "b10",
+      "link": "balcony-10",
+      "exit": "northeast-balcony",
+      "kind": "strip",
+      "dynamic": false,
+      "existing": false,
+      "facing": [
+        0,
+        -1
+      ],
+      "activation": 3,
+      "range": 8,
+      "detection": 0.77,
+      "acceptance": 0.8,
+      "halfAngle": 70
+    },
+    {
+      "id": "ZLED11",
+      "node": "c1",
+      "link": "corridor-1",
+      "exit": "west-portico",
+      "kind": "strip",
+      "dynamic": false,
+      "existing": false,
+      "facing": [
+        0,
+        -1
+      ],
+      "activation": 3,
+      "range": 8,
+      "detection": 0.77,
+      "acceptance": 0.8,
+      "halfAngle": 70
+    },
+    {
+      "id": "ZLED12",
+      "node": "c4",
+      "link": "corridor-4",
+      "exit": "foyer",
+      "kind": "strip",
+      "dynamic": false,
+      "existing": false,
+      "facing": [
+        0,
+        -1
+      ],
+      "activation": 3,
+      "range": 8,
+      "detection": 0.77,
+      "acceptance": 0.8,
+      "halfAngle": 70
+    },
+    {
+      "id": "ZLED13",
+      "node": "c7",
+      "link": "corridor-7",
+      "exit": "foyer",
+      "kind": "strip",
+      "dynamic": false,
+      "existing": false,
+      "facing": [
+        0,
+        -1
+      ],
+      "activation": 3,
+      "range": 8,
+      "detection": 0.77,
+      "acceptance": 0.8,
+      "halfAngle": 70
+    },
+    {
+      "id": "ZLED14",
+      "node": "c10",
+      "link": "corridor-10",
+      "exit": "east-portico",
+      "kind": "strip",
+      "dynamic": false,
+      "existing": false,
+      "facing": [
+        0,
+        -1
+      ],
+      "activation": 3,
+      "range": 8,
+      "detection": 0.77,
+      "acceptance": 0.8,
+      "halfAngle": 70
+    },
+    {
+      "id": "ZLED15",
+      "node": "oL0",
+      "link": "inner-L-1",
+      "exit": "west-stage",
+      "kind": "strip",
+      "dynamic": false,
+      "existing": false,
+      "facing": [
+        0,
+        -1
+      ],
+      "activation": 3,
+      "range": 8,
+      "detection": 0.77,
+      "acceptance": 0.8,
+      "halfAngle": 70
+    },
+    {
+      "id": "ZLED16",
+      "node": "oR0",
+      "link": "inner-R-1",
+      "exit": "east-stage",
+      "kind": "strip",
+      "dynamic": false,
+      "existing": false,
+      "facing": [
+        0,
+        -1
+      ],
+      "activation": 3,
+      "range": 8,
+      "detection": 0.77,
+      "acceptance": 0.8,
+      "halfAngle": 70
+    }
+  ],
+  "barriers": [],
+  "closures": [],
+  "dimensions": {}
+}

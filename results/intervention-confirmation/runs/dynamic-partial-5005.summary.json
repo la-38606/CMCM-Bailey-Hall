@@ -1,0 +1,46 @@
+{
+  "seed": 5005,
+  "status": "complete",
+  "clearance": 161.8,
+  "streetClearance": 183.22861888344352,
+  "success180": true,
+  "outside": 1329,
+  "street": 1329,
+  "queueMax": 21,
+  "exitUsage": {
+    "foyer": 602,
+    "west-portico": 264,
+    "east-portico": 237,
+    "west-stage": 62,
+    "east-stage": 63,
+    "northwest-balcony": 54,
+    "northeast-balcony": 47
+  },
+  "accessible": [
+    {
+      "id": 799,
+      "exitTime": 56.3,
+      "streetTime": 111.4307497702076
+    },
+    {
+      "id": 800,
+      "exitTime": 38.6,
+      "streetTime": 130.82439206526635
+    },
+    {
+      "id": 801,
+      "exitTime": 54,
+      "streetTime": 90.29480002633701
+    }
+  ],
+  "meanWait": 32.63559066967651,
+  "outside180": 1329,
+  "peakDensity": 4.365079365079364,
+  "densePersonSeconds": 24550,
+  "audienceHash": "2ca1def9b390e55480286f7417a4f7ff4ff3270768af8daaaf5cb70a06a04f6a",
+  "configHash": "5549ae3557c5e1d20ce351d35e93c7ad63ccfcd5d6664f25b032c7410ddf7f2a",
+  "eventHash": "fd01934107ae03aaa3f97e40f9adc928b8dafc306d8a2b8c71f6fe16f2747aac",
+  "archiveHash": "563913d7036fbfa9de1c576d7cf90bd1d8d60d336bf747ce1c5e56a2f7bba213",
+  "eventCount": 57350,
+  "wallSeconds": 9.441418291999959
+}

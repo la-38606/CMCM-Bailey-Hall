@@ -284,21 +284,26 @@ export function MapView({
           })}
         {sim.config.barriers.map((b) => {
           const e = g.links[b.link],
-            p = pointOnLink(e, 0.5);
-          if (p.floor !== floor) return null;
+            a = e.points[0],
+            z = e.points.at(-1)!;
+          if (a.floor !== floor) return null;
+          const dx = z.x - a.x,
+            dy = z.y - a.y,
+            length = Math.hypot(dx, dy),
+            span = Math.abs(b.length * Math.sin((b.angle * Math.PI) / 180)),
+            originalWidth = e.width + span,
+            // Side anchor and relative angle agree with the physical detour.
+            x = (a.x + z.x) / 2 + ((dy / length) * originalWidth) / 2,
+            y = (a.y + z.y) / 2 - ((dx / length) * originalWidth) / 2,
+            angle =
+              (Math.atan2(dy, dx) * 180) / Math.PI +
+              (((b.angle % 180) + 180) % 180);
           return (
-            <g
-              key={b.link}
-              transform={`translate(${p.x} ${p.y}) rotate(${b.angle})`}
-            >
-              <line
-                x1={-b.length / 2}
-                x2={b.length / 2}
-                stroke="#bc6c3f"
-                strokeWidth=".17"
-              />
-              <circle cx={-b.length / 2} r=".13" fill="#895735" />
-              <circle cx={b.length / 2} r=".13" fill="#895735" />
+            <g key={b.link} transform={`translate(${x} ${y}) rotate(${angle})`}>
+              <title>{`Open belt: ${b.length} m, ${b.angle}° relative to corridor; ${e.width.toFixed(1)} m bypass`}</title>
+              <line x1={0} x2={b.length} stroke="#bc6c3f" strokeWidth=".17" />
+              <circle cx={0} r=".13" fill="#895735" />
+              <circle cx={b.length} r=".13" fill="#895735" />
             </g>
           );
         })}

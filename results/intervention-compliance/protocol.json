@@ -1,0 +1,176 @@
+{
+  "engineVersion": "1.3.0",
+  "sourceHash": "610e6dbeb123b0bc8879e64a04b10e2f73860a11177cb64b95080e2d326d823e",
+  "started": "2026-11-09T07:40:49.829Z",
+  "count": 20,
+  "first": 6001,
+  "jobs": 2,
+  "names": [
+    "compliance-nominal",
+    "compliance-low"
+  ],
+  "tasks": [
+    {
+      "name": "compliance-nominal",
+      "seed": 6001
+    },
+    {
+      "name": "compliance-nominal",
+      "seed": 6002
+    },
+    {
+      "name": "compliance-nominal",
+      "seed": 6003
+    },
+    {
+      "name": "compliance-nominal",
+      "seed": 6004
+    },
+    {
+      "name": "compliance-nominal",
+      "seed": 6005
+    },
+    {
+      "name": "compliance-nominal",
+      "seed": 6006
+    },
+    {
+      "name": "compliance-nominal",
+      "seed": 6007
+    },
+    {
+      "name": "compliance-nominal",
+      "seed": 6008
+    },
+    {
+      "name": "compliance-nominal",
+      "seed": 6009
+    },
+    {
+      "name": "compliance-nominal",
+      "seed": 6010
+    },
+    {
+      "name": "compliance-nominal",
+      "seed": 6011
+    },
+    {
+      "name": "compliance-nominal",
+      "seed": 6012
+    },
+    {
+      "name": "compliance-nominal",
+      "seed": 6013
+    },
+    {
+      "name": "compliance-nominal",
+      "seed": 6014
+    },
+    {
+      "name": "compliance-nominal",
+      "seed": 6015
+    },
+    {
+      "name": "compliance-nominal",
+      "seed": 6016
+    },
+    {
+      "name": "compliance-nominal",
+      "seed": 6017
+    },
+    {
+      "name": "compliance-nominal",
+      "seed": 6018
+    },
+    {
+      "name": "compliance-nominal",
+      "seed": 6019
+    },
+    {
+      "name": "compliance-nominal",
+      "seed": 6020
+    },
+    {
+      "name": "compliance-low",
+      "seed": 6001
+    },
+    {
+      "name": "compliance-low",
+      "seed": 6002
+    },
+    {
+      "name": "compliance-low",
+      "seed": 6003
+    },
+    {
+      "name": "compliance-low",
+      "seed": 6004
+    },
+    {
+      "name": "compliance-low",
+      "seed": 6005
+    },
+    {
+      "name": "compliance-low",
+      "seed": 6006
+    },
+    {
+      "name": "compliance-low",
+      "seed": 6007
+    },
+    {
+      "name": "compliance-low",
+      "seed": 6008
+    },
+    {
+      "name": "compliance-low",
+      "seed": 6009
+    },
+    {
+      "name": "compliance-low",
+      "seed": 6010
+    },
+    {
+      "name": "compliance-low",
+      "seed": 6011
+    },
+    {
+      "name": "compliance-low",
+      "seed": 6012
+    },
+    {
+      "name": "compliance-low",
+      "seed": 6013
+    },
+    {
+      "name": "compliance-low",
+      "seed": 6014
+    },
+    {
+      "name": "compliance-low",
+      "seed": 6015
+    },
+    {
+      "name": "compliance-low",
+      "seed": 6016
+    },
+    {
+      "name": "compliance-low",
+      "seed": 6017
+    },
+    {
+      "name": "compliance-low",
+      "seed": 6018
+    },
+    {
+      "name": "compliance-low",
+      "seed": 6019
+    },
+    {
+      "name": "compliance-low",
+      "seed": 6020
+    }
+  ],
+  "design": "Fixed configuration per policy; matched audience seeds across policies; fresh named random streams per replication. Unresolved runs retained at 900 s.",
+  "selection": "Separate lower-compliance sensitivity; no policy reselection"
+}

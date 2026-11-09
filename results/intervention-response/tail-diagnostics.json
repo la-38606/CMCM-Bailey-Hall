@@ -1,0 +1,44 @@
+[
+  {
+    "seed": 6008,
+    "clearance": 352.8,
+    "lastPerson": 547,
+    "recognitionDraw": 24.18086068973531,
+    "responseDraw": 301.8494689400376,
+    "personEvents": [
+      {
+        "time": 314.3,
+        "person": 547,
+        "type": "route-choice",
+        "detail": "unassigned → foyer at br2-2"
+      },
+      {
+        "time": 352.8,
+        "person": 547,
+        "type": "exterior-crossing",
+        "detail": "foyer"
+      }
+    ]
+  },
+  {
+    "seed": 6020,
+    "clearance": 349.3,
+    "lastPerson": 665,
+    "recognitionDraw": 9.741486937912283,
+    "responseDraw": 312.9304894320061,
+    "personEvents": [
+      {
+        "time": 323.8,
+        "person": 665,
+        "type": "route-choice",
+        "detail": "unassigned → foyer at br7-1"
+      },
+      {
+        "time": 349.3,
+        "person": 665,
+        "type": "exterior-crossing",
+        "detail": "foyer"
+      }
+    ]
+  }
+]

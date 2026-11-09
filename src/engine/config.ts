@@ -1,3 +1,4 @@
+import { interventionCandidates } from "./interventions";
 import type { Config, Exit, ManagerConfig, SignConfig } from "./types";
 export const GEOMETRY_VERSION = "bailey-traced-1";
 export function managers(count = 6, alternate = false): ManagerConfig[] {
@@ -98,6 +99,11 @@ export function scenarios(): Record<string, Config> {
   return {
     concert: { ...base, name: "Ordinary concert departure", managers: [] },
     emergency: base,
+    "study-coordinated": interventionCandidates(base).coordinated,
+    "study-led": interventionCandidates(base)["dynamic-only"],
+    "study-barriers": interventionCandidates(base)["barriers-only"],
+    "study-combined": interventionCandidates(base)["dynamic-combined"],
+    "study-partial": interventionCandidates(base)["dynamic-partial"],
     "alternate-managers": {
       ...base,
       name: "Alternate manager posts",

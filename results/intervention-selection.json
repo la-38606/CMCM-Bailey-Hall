@@ -1,0 +1,42 @@
+{
+  "frozenAt": "2026-11-09T07:39:47.149844+00:00",
+  "engineVersion": "1.3.0",
+  "sourceHash": "610e6dbeb123b0bc8879e64a04b10e2f73860a11177cb64b95080e2d326d823e",
+  "selectedCombined": "dynamic-partial",
+  "selectedBarrier": "partial-barriers",
+  "confirmationSeeds": [
+    5001,
+    5100
+  ],
+  "policies": [
+    "baseline",
+    "coordinated",
+    "partial-barriers",
+    "dynamic-only",
+    "dynamic-partial"
+  ],
+  "pilot": "results/intervention-selection-pilot",
+  "pilotSummary": {
+    "baseline": {
+      "mean": 192.46499999999997,
+      "unresolved": 0,
+      "successes": 1
+    },
+    "dynamic-only": {
+      "mean": 166.865,
+      "unresolved": 0,
+      "successes": 19
+    },
+    "dynamic-partial": {
+      "mean": 166.38000000000002,
+      "unresolved": 0,
+      "successes": 19
+    },
+    "dynamic-combined": {
+      "mean": 171.37999999999994,
+      "unresolved": 0,
+      "successes": 18
+    }
+  },
+  "reason": "Partial belts preserve a bypass and accessible connectivity. Both partial belts plus dynamic LEDs and dynamic LEDs alone performed near 167 seconds in development. Full partitions were slower. Retain the LED-only comparator because partial belts have not demonstrated incremental benefit. No further selection on confirmation outcomes."
+}

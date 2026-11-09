@@ -1,0 +1,47 @@
+\subsection{Numerical Refinement and Sensitivities}
+
+The selected combination was rerun for the first three validation audiences with $\Delta t=0.0125$ s, compared with the prescribed 0.1 s step. Only the integration interval changes. These are numerical checks, not three additional independent validation audiences.
+
+\begin{table}[htbp]\centering\small
+
+\begin{tabular}{rrrr}\toprule
+
+Seed & Coarse clearance (s) & Fine clearance (s) & Fine minus coarse (s)\\\midrule
+
+5001 & 168.9 & 164.8 & -4.1\\
+
+5002 & 168.5 & 187.6 & 19.1\\
+
+5003 & 187.8 & 185.0 & -2.8\\
+
+\bottomrule\end{tabular}\caption{Time-step refinement; full-run invariant and replay checks pass at both steps.}\end{table}
+
+The full network exhibits material numerical sensitivity: route decisions and lane-request ordering can change discontinuously. These three pairs do not establish time-step convergence. Isolated saturated-gate tests verify the prescribed throughput at both intervals, but that does not imply a converged full-house clearance estimate. The 0.1 s reference is retained regardless of whether refinement is faster or slower. Monte Carlo confidence intervals exclude this numerical uncertainty.
+
+Two separately labelled parameter sensitivities use 20 audiences per policy, seeds 6001--6020. The low-guidance case changes staff acceptance from 0.85 to 0.70, LED detection from 0.77 to 0.60, and LED acceptance from 0.80 to 0.60. The slow-response cases use recognition and preparation medians of 10 and 30 s instead of 6 and 14 s. These assumptions are stress cases, not fitted literature estimates. Main-study parameters and layouts remain unchanged.
+
+\begin{table}[htbp]\centering\small
+
+\begin{tabular}{lrrr}\toprule
+
+Case & Complete & Mean (s) & $T\leq180$\\\midrule
+
+Combined, nominal guidance & 20/20 & 175.4 & 13/20\\
+
+Combined, weaker guidance & 20/20 & 175.9 & 12/20\\
+
+Original staff, slower response & 20/20 & 259.1 & 0/20\\
+
+Combined, slower response & 20/20 & 258.8 & 0/20\\
+
+\bottomrule\end{tabular}\caption{Separate parameter sensitivities. A censored case has no unconditional mean.}\end{table}
+
+Weaker guidance minus nominal guidance: paired mean difference 0.5 s over 20 complete pairs. Student-t 95\% interval: -6.8 to 7.8 s.
+
+Combined minus original staff under slower response: paired mean difference -0.3 s over 20 complete pairs. Student-t 95\% interval: -3.4 to 2.8 s.
+
+The slow-response tail is visible in individual records: in seed 6008, the last occupant has a sampled preparation delay of 301.8 s and crosses outside at 352.8 s; in seed 6020 the corresponding delay is 312.9 s and clearance is 349.3 s. These are model draws, not observed people. No response-tail truncation was introduced to force the benchmark, and neither last occupant changes destination after the initial choice in these records.
+
+\subsection{Verification and Reproducibility}
+
+The final implementation passed 49 automated engine tests and 4 browser tests, plus TypeScript and production builds. All 500 confirmatory archives and all 86 numerical/sensitivity archives were audited against hashes and reconstructed crossing counts. Each study exactly replayed the complete first-seed result for every policy. Initial audience hashes confirm distinct audiences across replications and identical paired audiences across policies. Every run enforces population conservation, storage, connectivity and accessibility invariants. These checks establish consistency with the declared model, not empirical validation of Bailey Hall.

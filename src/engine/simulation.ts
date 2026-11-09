@@ -25,7 +25,7 @@ import {
   type Point,
   type RunResult,
 } from "./types";
-export const ENGINE_VERSION = "1.0.0";
+export const ENGINE_VERSION = "1.3.0";
 export class Simulation {
   readonly config: Config;
   readonly geometry: Geometry;
@@ -478,7 +478,11 @@ export class Simulation {
         e = this.geometry.links[r.next],
         s = this.links[r.next],
         gated = e.kind === "door" || e.kind === "stair";
-      if (gated && blockedGates.has(e.id)) continue;
+      // Opposite faces form distinct physical queues. A blocked incoming
+      // request must not prevent the outgoing stream from draining the gate.
+      // Both directions still spend the same gateCredit below.
+      const gateQueue = `${e.id}:${r.dir}`;
+      if (gated && blockedGates.has(gateQueue)) continue;
       const lane = receivingLane(
           e,
           s,
@@ -486,6 +490,12 @@ export class Simulation {
           p.radius,
           r.source === r.next ? r.sourceLane : undefined,
           this.canReleaseLane(p),
+          r.source &&
+            r.source !== r.next &&
+            p.dir === r.dir &&
+            this.familyOf.get(r.source) === this.familyOf.get(r.next)
+            ? r.sourceLane
+            : undefined,
         ),
         source = r.source
           ? this.links[r.source].lanes[r.sourceLane!]
@@ -495,7 +505,7 @@ export class Simulation {
         (source && source.credit + 1e-9 < 1) ||
         (gated && s.gateCredit + 1e-9 < 1)
       ) {
-        if (gated) blockedGates.add(e.id);
+        if (gated) blockedGates.add(gateQueue);
         continue;
       }
       if (

@@ -1,0 +1,176 @@
+{
+  "engineVersion": "1.3.0",
+  "sourceHash": "610e6dbeb123b0bc8879e64a04b10e2f73860a11177cb64b95080e2d326d823e",
+  "started": "2026-11-09T07:42:14.593Z",
+  "count": 20,
+  "first": 6001,
+  "jobs": 2,
+  "names": [
+    "response-baseline",
+    "response-combined"
+  ],
+  "tasks": [
+    {
+      "name": "response-baseline",
+      "seed": 6001
+    },
+    {
+      "name": "response-baseline",
+      "seed": 6002
+    },
+    {
+      "name": "response-baseline",
+      "seed": 6003
+    },
+    {
+      "name": "response-baseline",
+      "seed": 6004
+    },
+    {
+      "name": "response-baseline",
+      "seed": 6005
+    },
+    {
+      "name": "response-baseline",
+      "seed": 6006
+    },
+    {
+      "name": "response-baseline",
+      "seed": 6007
+    },
+    {
+      "name": "response-baseline",
+      "seed": 6008
+    },
+    {
+      "name": "response-baseline",
+      "seed": 6009
+    },
+    {
+      "name": "response-baseline",
+      "seed": 6010
+    },
+    {
+      "name": "response-baseline",
+      "seed": 6011
+    },
+    {
+      "name": "response-baseline",
+      "seed": 6012
+    },
+    {
+      "name": "response-baseline",
+      "seed": 6013
+    },
+    {
+      "name": "response-baseline",
+      "seed": 6014
+    },
+    {
+      "name": "response-baseline",
+      "seed": 6015
+    },
+    {
+      "name": "response-baseline",
+      "seed": 6016
+    },
+    {
+      "name": "response-baseline",
+      "seed": 6017
+    },
+    {
+      "name": "response-baseline",
+      "seed": 6018
+    },
+    {
+      "name": "response-baseline",
+      "seed": 6019
+    },
+    {
+      "name": "response-baseline",
+      "seed": 6020
+    },
+    {
+      "name": "response-combined",
+      "seed": 6001
+    },
+    {
+      "name": "response-combined",
+      "seed": 6002
+    },
+    {
+      "name": "response-combined",
+      "seed": 6003
+    },
+    {
+      "name": "response-combined",
+      "seed": 6004
+    },
+    {
+      "name": "response-combined",
+      "seed": 6005
+    },
+    {
+      "name": "response-combined",
+      "seed": 6006
+    },
+    {
+      "name": "response-combined",
+      "seed": 6007
+    },
+    {
+      "name": "response-combined",
+      "seed": 6008
+    },
+    {
+      "name": "response-combined",
+      "seed": 6009
+    },
+    {
+      "name": "response-combined",
+      "seed": 6010
+    },
+    {
+      "name": "response-combined",
+      "seed": 6011
+    },
+    {
+      "name": "response-combined",
+      "seed": 6012
+    },
+    {
+      "name": "response-combined",
+      "seed": 6013
+    },
+    {
+      "name": "response-combined",
+      "seed": 6014
+    },
+    {
+      "name": "response-combined",
+      "seed": 6015
+    },
+    {
+      "name": "response-combined",
+      "seed": 6016
+    },
+    {
+      "name": "response-combined",
+      "seed": 6017
+    },
+    {
+      "name": "response-combined",
+      "seed": 6018
+    },
+    {
+      "name": "response-combined",
+      "seed": 6019
+    },
+    {
+      "name": "response-combined",
+      "seed": 6020
+    }
+  ],
+  "design": "Fixed configuration per policy; matched audience seeds across policies; fresh named random streams per replication. Unresolved runs retained at 900 s.",
+  "selection": "Separate slower-response sensitivity; no policy reselection"
+}

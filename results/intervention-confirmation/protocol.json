@@ -1,0 +1,2019 @@
+{
+  "engineVersion": "1.3.0",
+  "sourceHash": "610e6dbeb123b0bc8879e64a04b10e2f73860a11177cb64b95080e2d326d823e",
+  "started": "2026-11-09T07:39:47.431Z",
+  "count": 100,
+  "first": 5001,
+  "jobs": 4,
+  "names": [
+    "baseline",
+    "coordinated",
+    "partial-barriers",
+    "dynamic-only",
+    "dynamic-partial"
+  ],
+  "tasks": [
+    {
+      "name": "baseline",
+      "seed": 5001
+    },
+    {
+      "name": "baseline",
+      "seed": 5002
+    },
+    {
+      "name": "baseline",
+      "seed": 5003
+    },
+    {
+      "name": "baseline",
+      "seed": 5004
+    },
+    {
+      "name": "baseline",
+      "seed": 5005
+    },
+    {
+      "name": "baseline",
+      "seed": 5006
+    },
+    {
+      "name": "baseline",
+      "seed": 5007
+    },
+    {
+      "name": "baseline",
+      "seed": 5008
+    },
+    {
+      "name": "baseline",
+      "seed": 5009
+    },
+    {
+      "name": "baseline",
+      "seed": 5010
+    },
+    {
+      "name": "baseline",
+      "seed": 5011
+    },
+    {
+      "name": "baseline",
+      "seed": 5012
+    },
+    {
+      "name": "baseline",
+      "seed": 5013
+    },
+    {
+      "name": "baseline",
+      "seed": 5014
+    },
+    {
+      "name": "baseline",
+      "seed": 5015
+    },
+    {
+      "name": "baseline",
+      "seed": 5016
+    },
+    {
+      "name": "baseline",
+      "seed": 5017
+    },
+    {
+      "name": "baseline",
+      "seed": 5018
+    },
+    {
+      "name": "baseline",
+      "seed": 5019
+    },
+    {
+      "name": "baseline",
+      "seed": 5020
+    },
+    {
+      "name": "baseline",
+      "seed": 5021
+    },
+    {
+      "name": "baseline",
+      "seed": 5022
+    },
+    {
+      "name": "baseline",
+      "seed": 5023
+    },
+    {
+      "name": "baseline",
+      "seed": 5024
+    },
+    {
+      "name": "baseline",
+      "seed": 5025
+    },
+    {
+      "name": "baseline",
+      "seed": 5026
+    },
+    {
+      "name": "baseline",
+      "seed": 5027
+    },
+    {
+      "name": "baseline",
+      "seed": 5028
+    },
+    {
+      "name": "baseline",
+      "seed": 5029
+    },
+    {
+      "name": "baseline",
+      "seed": 5030
+    },
+    {
+      "name": "baseline",
+      "seed": 5031
+    },
+    {
+      "name": "baseline",
+      "seed": 5032
+    },
+    {
+      "name": "baseline",
+      "seed": 5033
+    },
+    {
+      "name": "baseline",
+      "seed": 5034
+    },
+    {
+      "name": "baseline",
+      "seed": 5035
+    },
+    {
+      "name": "baseline",
+      "seed": 5036
+    },
+    {
+      "name": "baseline",
+      "seed": 5037
+    },
+    {
+      "name": "baseline",
+      "seed": 5038
+    },
+    {
+      "name": "baseline",
+      "seed": 5039
+    },
+    {
+      "name": "baseline",
+      "seed": 5040
+    },
+    {
+      "name": "baseline",
+      "seed": 5041
+    },
+    {
+      "name": "baseline",
+      "seed": 5042
+    },
+    {
+      "name": "baseline",
+      "seed": 5043
+    },
+    {
+      "name": "baseline",
+      "seed": 5044
+    },
+    {
+      "name": "baseline",
+      "seed": 5045
+    },
+    {
+      "name": "baseline",
+      "seed": 5046
+    },
+    {
+      "name": "baseline",
+      "seed": 5047
+    },
+    {
+      "name": "baseline",
+      "seed": 5048
+    },
+    {
+      "name": "baseline",
+      "seed": 5049
+    },
+    {
+      "name": "baseline",
+      "seed": 5050
+    },
+    {
+      "name": "baseline",
+      "seed": 5051
+    },
+    {
+      "name": "baseline",
+      "seed": 5052
+    },
+    {
+      "name": "baseline",
+      "seed": 5053
+    },
+    {
+      "name": "baseline",
+      "seed": 5054
+    },
+    {
+      "name": "baseline",
+      "seed": 5055
+    },
+    {
+      "name": "baseline",
+      "seed": 5056
+    },
+    {
+      "name": "baseline",
+      "seed": 5057
+    },
+    {
+      "name": "baseline",
+      "seed": 5058
+    },
+    {
+      "name": "baseline",
+      "seed": 5059
+    },
+    {
+      "name": "baseline",
+      "seed": 5060
+    },
+    {
+      "name": "baseline",
+      "seed": 5061
+    },
+    {
+      "name": "baseline",
+      "seed": 5062
+    },
+    {
+      "name": "baseline",
+      "seed": 5063
+    },
+    {
+      "name": "baseline",
+      "seed": 5064
+    },
+    {
+      "name": "baseline",
+      "seed": 5065
+    },
+    {
+      "name": "baseline",
+      "seed": 5066
+    },
+    {
+      "name": "baseline",
+      "seed": 5067
+    },
+    {
+      "name": "baseline",
+      "seed": 5068
+    },
+    {
+      "name": "baseline",
+      "seed": 5069
+    },
+    {
+      "name": "baseline",
+      "seed": 5070
+    },
+    {
+      "name": "baseline",
+      "seed": 5071
+    },
+    {
+      "name": "baseline",
+      "seed": 5072
+    },
+    {
+      "name": "baseline",
+      "seed": 5073
+    },
+    {
+      "name": "baseline",
+      "seed": 5074
+    },
+    {
+      "name": "baseline",
+      "seed": 5075
+    },
+    {
+      "name": "baseline",
+      "seed": 5076
+    },
+    {
+      "name": "baseline",
+      "seed": 5077
+    },
+    {
+      "name": "baseline",
+      "seed": 5078
+    },
+    {
+      "name": "baseline",
+      "seed": 5079
+    },
+    {
+      "name": "baseline",
+      "seed": 5080
+    },
+    {
+      "name": "baseline",
+      "seed": 5081
+    },
+    {
+      "name": "baseline",
+      "seed": 5082
+    },
+    {
+      "name": "baseline",
+      "seed": 5083
+    },
+    {
+      "name": "baseline",
+      "seed": 5084
+    },
+    {
+      "name": "baseline",
+      "seed": 5085
+    },
+    {
+      "name": "baseline",
+      "seed": 5086
+    },
+    {
+      "name": "baseline",
+      "seed": 5087
+    },
+    {
+      "name": "baseline",
+      "seed": 5088
+    },
+    {
+      "name": "baseline",
+      "seed": 5089
+    },
+    {
+      "name": "baseline",
+      "seed": 5090
+    },
+    {
+      "name": "baseline",
+      "seed": 5091
+    },
+    {
+      "name": "baseline",
+      "seed": 5092
+    },
+    {
+      "name": "baseline",
+      "seed": 5093
+    },
+    {
+      "name": "baseline",
+      "seed": 5094
+    },
+    {
+      "name": "baseline",
+      "seed": 5095
+    },
+    {
+      "name": "baseline",
+      "seed": 5096
+    },
+    {
+      "name": "baseline",
+      "seed": 5097
+    },
+    {
+      "name": "baseline",
+      "seed": 5098
+    },
+    {
+      "name": "baseline",
+      "seed": 5099
+    },
+    {
+      "name": "baseline",
+      "seed": 5100
+    },
+    {
+      "name": "coordinated",
+      "seed": 5001
+    },
+    {
+      "name": "coordinated",
+      "seed": 5002
+    },
+    {
+      "name": "coordinated",
+      "seed": 5003
+    },
+    {
+      "name": "coordinated",
+      "seed": 5004
+    },
+    {
+      "name": "coordinated",
+      "seed": 5005
+    },
+    {
+      "name": "coordinated",
+      "seed": 5006
+    },
+    {
+      "name": "coordinated",
+      "seed": 5007
+    },
+    {
+      "name": "coordinated",
+      "seed": 5008
+    },
+    {
+      "name": "coordinated",
+      "seed": 5009
+    },
+    {
+      "name": "coordinated",
+      "seed": 5010
+    },
+    {
+      "name": "coordinated",
+      "seed": 5011
+    },
+    {
+      "name": "coordinated",
+      "seed": 5012
+    },
+    {
+      "name": "coordinated",
+      "seed": 5013
+    },
+    {
+      "name": "coordinated",
+      "seed": 5014
+    },
+    {
+      "name": "coordinated",
+      "seed": 5015
+    },
+    {
+      "name": "coordinated",
+      "seed": 5016
+    },
+    {
+      "name": "coordinated",
+      "seed": 5017
+    },
+    {
+      "name": "coordinated",
+      "seed": 5018
+    },
+    {
+      "name": "coordinated",
+      "seed": 5019
+    },
+    {
+      "name": "coordinated",
+      "seed": 5020
+    },
+    {
+      "name": "coordinated",
+      "seed": 5021
+    },
+    {
+      "name": "coordinated",
+      "seed": 5022
+    },
+    {
+      "name": "coordinated",
+      "seed": 5023
+    },
+    {
+      "name": "coordinated",
+      "seed": 5024
+    },
+    {
+      "name": "coordinated",
+      "seed": 5025
+    },
+    {
+      "name": "coordinated",
+      "seed": 5026
+    },
+    {
+      "name": "coordinated",
+      "seed": 5027
+    },
+    {
+      "name": "coordinated",
+      "seed": 5028
+    },
+    {
+      "name": "coordinated",
+      "seed": 5029
+    },
+    {
+      "name": "coordinated",
+      "seed": 5030
+    },
+    {
+      "name": "coordinated",
+      "seed": 5031
+    },
+    {
+      "name": "coordinated",
+      "seed": 5032
+    },
+    {
+      "name": "coordinated",
+      "seed": 5033
+    },
+    {
+      "name": "coordinated",
+      "seed": 5034
+    },
+    {
+      "name": "coordinated",
+      "seed": 5035
+    },
+    {
+      "name": "coordinated",
+      "seed": 5036
+    },
+    {
+      "name": "coordinated",
+      "seed": 5037
+    },
+    {
+      "name": "coordinated",
+      "seed": 5038
+    },
+    {
+      "name": "coordinated",
+      "seed": 5039
+    },
+    {
+      "name": "coordinated",
+      "seed": 5040
+    },
+    {
+      "name": "coordinated",
+      "seed": 5041
+    },
+    {
+      "name": "coordinated",
+      "seed": 5042
+    },
+    {
+      "name": "coordinated",
+      "seed": 5043
+    },
+    {
+      "name": "coordinated",
+      "seed": 5044
+    },
+    {
+      "name": "coordinated",
+      "seed": 5045
+    },
+    {
+      "name": "coordinated",
+      "seed": 5046
+    },
+    {
+      "name": "coordinated",
+      "seed": 5047
+    },
+    {
+      "name": "coordinated",
+      "seed": 5048
+    },
+    {
+      "name": "coordinated",
+      "seed": 5049
+    },
+    {
+      "name": "coordinated",
+      "seed": 5050
+    },
+    {
+      "name": "coordinated",
+      "seed": 5051
+    },
+    {
+      "name": "coordinated",
+      "seed": 5052
+    },
+    {
+      "name": "coordinated",
+      "seed": 5053
+    },
+    {
+      "name": "coordinated",
+      "seed": 5054
+    },
+    {
+      "name": "coordinated",
+      "seed": 5055
+    },
+    {
+      "name": "coordinated",
+      "seed": 5056
+    },
+    {
+      "name": "coordinated",
+      "seed": 5057
+    },
+    {
+      "name": "coordinated",
+      "seed": 5058
+    },
+    {
+      "name": "coordinated",
+      "seed": 5059
+    },
+    {
+      "name": "coordinated",
+      "seed": 5060
+    },
+    {
+      "name": "coordinated",
+      "seed": 5061
+    },
+    {
+      "name": "coordinated",
+      "seed": 5062
+    },
+    {
+      "name": "coordinated",
+      "seed": 5063
+    },
+    {
+      "name": "coordinated",
+      "seed": 5064
+    },
+    {
+      "name": "coordinated",
+      "seed": 5065
+    },
+    {
+      "name": "coordinated",
+      "seed": 5066
+    },
+    {
+      "name": "coordinated",
+      "seed": 5067
+    },
+    {
+      "name": "coordinated",
+      "seed": 5068
+    },
+    {
+      "name": "coordinated",
+      "seed": 5069
+    },
+    {
+      "name": "coordinated",
+      "seed": 5070
+    },
+    {
+      "name": "coordinated",
+      "seed": 5071
+    },
+    {
+      "name": "coordinated",
+      "seed": 5072
+    },
+    {
+      "name": "coordinated",
+      "seed": 5073
+    },
+    {
+      "name": "coordinated",
+      "seed": 5074
+    },
+    {
+      "name": "coordinated",
+      "seed": 5075
+    },
+    {
+      "name": "coordinated",
+      "seed": 5076
+    },
+    {
+      "name": "coordinated",
+      "seed": 5077
+    },
+    {
+      "name": "coordinated",
+      "seed": 5078
+    },
+    {
+      "name": "coordinated",
+      "seed": 5079
+    },
+    {
+      "name": "coordinated",
+      "seed": 5080
+    },
+    {
+      "name": "coordinated",
+      "seed": 5081
+    },
+    {
+      "name": "coordinated",
+      "seed": 5082
+    },
+    {
+      "name": "coordinated",
+      "seed": 5083
+    },
+    {
+      "name": "coordinated",
+      "seed": 5084
+    },
+    {
+      "name": "coordinated",
+      "seed": 5085
+    },
+    {
+      "name": "coordinated",
+      "seed": 5086
+    },
+    {
+      "name": "coordinated",
+      "seed": 5087
+    },
+    {
+      "name": "coordinated",
+      "seed": 5088
+    },
+    {
+      "name": "coordinated",
+      "seed": 5089
+    },
+    {
+      "name": "coordinated",
+      "seed": 5090
+    },
+    {
+      "name": "coordinated",
+      "seed": 5091
+    },
+    {
+      "name": "coordinated",
+      "seed": 5092
+    },
+    {
+      "name": "coordinated",
+      "seed": 5093
+    },
+    {
+      "name": "coordinated",
+      "seed": 5094
+    },
+    {
+      "name": "coordinated",
+      "seed": 5095
+    },
+    {
+      "name": "coordinated",
+      "seed": 5096
+    },
+    {
+      "name": "coordinated",
+      "seed": 5097
+    },
+    {
+      "name": "coordinated",
+      "seed": 5098
+    },
+    {
+      "name": "coordinated",
+      "seed": 5099
+    },
+    {
+      "name": "coordinated",
+      "seed": 5100
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5001
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5002
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5003
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5004
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5005
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5006
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5007
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5008
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5009
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5010
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5011
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5012
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5013
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5014
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5015
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5016
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5017
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5018
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5019
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5020
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5021
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5022
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5023
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5024
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5025
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5026
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5027
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5028
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5029
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5030
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5031
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5032
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5033
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5034
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5035
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5036
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5037
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5038
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5039
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5040
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5041
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5042
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5043
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5044
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5045
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5046
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5047
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5048
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5049
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5050
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5051
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5052
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5053
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5054
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5055
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5056
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5057
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5058
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5059
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5060
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5061
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5062
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5063
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5064
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5065
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5066
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5067
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5068
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5069
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5070
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5071
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5072
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5073
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5074
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5075
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5076
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5077
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5078
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5079
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5080
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5081
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5082
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5083
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5084
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5085
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5086
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5087
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5088
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5089
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5090
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5091
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5092
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5093
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5094
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5095
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5096
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5097
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5098
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5099
+    },
+    {
+      "name": "partial-barriers",
+      "seed": 5100
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5001
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5002
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5003
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5004
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5005
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5006
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5007
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5008
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5009
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5010
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5011
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5012
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5013
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5014
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5015
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5016
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5017
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5018
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5019
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5020
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5021
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5022
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5023
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5024
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5025
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5026
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5027
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5028
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5029
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5030
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5031
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5032
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5033
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5034
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5035
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5036
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5037
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5038
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5039
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5040
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5041
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5042
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5043
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5044
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5045
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5046
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5047
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5048
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5049
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5050
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5051
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5052
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5053
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5054
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5055
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5056
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5057
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5058
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5059
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5060
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5061
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5062
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5063
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5064
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5065
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5066
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5067
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5068
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5069
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5070
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5071
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5072
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5073
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5074
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5075
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5076
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5077
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5078
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5079
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5080
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5081
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5082
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5083
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5084
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5085
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5086
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5087
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5088
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5089
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5090
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5091
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5092
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5093
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5094
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5095
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5096
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5097
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5098
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5099
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 5100
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5001
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5002
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5003
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5004
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5005
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5006
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5007
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5008
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5009
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5010
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5011
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5012
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5013
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5014
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5015
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5016
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5017
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5018
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5019
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5020
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5021
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5022
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5023
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5024
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5025
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5026
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5027
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5028
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5029
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5030
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5031
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5032
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5033
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5034
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5035
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5036
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5037
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5038
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5039
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5040
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5041
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5042
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5043
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5044
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5045
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5046
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5047
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5048
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5049
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5050
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5051
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5052
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5053
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5054
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5055
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5056
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5057
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5058
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5059
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5060
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5061
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5062
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5063
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5064
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5065
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5066
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5067
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5068
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5069
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5070
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5071
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5072
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5073
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5074
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5075
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5076
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5077
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5078
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5079
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5080
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5081
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5082
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5083
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5084
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5085
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5086
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5087
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5088
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5089
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5090
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5091
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5092
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5093
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5094
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5095
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5096
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5097
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5098
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5099
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 5100
+    }
+  ],
+  "design": "Fixed configuration per policy; matched audience seeds across policies; fresh named random streams per replication. Unresolved runs retained at 900 s.",
+  "selection": "results/intervention-selection.json"
+}

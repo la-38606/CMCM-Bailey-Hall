@@ -1,4 +1,6 @@
-import type { Config, Exit, Geometry, Person } from "./types";
+import type { Config, Exit, Geometry, Person, Point } from "./types";
+import { visible } from "./perception";
+import { gateCapacity } from "./transport";
 class Heap {
   data: [number, string][] = [];
   push(v: [number, string]) {
@@ -113,4 +115,43 @@ export function chooseDestination(
   )
     return p.destination;
   return best;
+}
+
+// Guidance is evaluated at the next physically reachable decision point.
+// The current unfinished link must still be walked; no mid-link teleport/turn.
+// Persistent preferences are not redrawn. Remote queues/closures remain unknown.
+export function guidanceSwitchAllowed(
+  g: Geometry,
+  c: Config,
+  p: Person,
+  proposed: Exit,
+  position: Point,
+  queues: Map<string, number>,
+): boolean {
+  if (p.exitTime !== null) return false;
+  if (!p.link) return true; // Initial instructions before movement.
+  const currentLink = g.links[p.link];
+  const node = p.dir === 1 ? currentLink.b : currentLink.a;
+  if (g.nodes[node].exit) return false; // Already committed to exterior crossing.
+  const current = p.destination ?? p.guidance?.exit;
+  if (!current || current === proposed) return true;
+  const waits = new Map<string, number>();
+  for (const [id, q] of queues) {
+    const e = g.links[id],
+      capacity = gateCapacity(e, c);
+    if (
+      q > 0 &&
+      Number.isFinite(capacity) &&
+      capacity > 0 &&
+      visible(g, position, g.nodes[e.a])
+    )
+      waits.set(id, q / capacity);
+  }
+  const options = routes(g, c, node, p, waits);
+  const before = options.get(current)?.time ?? Infinity;
+  const after = options.get(proposed)?.time ?? Infinity;
+  // An inaccessible/known-blocked current route can be replaced immediately.
+  return (
+    Number.isFinite(after) && (!Number.isFinite(before) || before - after >= 8)
+  );
 }

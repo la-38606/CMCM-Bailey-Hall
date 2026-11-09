@@ -1,7 +1,7 @@
 import { draw, RNG } from "./rng";
 import { distance, pointOnLink } from "./geometry";
 import { signVisible, visible } from "./perception";
-import { routes } from "./routing";
+import { routes, guidanceSwitchAllowed } from "./routing";
 import { gateCapacity, occupancy } from "./transport";
 import type {
   Config,
@@ -255,10 +255,11 @@ export class Guidance {
         if (!p.known.includes(m.message)) p.known.push(m.message);
         if (
           p.compliance < this.c.managerCompliance &&
-          this.recommendationFeasible(p, m.message) &&
           (!p.guidance ||
             p.guidance.exit !== m.message ||
-            p.guidance.priority < 3)
+            p.guidance.priority < 3) &&
+          this.recommendationFeasible(p, m.message) &&
+          guidanceSwitchAllowed(this.g, this.c, p, m.message, pos, queues)
         ) {
           p.guidance = { source: m.config.id, exit: m.message, priority: 3 };
           p.review = true;
@@ -296,8 +297,9 @@ export class Guidance {
         if (
           draw(this.seed, `sign-accept:${p.id}:${s.config.id}`) <
             s.config.acceptance &&
+          (p.guidance?.priority ?? 0) < 3 &&
           this.recommendationFeasible(p, s.message) &&
-          (p.guidance?.priority ?? 0) < 3
+          guidanceSwitchAllowed(this.g, this.c, p, s.message, pos, queues)
         ) {
           p.guidance = { source: s.config.id, exit: s.message, priority: 2 };
           p.review = true;

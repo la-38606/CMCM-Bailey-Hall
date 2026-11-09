@@ -1,0 +1,338 @@
+{
+  "engineVersion": "1.2.0",
+  "sourceHash": "0b9f0de86766ee55bcabee5d4e830a2ad49531bfac954cf70075ffe630b89196",
+  "started": "2026-11-09T07:29:19.149Z",
+  "count": 20,
+  "first": 3001,
+  "jobs": 4,
+  "names": [
+    "baseline",
+    "dynamic-only",
+    "dynamic-partial",
+    "dynamic-combined"
+  ],
+  "tasks": [
+    {
+      "name": "baseline",
+      "seed": 3001
+    },
+    {
+      "name": "baseline",
+      "seed": 3002
+    },
+    {
+      "name": "baseline",
+      "seed": 3003
+    },
+    {
+      "name": "baseline",
+      "seed": 3004
+    },
+    {
+      "name": "baseline",
+      "seed": 3005
+    },
+    {
+      "name": "baseline",
+      "seed": 3006
+    },
+    {
+      "name": "baseline",
+      "seed": 3007
+    },
+    {
+      "name": "baseline",
+      "seed": 3008
+    },
+    {
+      "name": "baseline",
+      "seed": 3009
+    },
+    {
+      "name": "baseline",
+      "seed": 3010
+    },
+    {
+      "name": "baseline",
+      "seed": 3011
+    },
+    {
+      "name": "baseline",
+      "seed": 3012
+    },
+    {
+      "name": "baseline",
+      "seed": 3013
+    },
+    {
+      "name": "baseline",
+      "seed": 3014
+    },
+    {
+      "name": "baseline",
+      "seed": 3015
+    },
+    {
+      "name": "baseline",
+      "seed": 3016
+    },
+    {
+      "name": "baseline",
+      "seed": 3017
+    },
+    {
+      "name": "baseline",
+      "seed": 3018
+    },
+    {
+      "name": "baseline",
+      "seed": 3019
+    },
+    {
+      "name": "baseline",
+      "seed": 3020
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 3001
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 3002
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 3003
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 3004
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 3005
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 3006
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 3007
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 3008
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 3009
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 3010
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 3011
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 3012
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 3013
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 3014
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 3015
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 3016
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 3017
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 3018
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 3019
+    },
+    {
+      "name": "dynamic-only",
+      "seed": 3020
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 3001
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 3002
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 3003
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 3004
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 3005
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 3006
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 3007
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 3008
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 3009
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 3010
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 3011
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 3012
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 3013
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 3014
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 3015
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 3016
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 3017
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 3018
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 3019
+    },
+    {
+      "name": "dynamic-partial",
+      "seed": 3020
+    },
+    {
+      "name": "dynamic-combined",
+      "seed": 3001
+    },
+    {
+      "name": "dynamic-combined",
+      "seed": 3002
+    },
+    {
+      "name": "dynamic-combined",
+      "seed": 3003
+    },
+    {
+      "name": "dynamic-combined",
+      "seed": 3004
+    },
+    {
+      "name": "dynamic-combined",
+      "seed": 3005
+    },
+    {
+      "name": "dynamic-combined",
+      "seed": 3006
+    },
+    {
+      "name": "dynamic-combined",
+      "seed": 3007
+    },
+    {
+      "name": "dynamic-combined",
+      "seed": 3008
+    },
+    {
+      "name": "dynamic-combined",
+      "seed": 3009
+    },
+    {
+      "name": "dynamic-combined",
+      "seed": 3010
+    },
+    {
+      "name": "dynamic-combined",
+      "seed": 3011
+    },
+    {
+      "name": "dynamic-combined",
+      "seed": 3012
+    },
+    {
+      "name": "dynamic-combined",
+      "seed": 3013
+    },
+    {
+      "name": "dynamic-combined",
+      "seed": 3014
+    },
+    {
+      "name": "dynamic-combined",
+      "seed": 3015
+    },
+    {
+      "name": "dynamic-combined",
+      "seed": 3016
+    },
+    {
+      "name": "dynamic-combined",
+      "seed": 3017
+    },
+    {
+      "name": "dynamic-combined",
+      "seed": 3018
+    },
+    {
+      "name": "dynamic-combined",
+      "seed": 3019
+    },
+    {
+      "name": "dynamic-combined",
+      "seed": 3020
+    }
+  ],
+  "design": "Fixed configuration per policy; matched audience seeds across policies; fresh named random streams per replication. Unresolved runs retained at 900 s.",
+  "selection": "Exploratory development; not confirmatory evidence"
+}

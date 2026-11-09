@@ -83,6 +83,7 @@ export function receivingLane(
   radius: number,
   departingLane?: number,
   allowLaneReversal = true,
+  continuingLane?: number,
 ): number {
   const departing = departingLane !== undefined ? 1 : 0;
   const remainingOccupancy = occupancy(s) - departing;
@@ -99,9 +100,11 @@ export function receivingLane(
     min = Infinity;
   for (let i = 0; i < s.lanes.length; i++) {
     const l = s.lanes[i];
+    if (continuingLane !== undefined && i !== continuingLane) continue;
     const n = l.people.length - (i === departingLane ? 1 : 0);
     if (
-      (l.direction !== dir || l.accepting === false) &&
+      (l.direction !== dir ||
+        (l.accepting === false && continuingLane !== i)) &&
       !(allowLaneReversal && i === departingLane && n === 0)
     )
       continue;

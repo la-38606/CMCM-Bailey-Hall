@@ -37,9 +37,46 @@ Large result files are versioned as lossless `.json.gz` archives; plain JSON rem
 
 `results/experiments.json` and [the validation report](docs/validation.md) contain the actual evaluated outcomes. A 900-second unfinished run has `clearance: null`, `status: "unresolved"`, and `clearanceBound: "T > 900 s"`. It counts against the 180-second success fraction. An unconditional mean is not reported when any replication is censored. Completed-only quantiles and means are explicitly labelled. Three replications are a smoke-sized exploratory sample, not evidence of operational reliability.
 
+The separate [100-replication Monte Carlo report](docs/monte-carlo-100.md) evaluates the fixed six-manager emergency scenario with fresh audiences and stochastic streams (seeds 1001–1100). Its [CSV](results/monte-carlo-100/replications.csv) retains every replication, including unresolved runs. Full compressed logs and a hash/replay audit accompany the report.
+
+```sh
+npm run monte-carlo -- --config scenarios/emergency.json --seed 1001 --runs 100 --jobs 4 --out results/monte-carlo-repeat
+node --import tsx scripts/audit-monte-carlo.ts --out results/monte-carlo-repeat
+```
+
+The Monte Carlo runner snapshots its configuration and refuses to overwrite existing evidence. Parallel workers change execution speed only; every replication receives its own fresh deterministic seed.
+
+## Literature-based intervention study (engine 1.3.0)
+
+[The updated study report](docs/intervention-study.md) compares five fixed policies on 100 paired fresh audiences each. [The revised PDF](docs/model/Bailey_Hall_Model_Final_Defensible.pdf) includes the literature rationale, current-state route commitment, exact LED and open-belt locations, results and limitations. The original engine 1.0.0 reports above remain historical evidence; the revised study has its own contemporaneous control arm.
+
+```sh
+npm run study -- --runs 100 --seed 5001 --configs baseline,coordinated,partial-barriers,dynamic-only,dynamic-partial --out results/intervention-repeat --jobs 4 --selection results/intervention-selection.json
+npm run audit-study -- --out results/intervention-repeat
+npm run simulate -- --config scenarios/study/dynamic-partial.json --seed 5001 --out results/combined-replay.json
+```
+
+The runner archives the source, freezes each policy JSON, checks initial audience identity across policies and distinct audiences across seeds, and stores every full result as compressed JSON. Its source fingerprint must be unchanged when the batch ends. The audit verifies every archive and event hash, reconstructs crossing counts, and exactly replays the first seed for each policy. Repeating the original study must use engine 1.3.0; its source archive accompanies the results. [Development pilots](docs/research/development-history.md) and the frozen selection record preserve unsuccessful alternatives.
+
+The interface includes study presets for coordinated managers, dynamic LEDs, full open partitions, and combined partial/full layouts. The confirmatory combination is **Six managers + dynamic LEDs + partial belts**. Exported JSON fully specifies the selected setup. Newly accepted instructions use current reachable routes and local queue information; final exterior crossings are committed.
+
+Generate the figures and paper from preserved results:
+
+```sh
+python3 -m venv .tmp/report-venv
+.tmp/report-venv/bin/pip install -r scripts/requirements-plots.txt
+node --import tsx scripts/export-study-layout.ts --out .tmp/study-geometry.json
+.tmp/report-venv/bin/python scripts/plot-study-layout.py .tmp/study-geometry.json
+.tmp/report-venv/bin/python scripts/report-interventions.py
+.tmp/report-venv/bin/python scripts/report-study-validation.py
+tectonic --outdir docs/model docs/model/Bailey_Hall_Model_Final_Defensible.tex
+```
+
+`report-interventions.py` accepts an optional study-output directory. The validation report generator uses the preserved refinement/compliance/response experiments. Run the same study runner with `refinement-coarse,refinement-fine` (3 seeds starting at 5001), `compliance-nominal,compliance-low` (20 starting at 6001), or `response-baseline,response-combined` (20 starting at 6001) to reproduce them in a fresh output directory. Those checks do not replace the main fixed-parameter experiment.
+
 ## Model and source hierarchy
 
-The mathematical authority is [the LaTeX specification](docs/model/Bailey_Hall_Model_Final_Defensible.tex). The accompanying PDF, seven-page problem statement, both seating diagrams, and all six reference images were reviewed before implementation. The paper is unchanged.
+The mathematical authority is [the LaTeX specification](docs/model/Bailey_Hall_Model_Final_Defensible.tex). The accompanying PDF, seven-page problem statement, both seating diagrams, and all six reference images were reviewed before implementation. The paper and PDF were revised on 9 November 2026 for the authorized literature-based intervention study. The original manuscript is retained in `docs/model/archive/`.
 
 The engine represents exactly 1,329 audience members: 527 orchestra, 486 mezzanine including three wheelchair places, and 316 balcony. It includes separate recognition and response, adjacent companions, persistent tastes and compliance, finite storage, lane FIFO and service credits, counterflow, locally visible gate delays, manager hearing, static/dynamic signs, projected barrier detours, and two scarce assistance teams. Exterior crossing and street arrival are separate endpoints.
 
@@ -62,4 +99,4 @@ The map renders the same graph that the engine traverses. Rows are restricted to
 | `scripts/` | Headless runs, paired batches, scenario sweep |
 | `tests/` | Unit, full-engine, numerical, reproducibility, and browser tests |
 
-No parameters are adjusted to make the 180-second objective pass. Predictions are conditional on this reconstruction and its uncalibrated assumptions; they are not a fire-safety or building-code certification.
+Audience, response, speed and capacity parameters are not adjusted to force the 180-second objective. Intervention layouts are selected on pilot audiences and evaluated on independent audiences. Predictions are conditional on this reconstruction and its uncalibrated assumptions; they are not a fire-safety or building-code certification.

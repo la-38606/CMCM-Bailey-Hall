@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "geometryVersion": "bailey-traced-1",
+  "name": "Six managers + open corridor partitions",
+  "dt": 0.1,
+  "cutoff": 900,
+  "speedMean": 1.4,
+  "speedSD": 0.18,
+  "olderShare": 0.2,
+  "olderMultiplier": 0.85,
+  "stairRatio": 0.57,
+  "olderStairRatio": 0.51,
+  "recognitionMedian": 6,
+  "responseMedian": 14,
+  "logSD": 0.6,
+  "familiarityShare": 0.35,
+  "knowledge": 1,
+  "managerCompliance": 0.85,
+  "environment": 1,
+  "returnPolicy": "available-lane",
+  "announcement": false,
+  "managers": [
+    {
+      "id": "CM1",
+      "node": "m1",
+      "exit": "west-portico"
+    },
+    {
+      "id": "CM2",
+      "node": "m4",
+      "exit": "foyer"
+    },
+    {
+      "id": "CM3",
+      "node": "m8",
+      "exit": "foyer"
+    },
+    {
+      "id": "CM4",
+      "node": "m11",
+      "exit": "east-portico"
+    },
+    {
+      "id": "CM5",
+      "node": "b4",
+      "exit": "foyer"
+    },
+    {
+      "id": "CM6",
+      "node": "b8",
+      "exit": "foyer"
+    }
+  ],
+  "signs": [],
+  "barriers": [
+    {
+      "link": "corridor-3",
+      "length": 2.4,
+      "angle": 90,
+      "direction": "both"
+    },
+    {
+      "link": "corridor-8",
+      "length": 2.4,
+      "angle": 90,
+      "direction": "both"
+    }
+  ],
+  "closures": [],
+  "dimensions": {}
+}

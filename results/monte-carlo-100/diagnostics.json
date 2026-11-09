@@ -1,0 +1,647 @@
+{
+  "replayedSeeds": [
+    {
+      "seed": 1022,
+      "stuck": 30,
+      "occupiedLinks": [
+        {
+          "link": "balcony-7",
+          "heads": [
+            {
+              "lane": 0,
+              "direction": 1,
+              "accepting": true,
+              "people": 14,
+              "head": 672,
+              "remaining": 0,
+              "credit": 1.0985915492957747,
+              "destination": "east-portico",
+              "guidance": {
+                "source": "EXIT-east-balcony-rear",
+                "exit": "east-portico",
+                "priority": 2
+              },
+              "target": "b8",
+              "next": "east-balcony-rear",
+              "nextDirection": 1,
+              "nextReceivingLane": 1,
+              "nextLanes": [
+                {
+                  "dir": 1,
+                  "accepting": true,
+                  "people": 3,
+                  "head": 710
+                },
+                {
+                  "dir": 1,
+                  "accepting": true,
+                  "people": 2,
+                  "head": 709
+                },
+                {
+                  "dir": 1,
+                  "accepting": false,
+                  "people": 2,
+                  "head": 712
+                }
+              ],
+              "lastReview": [
+                {
+                  "time": 55,
+                  "person": 672,
+                  "type": "route-review",
+                  "detail": "b8: east-portico"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "link": "balcony-8",
+          "heads": [
+            {
+              "lane": 2,
+              "direction": -1,
+              "accepting": true,
+              "people": 7,
+              "head": 769,
+              "remaining": 0,
+              "credit": 1.0985915492957747,
+              "destination": "foyer",
+              "target": "b8",
+              "next": "east-balcony-rear",
+              "nextDirection": 1,
+              "nextReceivingLane": 1,
+              "nextLanes": [
+                {
+                  "dir": 1,
+                  "accepting": true,
+                  "people": 3,
+                  "head": 710
+                },
+                {
+                  "dir": 1,
+                  "accepting": true,
+                  "people": 2,
+                  "head": 709
+                },
+                {
+                  "dir": 1,
+                  "accepting": false,
+                  "people": 2,
+                  "head": 712
+                }
+              ],
+              "lastReview": [
+                {
+                  "time": 55,
+                  "person": 769,
+                  "type": "route-review",
+                  "detail": "b8: foyer"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "link": "east-balcony-rear",
+          "heads": [
+            {
+              "lane": 0,
+              "direction": 1,
+              "accepting": true,
+              "people": 3,
+              "head": 710,
+              "remaining": 0,
+              "credit": 1.0985915492957747,
+              "destination": "east-portico",
+              "guidance": {
+                "source": "EXIT-east-balcony-rear",
+                "exit": "east-portico",
+                "priority": 2
+              },
+              "target": "east-stair-top",
+              "next": "east-stair-upper",
+              "nextDirection": 1,
+              "nextReceivingLane": -1,
+              "nextLanes": [
+                {
+                  "dir": -1,
+                  "accepting": true,
+                  "people": 1,
+                  "head": 727
+                },
+                {
+                  "dir": -1,
+                  "accepting": false,
+                  "people": 1,
+                  "head": 699
+                }
+              ],
+              "lastReview": [
+                {
+                  "time": 55,
+                  "person": 710,
+                  "type": "route-review",
+                  "detail": "east-stair-top: east-portico"
+                }
+              ]
+            },
+            {
+              "lane": 1,
+              "direction": 1,
+              "accepting": true,
+              "people": 2,
+              "head": 709,
+              "remaining": 0,
+              "credit": 1.0985915492957747,
+              "destination": "northeast-balcony",
+              "guidance": {
+                "source": "CM6",
+                "exit": "northeast-balcony",
+                "priority": 3
+              },
+              "target": "east-stair-top",
+              "next": "east-stair-upper",
+              "nextDirection": 1,
+              "nextReceivingLane": -1,
+              "nextLanes": [
+                {
+                  "dir": -1,
+                  "accepting": true,
+                  "people": 1,
+                  "head": 727
+                },
+                {
+                  "dir": -1,
+                  "accepting": false,
+                  "people": 1,
+                  "head": 699
+                }
+              ],
+              "lastReview": [
+                {
+                  "time": 55,
+                  "person": 709,
+                  "type": "route-review",
+                  "detail": "east-stair-top: northeast-balcony"
+                }
+              ]
+            },
+            {
+              "lane": 2,
+              "direction": 1,
+              "accepting": false,
+              "people": 2,
+              "head": 712,
+              "remaining": 0,
+              "credit": 1.0985915492957747,
+              "destination": "northeast-balcony",
+              "guidance": {
+                "source": "CM6",
+                "exit": "northeast-balcony",
+                "priority": 3
+              },
+              "target": "east-stair-top",
+              "next": "east-stair-upper",
+              "nextDirection": 1,
+              "nextReceivingLane": -1,
+              "nextLanes": [
+                {
+                  "dir": -1,
+                  "accepting": true,
+                  "people": 1,
+                  "head": 727
+                },
+                {
+                  "dir": -1,
+                  "accepting": false,
+                  "people": 1,
+                  "head": 699
+                }
+              ],
+              "lastReview": [
+                {
+                  "time": 55,
+                  "person": 712,
+                  "type": "route-review",
+                  "detail": "east-stair-top: northeast-balcony"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "link": "east-stair-upper",
+          "heads": [
+            {
+              "lane": 0,
+              "direction": -1,
+              "accepting": true,
+              "people": 1,
+              "head": 727,
+              "remaining": 0,
+              "credit": 1.0791617688784403,
+              "destination": "northeast-balcony",
+              "guidance": {
+                "source": "CM6",
+                "exit": "northeast-balcony",
+                "priority": 3
+              },
+              "target": "east-stair-top",
+              "next": "east-balcony-rear",
+              "nextDirection": -1,
+              "nextReceivingLane": -1,
+              "nextLanes": [
+                {
+                  "dir": 1,
+                  "accepting": true,
+                  "people": 3,
+                  "head": 710
+                },
+                {
+                  "dir": 1,
+                  "accepting": true,
+                  "people": 2,
+                  "head": 709
+                },
+                {
+                  "dir": 1,
+                  "accepting": false,
+                  "people": 2,
+                  "head": 712
+                }
+              ],
+              "lastReview": [
+                {
+                  "time": 55,
+                  "person": 727,
+                  "type": "route-review",
+                  "detail": "east-stair-top: northeast-balcony"
+                }
+              ]
+            },
+            {
+              "lane": 1,
+              "direction": -1,
+              "accepting": false,
+              "people": 1,
+              "head": 699,
+              "remaining": 0,
+              "credit": 1.0791617688784403,
+              "destination": "northeast-balcony",
+              "guidance": {
+                "source": "CM6",
+                "exit": "northeast-balcony",
+                "priority": 3
+              },
+              "target": "east-stair-top",
+              "next": "east-balcony-rear",
+              "nextDirection": -1,
+              "nextReceivingLane": -1,
+              "nextLanes": [
+                {
+                  "dir": 1,
+                  "accepting": true,
+                  "people": 3,
+                  "head": 710
+                },
+                {
+                  "dir": 1,
+                  "accepting": true,
+                  "people": 2,
+                  "head": 709
+                },
+                {
+                  "dir": 1,
+                  "accepting": false,
+                  "people": 2,
+                  "head": 712
+                }
+              ],
+              "lastReview": [
+                {
+                  "time": 55,
+                  "person": 699,
+                  "type": "route-review",
+                  "detail": "east-stair-top: northeast-balcony"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 1023,
+      "stuck": 12,
+      "occupiedLinks": [
+        {
+          "link": "east-balcony-rear",
+          "heads": [
+            {
+              "lane": 0,
+              "direction": 1,
+              "accepting": true,
+              "people": 2,
+              "head": 649,
+              "remaining": 0,
+              "credit": 1.0985915492957747,
+              "destination": "east-portico",
+              "guidance": {
+                "source": "EXIT-east-balcony-rear",
+                "exit": "east-portico",
+                "priority": 2
+              },
+              "target": "east-stair-top",
+              "next": "east-stair-upper",
+              "nextDirection": 1,
+              "nextReceivingLane": 0,
+              "nextLanes": [
+                {
+                  "dir": 1,
+                  "accepting": true,
+                  "people": 3,
+                  "head": 715
+                },
+                {
+                  "dir": 1,
+                  "accepting": false,
+                  "people": 2,
+                  "head": 755
+                }
+              ],
+              "lastReview": [
+                {
+                  "time": 84,
+                  "person": 649,
+                  "type": "route-review",
+                  "detail": "east-stair-top: east-portico"
+                }
+              ]
+            },
+            {
+              "lane": 1,
+              "direction": 1,
+              "accepting": true,
+              "people": 2,
+              "head": 654,
+              "remaining": 0,
+              "credit": 1.0985915492957747,
+              "destination": "foyer",
+              "target": "east-stair-top",
+              "next": "east-stair-upper",
+              "nextDirection": 1,
+              "nextReceivingLane": 0,
+              "nextLanes": [
+                {
+                  "dir": 1,
+                  "accepting": true,
+                  "people": 3,
+                  "head": 715
+                },
+                {
+                  "dir": 1,
+                  "accepting": false,
+                  "people": 2,
+                  "head": 755
+                }
+              ],
+              "lastReview": [
+                {
+                  "time": 84,
+                  "person": 654,
+                  "type": "route-review",
+                  "detail": "east-stair-top: foyer"
+                }
+              ]
+            },
+            {
+              "lane": 2,
+              "direction": 1,
+              "accepting": true,
+              "people": 1,
+              "head": 624,
+              "remaining": 0,
+              "credit": 1.0985915492957747,
+              "destination": "east-portico",
+              "guidance": {
+                "source": "EXIT-east-balcony-rear",
+                "exit": "east-portico",
+                "priority": 2
+              },
+              "target": "east-stair-top",
+              "next": "east-stair-upper",
+              "nextDirection": 1,
+              "nextReceivingLane": 0,
+              "nextLanes": [
+                {
+                  "dir": 1,
+                  "accepting": true,
+                  "people": 3,
+                  "head": 715
+                },
+                {
+                  "dir": 1,
+                  "accepting": false,
+                  "people": 2,
+                  "head": 755
+                }
+              ],
+              "lastReview": [
+                {
+                  "time": 84,
+                  "person": 624,
+                  "type": "route-review",
+                  "detail": "east-stair-top: east-portico"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "link": "east-stair-upper",
+          "heads": [
+            {
+              "lane": 0,
+              "direction": 1,
+              "accepting": true,
+              "people": 3,
+              "head": 715,
+              "remaining": 0,
+              "credit": 1.0791617688784403,
+              "destination": "east-portico",
+              "guidance": {
+                "source": "EXIT-east-balcony-rear",
+                "exit": "east-portico",
+                "priority": 2
+              },
+              "target": "east-stair-half",
+              "next": "east-stair-lower",
+              "nextDirection": 1,
+              "nextReceivingLane": -1,
+              "nextLanes": [
+                {
+                  "dir": -1,
+                  "accepting": true,
+                  "people": 1,
+                  "head": 711
+                },
+                {
+                  "dir": -1,
+                  "accepting": false,
+                  "people": 1,
+                  "head": 733
+                }
+              ],
+              "lastReview": [
+                {
+                  "time": 84,
+                  "person": 715,
+                  "type": "route-review",
+                  "detail": "east-stair-half: east-portico"
+                }
+              ]
+            },
+            {
+              "lane": 1,
+              "direction": 1,
+              "accepting": false,
+              "people": 2,
+              "head": 755,
+              "remaining": 0,
+              "credit": 1.0791617688784403,
+              "destination": "east-portico",
+              "target": "east-stair-half",
+              "next": "east-stair-lower",
+              "nextDirection": 1,
+              "nextReceivingLane": -1,
+              "nextLanes": [
+                {
+                  "dir": -1,
+                  "accepting": true,
+                  "people": 1,
+                  "head": 711
+                },
+                {
+                  "dir": -1,
+                  "accepting": false,
+                  "people": 1,
+                  "head": 733
+                }
+              ],
+              "lastReview": [
+                {
+                  "time": 84,
+                  "person": 755,
+                  "type": "route-review",
+                  "detail": "east-stair-half: east-portico"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "link": "east-stair-lower",
+          "heads": [
+            {
+              "lane": 0,
+              "direction": -1,
+              "accepting": true,
+              "people": 1,
+              "head": 711,
+              "remaining": 0,
+              "credit": 1.0791617688784403,
+              "destination": "northeast-balcony",
+              "guidance": {
+                "source": "CM6",
+                "exit": "northeast-balcony",
+                "priority": 3
+              },
+              "target": "east-stair-half",
+              "next": "east-stair-upper",
+              "nextDirection": -1,
+              "nextReceivingLane": -1,
+              "nextLanes": [
+                {
+                  "dir": 1,
+                  "accepting": true,
+                  "people": 3,
+                  "head": 715
+                },
+                {
+                  "dir": 1,
+                  "accepting": false,
+                  "people": 2,
+                  "head": 755
+                }
+              ],
+              "lastReview": [
+                {
+                  "time": 84,
+                  "person": 711,
+                  "type": "route-review",
+                  "detail": "east-stair-half: northeast-balcony"
+                }
+              ]
+            },
+            {
+              "lane": 1,
+              "direction": -1,
+              "accepting": false,
+              "people": 1,
+              "head": 733,
+              "remaining": 0,
+              "credit": 1.0791617688784403,
+              "destination": "northeast-balcony",
+              "target": "east-stair-half",
+              "next": "east-stair-upper",
+              "nextDirection": -1,
+              "nextReceivingLane": -1,
+              "nextLanes": [
+                {
+                  "dir": 1,
+                  "accepting": true,
+                  "people": 3,
+                  "head": 715
+                },
+                {
+                  "dir": 1,
+                  "accepting": false,
+                  "people": 2,
+                  "head": 755
+                }
+              ],
+              "lastReview": [
+                {
+                  "time": 84,
+                  "person": 733,
+                  "type": "route-review",
+                  "detail": "east-stair-half: northeast-balcony"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allUnresolvedFinalEventRange": [
+    212,
+    260.2
+  ],
+  "approximateTotalTimeSteps": 329019,
+  "medianFirstMovement": 23.8,
+  "p95FirstMovement": 45.9,
+  "meanQueueWait": 59.36591647855516,
+  "completedRunsFinalExit": {
+    "west-portico": 56,
+    "northwest-balcony": 24,
+    "east-portico": 2,
+    "northeast-balcony": 2,
+    "foyer": 1
+  },
+  "addedLEDs": 0,
+  "barriers": 0,
+  "existingExitSignsIncluded": true
+}

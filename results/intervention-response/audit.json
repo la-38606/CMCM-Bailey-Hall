@@ -1,0 +1,24 @@
+{
+  "checked": 40,
+  "sourceHashVerified": true,
+  "sourceHash": "610e6dbeb123b0bc8879e64a04b10e2f73860a11177cb64b95080e2d326d823e",
+  "eventCount": 2137432,
+  "uniqueAudiences": 20,
+  "pairedAudiencesIdentical": true,
+  "configurationHashesAndArchiveHashesVerified": true,
+  "countsReconstructedFromEvents": true,
+  "fullResultReplays": [
+    {
+      "policy": "response-baseline",
+      "seed": 6001,
+      "matched": true,
+      "fullResultHash": "f8775cf0ed6439c9a2cd2ffcef708d6f32f841322b4e462f8e36f8ea3a93c1eb"
+    },
+    {
+      "policy": "response-combined",
+      "seed": 6001,
+      "matched": true,
+      "fullResultHash": "a375612739e220a6e30cddb72924643bcf3ee58edd4e6ad4aaae0ed45d731d43"
+    }
+  ]
+}
