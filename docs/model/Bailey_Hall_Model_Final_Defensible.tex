@@ -29,6 +29,8 @@
 The evacuation of Bailey Hall depends on the available exits, the flow permitted by aisles and doors, and the decisions occupants make as congestion develops. The model represents 1,329 people moving through a network of walkways with finite capacity and storage. Individual walking speeds, response times, familiarity, and companions affect movement, while Crowd Managers and signs provide guidance and removable barriers alter circulation. The formulation distinguishes physical delays from the delays people can observe and describes the assumptions used where Bailey-specific measurements are unavailable.
 
 \input{intervention-abstract-results}
+
+A subsequent 400-run comparison of manager messages, with no added LEDs or barriers, selects nearest-time instructions from all six managers. The mean is 162.4 s, with 92/100 clearances by 180 s. The user-requested final-forty rule is held fixed across those four policies; these results remain conditional on the model.
 \end{abstract}
 
 \section{Introduction}
@@ -373,6 +375,7 @@ The recorded outputs include peak and time-varying link density, queue lengths a
 The reference values describe a prompt, well-signalled concert departure, not a calibration to measured Bailey Hall evacuation times. The free-speed mean of $1.40$ m/s lies between usual and medium walking paces; $1.30$ m/s is a slower alternative \cite{murtagh}. The assumed $20\%$ older share is compared with differently composed audiences, including $10\%$, $35\%$, and $50\%$ older attendees, since the programme and attendance records are unspecified. The response medians of $6$ and $14$ s are shorter than the pre-movement delays observed in the Marlowe Theatre and require a slower-response comparison \cite{galea2017theatre}. Staff acceptance of $0.85$ is similarly compared with $0.70$ and $0.90$; these are assumed probabilities, not findings from staff-guidance experiments. Initial knowledge of signed exits, the two route-preference shares, the counterflow lane rule, sign-reporting delays, and the switching margin also remain assumptions. Such comparisons vary the model's inputs; they are not statistical confidence intervals derived from the literature.
 
 \input{intervention-study-results}
+\input{manager-policy-results}
 
 \section{Limitations}
 

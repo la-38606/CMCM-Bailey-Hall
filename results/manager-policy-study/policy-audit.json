@@ -1,0 +1,45 @@
+{
+  "engineVersion": "1.4.0",
+  "policyAudits": [
+    {
+      "policy": "current-nearest",
+      "runs": 100,
+      "commitments": 710,
+      "changedExits": 0,
+      "wheelchairOutside": 300,
+      "wheelchairStreet": 300,
+      "exteriorCountsVerified": true,
+      "lockedPathsAndNoLaterUpdatesVerified": true
+    },
+    {
+      "policy": "nearest-all",
+      "runs": 100,
+      "commitments": 22,
+      "changedExits": 12,
+      "wheelchairOutside": 300,
+      "wheelchairStreet": 300,
+      "exteriorCountsVerified": true,
+      "lockedPathsAndNoLaterUpdatesVerified": true
+    },
+    {
+      "policy": "coordinated",
+      "runs": 100,
+      "commitments": 0,
+      "changedExits": 0,
+      "wheelchairOutside": 300,
+      "wheelchairStreet": 300,
+      "exteriorCountsVerified": true,
+      "lockedPathsAndNoLaterUpdatesVerified": true
+    },
+    {
+      "policy": "nearest-foyer-balcony",
+      "runs": 100,
+      "commitments": 9,
+      "changedExits": 0,
+      "wheelchairOutside": 300,
+      "wheelchairStreet": 300,
+      "exteriorCountsVerified": true,
+      "lockedPathsAndNoLaterUpdatesVerified": true
+    }
+  ]
+}

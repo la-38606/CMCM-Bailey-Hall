@@ -1,0 +1,12 @@
+{
+  "engineVersion": "1.4.0",
+  "engineSourceFingerprint": "51e5f1bf57e2da9e60d24a31ee0731dd68e748f6da84ec48b6bac8d8512c7c9c",
+  "started": "2026-11-09T08:39:29.486Z",
+  "firstSeed": 8001,
+  "runs": 100,
+  "jobs": 1,
+  "configHash": "ce6c6e0853af0bc2483c7754d65bea14ac7e08e2c2d63019878e6147ea03cf55",
+  "population": 1329,
+  "stochasticResampling": "New seed per replication; fresh fixed traits, preference types, groups, tastes, compliance, notice, hearing, staff activation and assistance. Within-replication persistent tendencies remain persistent.",
+  "fixed": "Geometry, seat inventory, wheelchair origins/count, distributions, scenario interventions, dt and cutoff"
+}

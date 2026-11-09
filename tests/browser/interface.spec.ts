@@ -161,12 +161,12 @@ test("exports nearest-time managers and the optional final-occupant rule", async
 }) => {
   await page.goto("/");
   await page.getByText("Edit actual posts & messages", { exact: true }).click();
-  for (let i = 1; i <= 4; i++)
+  for (let i = 1; i <= 6; i++)
     await expect(
       page.getByLabel(`CM${i} message`, { exact: true }),
     ).toHaveValue("nearest-time");
   await expect(page.getByLabel("CM5 message", { exact: true })).toHaveValue(
-    "northwest-balcony",
+    "nearest-time",
   );
   await page.getByText("Final occupants", { exact: true }).click();
   const fallback = page.getByRole("checkbox", {
@@ -182,7 +182,7 @@ test("exports nearest-time managers and the optional final-occupant rule", async
   expect(config.tailFallback).toEqual({ remaining: 40, stalledSeconds: 10 });
   expect(
     config.managers
-      .slice(0, 4)
+      .slice(0, 6)
       .every((m: { exit: string }) => m.exit === "nearest-time"),
   ).toBe(true);
   await fallback.uncheck();

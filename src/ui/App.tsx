@@ -12,8 +12,13 @@ import { EXITS, type Config, type RunResult } from "../engine/types";
 import { MapView, type Layers } from "./Map";
 import { paired, summarize } from "../engine/metrics";
 import { audienceComparisons } from "../scenarios/audience";
+import { managerPolicyScenarios } from "../scenarios/managers";
 import { reviewLayout } from "../review/layout";
-const presets = { ...scenarios(), ...audienceComparisons(reference()) };
+const presets = {
+  ...scenarios(),
+  ...audienceComparisons(reference()),
+  ...managerPolicyScenarios,
+};
 const fmt = (n: number | null | undefined, d = 1) =>
   n == null ? "—" : n.toFixed(d);
 function download(name: string, data: unknown) {

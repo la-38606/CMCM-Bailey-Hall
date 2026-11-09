@@ -1,0 +1,159 @@
+{
+  "engineVersion": "1.4.0",
+  "firstSeed": 8001,
+  "count": 100,
+  "pairedAudienceHashesVerified": true,
+  "fixedParametersAndManagerActivationsVerified": true,
+  "means": {
+    "current-nearest": {
+      "n": 100,
+      "mean": 178.73,
+      "sd": 10.944428036700002,
+      "ci95": [
+        176.55838803641603,
+        180.90161196358395
+      ],
+      "median": 177.65,
+      "p95": 193.04,
+      "familywiseMean95": [
+        175.9455608606153,
+        181.51443913938468
+      ]
+    },
+    "nearest-all": {
+      "n": 100,
+      "mean": 162.363,
+      "sd": 13.28151031176862,
+      "ci95": [
+        159.72766020967168,
+        164.99833979032832
+      ],
+      "median": 160.55,
+      "p95": 187.96,
+      "familywiseMean95": [
+        158.98396940852282,
+        165.74203059147717
+      ]
+    },
+    "coordinated": {
+      "n": 100,
+      "mean": 177.228,
+      "sd": 10.645396216490047,
+      "ci95": [
+        175.1157224370885,
+        179.34027756291152
+      ],
+      "median": 174.9,
+      "p95": 193.1,
+      "familywiseMean95": [
+        174.5196393821536,
+        179.93636061784642
+      ]
+    },
+    "nearest-foyer-balcony": {
+      "n": 100,
+      "mean": 163.291,
+      "sd": 13.003574450313593,
+      "ci95": [
+        160.71080871444696,
+        165.87119128555304
+      ],
+      "median": 160.5,
+      "p95": 187.96,
+      "familywiseMean95": [
+        159.98268077765778,
+        166.59931922234222
+      ]
+    }
+  },
+  "pairedContrasts": {
+    "current-nearest minus nearest-all": {
+      "n": 100,
+      "mean": 16.367,
+      "sd": 10.05986178791335,
+      "ci95": [
+        14.37090517098043,
+        18.36309482901957
+      ],
+      "familywise95": [
+        13.658577319095404,
+        19.075422680904598
+      ],
+      "conditionalOnCompletePairs": false
+    },
+    "current-nearest minus coordinated": {
+      "n": 100,
+      "mean": 1.5020000000000007,
+      "sd": 9.897453809904441,
+      "ci95": [
+        -0.4618695627157514,
+        3.4658695627157527
+      ],
+      "familywise95": [
+        -1.1626974826391812,
+        4.166697482639183
+      ],
+      "conditionalOnCompletePairs": false
+    },
+    "current-nearest minus nearest-foyer-balcony": {
+      "n": 100,
+      "mean": 15.439000000000002,
+      "sd": 10.215218346104297,
+      "ci95": [
+        13.41207905935017,
+        17.465920940649834
+      ],
+      "familywise95": [
+        12.688750578857563,
+        18.189249421142442
+      ],
+      "conditionalOnCompletePairs": false
+    },
+    "nearest-all minus coordinated": {
+      "n": 100,
+      "mean": -14.865000000000002,
+      "sd": 10.383878092621476,
+      "ci95": [
+        -16.9253866934588,
+        -12.804613306541203
+      ],
+      "familywise95": [
+        -17.66065778682909,
+        -12.069342213170913
+      ],
+      "conditionalOnCompletePairs": false
+    },
+    "nearest-all minus nearest-foyer-balcony": {
+      "n": 100,
+      "mean": -0.9280000000000013,
+      "sd": 5.317363970611715,
+      "ci95": [
+        -1.9830803728243476,
+        0.12708037282434503
+      ],
+      "familywise95": [
+        -2.3595971217351037,
+        0.5035971217351012
+      ],
+      "conditionalOnCompletePairs": false
+    },
+    "coordinated minus nearest-foyer-balcony": {
+      "n": 100,
+      "mean": 13.937000000000001,
+      "sd": 10.001804433160643,
+      "ci95": [
+        11.952425009726891,
+        15.921574990273111
+      ],
+      "familywise95": [
+        11.24420813587208,
+        16.629791864127924
+      ],
+      "conditionalOnCompletePairs": false
+    }
+  },
+  "selectedPolicy": "nearest-all",
+  "selectionReason": "Lowest observed unconditional mean among fully completed policies.",
+  "pairwiseMethod": "Paired Student t; six nominal intervals and Bonferroni simultaneous 95% intervals for 6 prespecified pairwise contrasts.",
+  "limitation": "Policy selection uses these samples; this is not independent confirmation of a globally optimal policy."
+}

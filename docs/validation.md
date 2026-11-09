@@ -2,7 +2,17 @@
 
 Recorded 9 November 2026. The current branch is `bailey-hall-simulator`, renamed from `rebuild-from-scratch`. Current engine: **1.4.0**. Earlier study and review results below retain their original versions.
 
-## Current nearest-time / final-occupant validation (1.4.0)
+## Current manager-policy selection (1.4.0)
+
+- Four policies × 100 replications, seeds 8001–8100, completed with fixed demographics, response, physical parameters, staff posts/compliance and the final-40 rule. No added LEDs or barriers.
+- Selected all-six nearest-time guidance: **162.363 s mean**, **92/100** by 180 s, nominal mean CI **159.728–164.998 s**. Simultaneous mean interval over four candidates: **158.984–165.742 s**.
+- All 400 runs cleared 1,329 people. All archives passed hash/event audits and four exact first-seed replays. All 741 final commitments followed their locked routes with no later updates; 22 occurred in the selected arm, including 12 exit revisions. All 300 wheelchair observations per policy reached the exterior and street within the horizon.
+- **79 automated tests passed** in 83.60 s; **6 browser tests passed** in 22.8 s. TypeScript and production build passed. A stale browser expectation for CM5's former message was corrected before the passing rerun.
+- The selected default matches the selected study configuration except its display title. Its complete seed-8001 result matched after normalizing that title only. The simulation rules and engine version are unchanged by selecting this default.
+- The reporting t quantiles were checked independently against SciPy at ten df/probability combinations (largest absolute error below 8e-11).
+- [Full comparison](manager-policy-study.md), [audit](../results/manager-policy-study/policy-audit.json) and [checks](../results/manager-policy-study/checks.json) retain evidence. This is selection among four candidates under the model, not field validation or an independent confirmation cohort.
+
+## Initial nearest-time / final-occupant validation (1.4.0)
 
 - Full suite: 77 tests passed in 102.57 s; after adding two further regression cases, the targeted file passed all 13 tests (79 distinct tests in total). The added tests check current rather than stale queues and inability to bypass an obstruction after commitment.
 - Six browser tests passed in 33.4 s. TypeScript and production build passed.

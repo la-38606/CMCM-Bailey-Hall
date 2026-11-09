@@ -51,14 +51,14 @@ describe("nearest-time manager instructions", () => {
     expect(
       JSON.parse(readFileSync("scenarios/emergency.json", "utf8")),
     ).toEqual(emergency());
-    expect(
-      emergency()
-        .managers.slice(0, 4)
-        .map((m) => m.exit),
-    ).toEqual(Array(4).fill("nearest-time"));
-    expect(emergency().managers.slice(4)).toEqual(
-      reference().managers.slice(4),
+    expect(emergency().managers.map((m) => m.exit)).toEqual(
+      Array(6).fill("nearest-time"),
     );
+    const { name: _label, ...selected } = JSON.parse(
+      readFileSync("scenarios/managers/nearest-all.json", "utf8"),
+    );
+    const { name: _defaultLabel, ...current } = emergency();
+    expect(current).toEqual(selected);
     expect(reference().tailFallback).toBeUndefined();
     expect(validateConfig(emergency())).toEqual([]);
   });

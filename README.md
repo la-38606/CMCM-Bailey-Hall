@@ -24,9 +24,22 @@ Browser tests use installed Chrome on macOS. On another machine set `CHROME_PATH
 
 ## Current emergency scenario (engine 1.4.0)
 
-CM1–CM4 now say **use the nearest exit by estimated travel time**; the two balcony managers retain their existing messages. The default emergency JSON, interface and CLI agree. The final-occupant rule is enabled: with at most 40 people still inside, each person stalled for more than 10 continuous seconds makes one final choice using current travel time plus visible queue delay, without habit or companion bias. Their route is then locked against further updates. The rule preserves travel, queues and accessibility and does not guarantee that every physical blockage resolves.
+All six managers now say **use the nearest exit by estimated travel time**, following the paired policy comparison. The default emergency JSON, interface and CLI agree. The final-occupant rule is enabled: with at most 40 people still inside, each person stalled for more than 10 continuous seconds makes one final choice using current travel time plus visible queue delay, without habit or companion bias. Their route is then locked against further updates. The rule preserves travel, queues and accessibility and does not guarantee that every physical blockage resolves.
 
 See [the exact rule and assumptions](docs/tail-policy.md). The **Final occupants** checkbox applies it to other scenarios. Historical study presets keep it disabled, preserving their archived results. `reference()` remains the historical reference; `emergency()` is the current default. The new validation results live separately in `results/tail-policy/`.
+
+## Selected Crowd Manager policy
+
+A [400-run comparison](docs/manager-policy-study.md) evaluated four fixed policies on 100 paired fresh audiences each. **Nearest-time instructions from all six managers** averaged **162.36 s** (nominal 95% CI 159.73–165.00), with **92/100** clearances by 180 s. All 400 runs cleared 1,329 occupants. The otherwise identical lower-floor-only nearest-time policy averaged 178.73 s, coordinated fixed destinations 177.23 s, and nearest-time lower floor plus foyer-directed balcony managers 163.29 s. The last alternative is statistically close to the selected policy.
+
+The selected mean's simultaneous interval across four candidate means is 158.98–165.74 s. This quantifies sampling uncertainty under the model, not uncertainty in behaviour or surveyed geometry. No physical capacity, walking speed, response or compliance parameter was adjusted. The final-40 rule is enabled in all arms; added LEDs and barriers are absent. Managers keep a common public rule, while listeners evaluate current feasible routes and visible queue delays. This does not add periodically changing public destination messages.
+
+`scenarios/emergency.json` and UI/CLI defaults now use the selected policy. All four exact evaluated configurations are available as interface presets and in `scenarios/managers/`. The earlier lower-floor-only configuration remains `scenarios/managers/current-nearest.json` for reproduction. Full logs, audits, paired contrasts and evaluated source are retained under `results/manager-policy-study/`.
+
+```sh
+npm run monte-carlo -- --config scenarios/managers/nearest-all.json --seed 8001 --runs 100 --jobs 4 --out results/manager-repeat
+node --import tsx scripts/audit-monte-carlo.ts --out results/manager-repeat
+```
 
 ## Reproducible experiments
 

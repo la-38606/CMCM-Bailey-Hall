@@ -4,7 +4,7 @@ This is a user-requested behavioural scenario revision, not a literature-calibra
 
 ## Emergency manager messages
 
-`scenarios/emergency.json`, the interface's default emergency preset, and the CLI default now agree. CM1–CM4, the four lower-floor managers formerly assigned west/east porticoes, broadcast `nearest-time`: “use the nearest exit by estimated travel time.” CM5 and CM6 retain their balcony messages. There are still six managers, with unchanged locations, hearing, activation and compliance distributions.
+The initial nearest-time candidate is preserved in `scenarios/managers/current-nearest.json`. In that candidate, CM1–CM4, the four lower-floor managers formerly assigned west/east porticoes, broadcast `nearest-time`: “use the nearest exit by estimated travel time.” CM5 and CM6 retain their balcony messages. There are still six managers, with unchanged locations, hearing, activation and compliance distributions. The subsequent [400-run policy comparison](manager-policy-study.md) selected nearest-time instructions from **all six**; `scenarios/emergency.json` and the UI/CLI defaults now use that selected policy.
 
 The message is a common rule, not a different public destination for each listener. A person who hears and accepts it selects the fastest **known, reachable, accessible** exit from their current next reachable junction. They still finish the current link. The score is the existing sum of link travel times and currently visible gate queues divided by their service capacities. No foyer preference or persistent random taste is added to the ranking for this instruction. An unseen queue is unknown, not remotely measured. The instruction does not teach all unknown exits. Existing 8-second switching inertia and commitment to an exterior crossing still apply to ordinary instructions. Tie-breaking is by exit identifier for reproducibility.
 
@@ -43,7 +43,7 @@ The policy audit verifies every committed path, absence of later guidance/route 
 Reproduce in fresh output directories:
 
 ```sh
-npm run monte-carlo -- --config scenarios/emergency.json --seed 5001 --runs 10 --jobs 2 --out results/tail-repeat-with
+npm run monte-carlo -- --config scenarios/managers/current-nearest.json --seed 5001 --runs 10 --jobs 2 --out results/tail-repeat-with
 npm run monte-carlo -- --config scenarios/review/nearest-time-no-tail.json --seed 5001 --runs 10 --jobs 2 --out results/tail-repeat-without
 node --import tsx scripts/audit-monte-carlo.ts --out results/tail-repeat-with
 node --import tsx scripts/audit-monte-carlo.ts --out results/tail-repeat-without

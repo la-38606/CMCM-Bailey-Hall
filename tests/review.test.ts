@@ -7,6 +7,7 @@ import { reference, scenarios, validateConfig } from "../src/engine/config";
 import { buildGeometry, validateGeometry } from "../src/engine/geometry";
 import { interventionCandidates } from "../src/engine/interventions";
 import { generatePopulation } from "../src/engine/population";
+import { managerPolicyScenarios } from "../src/scenarios/managers";
 import { audienceComparisons } from "../src/scenarios/audience";
 import { reviewLayout } from "../src/review/layout";
 import type { Config } from "../src/engine/types";
@@ -59,6 +60,7 @@ describe("scenario validation reviewed against external JSON", () => {
       ...scenarios(),
       ...interventionCandidates(reference()),
       ...audienceComparisons(reference()),
+      ...managerPolicyScenarios,
     })) {
       expect(validateConfig(c), c.name).toEqual([]);
       expect(validateGeometry(buildGeometry(c), c), c.name).toEqual([]);

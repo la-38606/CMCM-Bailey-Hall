@@ -103,10 +103,8 @@ export function reference(): Config {
 // The historical reference stays unchanged for reproduction of published studies.
 export function emergency(): Config {
   const c = reference();
-  c.name = "Concert emergency · nearest-time guidance";
-  c.managers = c.managers.map((m, i) =>
-    i < 4 ? { ...m, exit: "nearest-time" } : m,
-  );
+  c.name = "Concert emergency · all six nearest-time (selected)";
+  c.managers = c.managers.map((m) => ({ ...m, exit: "nearest-time" }));
   c.tailFallback = { remaining: 40, stalledSeconds: 10 };
   return c;
 }

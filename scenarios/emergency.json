@@ -1,7 +1,7 @@
 {
   "version": 1,
   "geometryVersion": "bailey-traced-1",
-  "name": "Concert emergency \u00b7 nearest-time guidance",
+  "name": "Concert emergency \u00b7 all six nearest-time (selected)",
   "dt": 0.1,
   "cutoff": 900,
   "speedMean": 1.4,
@@ -43,12 +43,12 @@
     {
       "id": "CM5",
       "node": "b4",
-      "exit": "northwest-balcony"
+      "exit": "nearest-time"
     },
     {
       "id": "CM6",
       "node": "b8",
-      "exit": "northeast-balcony"
+      "exit": "nearest-time"
     }
   ],
   "signs": [],

@@ -1,0 +1,121 @@
+{
+  "seed": 8056,
+  "status": "complete",
+  "clearance": 175.6,
+  "streetClearance": 197.4649706062827,
+  "outside": 1329,
+  "street": 1329,
+  "success180": true,
+  "queueMax": 24,
+  "exitUsage": {
+    "foyer": 621,
+    "west-portico": 283,
+    "east-portico": 271,
+    "west-stage": 37,
+    "east-stage": 30,
+    "northwest-balcony": 41,
+    "northeast-balcony": 46
+  },
+  "accessible": [
+    {
+      "id": 799,
+      "exitTime": 80.9,
+      "streetTime": 173.020531710624
+    },
+    {
+      "id": 800,
+      "exitTime": 41.9,
+      "streetTime": 135.09024830340456
+    },
+    {
+      "id": 801,
+      "exitTime": 46.6,
+      "streetTime": 159.03256322370157
+    }
+  ],
+  "waiting": {
+    "n": 1329,
+    "mean": 36.98675696012033,
+    "sd": 30.02176001652495,
+    "min": 0.30000000000000004,
+    "p05": 2.2000000000000006,
+    "p25": 12.499999999999972,
+    "median": 28.10000000000013,
+    "p75": 56.30000000000053,
+    "p90": 83.21999999999956,
+    "p95": 96.37999999999873,
+    "max": 126.89999999999706
+  },
+  "eventCount": 54538,
+  "eventHash": "372b042e5a851de721921fd1f76aaad74271f34c77ea526b4a5ea2478d6716e0",
+  "configHash": "80361091097fe8b5db6aa4f24df97225720996906461fe2561b6dbac5b66948e",
+  "audienceHash": "e810555f77383444dc3e44e2cf03b9a5574ee4f94307a30d4beeb11a12fb941a",
+  "olderCount": 247,
+  "familiarityCount": 482,
+  "timeOrientedCount": 847,
+  "groupedCount": 665,
+  "meanSpeed": 1.3621934765337707,
+  "meanRecognition": 7.03568425693077,
+  "meanResponse": 16.423800824848428,
+  "managerActivations": [
+    8.399747785861495,
+    18.815734295737673,
+    16.95970603585488,
+    17.908215198220276,
+    8.694443620851164,
+    17.487153325338983
+  ],
+  "wallSeconds": 7.3925157079999915,
+  "topQueues": [
+    {
+      "link": "balcony-5",
+      "peakQueue": 24,
+      "peakDensity": 2.872191258129999,
+      "denseSeconds": 35.30000000000023
+    },
+    {
+      "link": "balcony-6",
+      "peakQueue": 23,
+      "peakDensity": 2.7877150446555876,
+      "denseSeconds": 35.70000000000024
+    },
+    {
+      "link": "mezzanine-0",
+      "peakQueue": 19,
+      "peakDensity": 4.333333333333333,
+      "denseSeconds": 27.900000000000126
+    },
+    {
+      "link": "balcony-7",
+      "peakQueue": 18,
+      "peakDensity": 2.0395553714172565,
+      "denseSeconds": 0.4
+    },
+    {
+      "link": "mezzanine-5",
+      "peakQueue": 17,
+      "peakDensity": 3.0411436850788225,
+      "denseSeconds": 42.00000000000033
+    },
+    {
+      "link": "balcony-8",
+      "peakQueue": 17,
+      "peakDensity": 2.000816826662603,
+      "denseSeconds": 4.6
+    },
+    {
+      "link": "mezzanine-6",
+      "peakQueue": 16,
+      "peakDensity": 3.0411436850788225,
+      "denseSeconds": 56.700000000000536
+    },
+    {
+      "link": "balcony-3",
+      "peakQueue": 15,
+      "peakDensity": 1.8102628431709267,
+      "denseSeconds": 0
+    }
+  ],
+  "archive": "seed-8056.json.gz",
+  "archiveHash": "17f22d4e70251855b05f9d9aecb11df2797d09770102fe1d84ed4524ee1a6463"
+}

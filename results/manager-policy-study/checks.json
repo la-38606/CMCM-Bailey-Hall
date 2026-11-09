@@ -1,0 +1,70 @@
+{
+  "date": "2026-11-09",
+  "engineVersion": "1.4.0",
+  "branch": "bailey-hall-simulator",
+  "evaluatedImplementationCommit": "a9d3354",
+  "designCommit": "0ca2623",
+  "defaultSelectionChangesSimulationRules": false,
+  "engineTests": {
+    "command": "npm test -- --maxWorkers 1",
+    "passed": 79,
+    "files": 5,
+    "seconds": 83.6
+  },
+  "browserTests": {
+    "command": "npm run test:browser",
+    "passed": 6,
+    "seconds": 22.8,
+    "note": "A stale CM5 expectation was corrected before this passing final run."
+  },
+  "build": {
+    "command": "npm run build",
+    "typescript": "passed",
+    "vite": "passed"
+  },
+  "statisticsVerification": {
+    "reference": "scipy.stats.t.ppf",
+    "quantilesChecked": 10,
+    "maxAbsoluteError": 7.789213718467636e-11
+  },
+  "monteCarlo": {
+    "policies": 4,
+    "runsPerPolicy": 100,
+    "seeds": [
+      8001,
+      8100
+    ],
+    "all400Complete": true,
+    "selected": "nearest-all",
+    "selectedMean": 162.363,
+    "selectedSuccesses": 92,
+    "selectedFamilywiseMean95": [
+      158.98396940852282,
+      165.74203059147717
+    ]
+  },
+  "audits": {
+    "archives": 400,
+    "events": 20228173,
+    "exactFirstSeedReplays": 4,
+    "allFinalCommitmentsVerified": 741,
+    "pairedAudienceHashesVerified": true
+  },
+  "defaultReplay": {
+    "seed": 8001,
+    "clearance": 157.4,
+    "fullResultMatchedExceptScenarioLabel": true,
+    "eventHash": "5e537332cd82b5d361bed1c12969d4414b8610446bfee21d71c449e17e4c763e",
+    "configStoredIn": "default-replay.json"
+  },
+  "paper": {
+    "compiled": true,
+    "pages": 25,
+    "overfullBoxes": 0,
+    "sha256": "027f5fef08de9ec61c22958e2f9b637c0b03e44e480bca0d7ec626eeed842d8b"
+  },
+  "evaluatedSourceArchive": {
+    "file": "engine-source-1.4.0.tar.gz",
+    "sha256": "2028e4471fc32b1a705971f7b22ddc3644a9475502e3e4183b3cdcac0ec72627"
+  }
+}

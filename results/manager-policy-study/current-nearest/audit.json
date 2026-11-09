@@ -1,0 +1,522 @@
+{
+  "replicationsVerified": 100,
+  "archivesAndEventHashesVerified": true,
+  "uniqueAudiences": 100,
+  "identicalScenario": true,
+  "exteriorAndStreetCountsRecomputedFromEvents": true,
+  "eventsVerified": 4874266,
+  "deterministicReplay": {
+    "seed": 8001,
+    "fullResultHash": "4de61b2ed410057ed9a63911ddd9d130328d86f188ef396bc35fca84d1207d61",
+    "matched": true
+  },
+  "at180": {
+    "meanOutside": 1326.92,
+    "meanFractionOutside": 0.9984349134687736,
+    "minOutside": 1314,
+    "medianOutside": 1329,
+    "maxOutside": 1329,
+    "replications": [
+      {
+        "seed": 8001,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8002,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8003,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8004,
+        "outside": 1323,
+        "fraction": 0.9954853273137697
+      },
+      {
+        "seed": 8005,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8006,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8007,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8008,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8009,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8010,
+        "outside": 1319,
+        "fraction": 0.9924755455229496
+      },
+      {
+        "seed": 8011,
+        "outside": 1328,
+        "fraction": 0.999247554552295
+      },
+      {
+        "seed": 8012,
+        "outside": 1325,
+        "fraction": 0.9969902182091799
+      },
+      {
+        "seed": 8013,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8014,
+        "outside": 1324,
+        "fraction": 0.9962377727614747
+      },
+      {
+        "seed": 8015,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8016,
+        "outside": 1328,
+        "fraction": 0.999247554552295
+      },
+      {
+        "seed": 8017,
+        "outside": 1324,
+        "fraction": 0.9962377727614747
+      },
+      {
+        "seed": 8018,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8019,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8020,
+        "outside": 1324,
+        "fraction": 0.9962377727614747
+      },
+      {
+        "seed": 8021,
+        "outside": 1328,
+        "fraction": 0.999247554552295
+      },
+      {
+        "seed": 8022,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8023,
+        "outside": 1324,
+        "fraction": 0.9962377727614747
+      },
+      {
+        "seed": 8024,
+        "outside": 1323,
+        "fraction": 0.9954853273137697
+      },
+      {
+        "seed": 8025,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8026,
+        "outside": 1326,
+        "fraction": 0.9977426636568849
+      },
+      {
+        "seed": 8027,
+        "outside": 1328,
+        "fraction": 0.999247554552295
+      },
+      {
+        "seed": 8028,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8029,
+        "outside": 1323,
+        "fraction": 0.9954853273137697
+      },
+      {
+        "seed": 8030,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8031,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8032,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8033,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8034,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8035,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8036,
+        "outside": 1324,
+        "fraction": 0.9962377727614747
+      },
+      {
+        "seed": 8037,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8038,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8039,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8040,
+        "outside": 1327,
+        "fraction": 0.9984951091045899
+      },
+      {
+        "seed": 8041,
+        "outside": 1328,
+        "fraction": 0.999247554552295
+      },
+      {
+        "seed": 8042,
+        "outside": 1328,
+        "fraction": 0.999247554552295
+      },
+      {
+        "seed": 8043,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8044,
+        "outside": 1326,
+        "fraction": 0.9977426636568849
+      },
+      {
+        "seed": 8045,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8046,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8047,
+        "outside": 1328,
+        "fraction": 0.999247554552295
+      },
+      {
+        "seed": 8048,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8049,
+        "outside": 1328,
+        "fraction": 0.999247554552295
+      },
+      {
+        "seed": 8050,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8051,
+        "outside": 1324,
+        "fraction": 0.9962377727614747
+      },
+      {
+        "seed": 8052,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8053,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8054,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8055,
+        "outside": 1326,
+        "fraction": 0.9977426636568849
+      },
+      {
+        "seed": 8056,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8057,
+        "outside": 1321,
+        "fraction": 0.9939804364183596
+      },
+      {
+        "seed": 8058,
+        "outside": 1324,
+        "fraction": 0.9962377727614747
+      },
+      {
+        "seed": 8059,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8060,
+        "outside": 1324,
+        "fraction": 0.9962377727614747
+      },
+      {
+        "seed": 8061,
+        "outside": 1326,
+        "fraction": 0.9977426636568849
+      },
+      {
+        "seed": 8062,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8063,
+        "outside": 1314,
+        "fraction": 0.9887133182844243
+      },
+      {
+        "seed": 8064,
+        "outside": 1325,
+        "fraction": 0.9969902182091799
+      },
+      {
+        "seed": 8065,
+        "outside": 1327,
+        "fraction": 0.9984951091045899
+      },
+      {
+        "seed": 8066,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8067,
+        "outside": 1320,
+        "fraction": 0.9932279909706546
+      },
+      {
+        "seed": 8068,
+        "outside": 1324,
+        "fraction": 0.9962377727614747
+      },
+      {
+        "seed": 8069,
+        "outside": 1324,
+        "fraction": 0.9962377727614747
+      },
+      {
+        "seed": 8070,
+        "outside": 1323,
+        "fraction": 0.9954853273137697
+      },
+      {
+        "seed": 8071,
+        "outside": 1324,
+        "fraction": 0.9962377727614747
+      },
+      {
+        "seed": 8072,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8073,
+        "outside": 1323,
+        "fraction": 0.9954853273137697
+      },
+      {
+        "seed": 8074,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8075,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8076,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8077,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8078,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8079,
+        "outside": 1314,
+        "fraction": 0.9887133182844243
+      },
+      {
+        "seed": 8080,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8081,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8082,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8083,
+        "outside": 1328,
+        "fraction": 0.999247554552295
+      },
+      {
+        "seed": 8084,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8085,
+        "outside": 1326,
+        "fraction": 0.9977426636568849
+      },
+      {
+        "seed": 8086,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8087,
+        "outside": 1326,
+        "fraction": 0.9977426636568849
+      },
+      {
+        "seed": 8088,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8089,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8090,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8091,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8092,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8093,
+        "outside": 1321,
+        "fraction": 0.9939804364183596
+      },
+      {
+        "seed": 8094,
+        "outside": 1319,
+        "fraction": 0.9924755455229496
+      },
+      {
+        "seed": 8095,
+        "outside": 1324,
+        "fraction": 0.9962377727614747
+      },
+      {
+        "seed": 8096,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8097,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8098,
+        "outside": 1326,
+        "fraction": 0.9977426636568849
+      },
+      {
+        "seed": 8099,
+        "outside": 1329,
+        "fraction": 1
+      },
+      {
+        "seed": 8100,
+        "outside": 1328,
+        "fraction": 0.999247554552295
+      }
+    ]
+  }
+}
